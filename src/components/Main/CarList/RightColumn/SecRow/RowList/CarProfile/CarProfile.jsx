@@ -1,6 +1,6 @@
 import s from './CarProfile.module.css'
-import blackMers_png from './../../../../../../../assets/black_mers.png'
-import { Link } from 'react-router-dom';
+import blackMers_png from './../../../../../../../assets/img/black_mers.png'
+import { Link, NavLink } from 'react-router-dom';
 
 
 function CarProfile() {
@@ -11,7 +11,7 @@ function CarProfile() {
           <button className={s.added_to_bookmark}></button>
         </div>
         <div className={s.lot_value}>
-          <Link to='/carFullProfile'>12345</Link>
+          <Link to='CarFullProfile/1' >12345</Link>
         </div>
         <div className={s.car_year_value}>2020</div>
         <div className={s.car_firm_value}>Volkswagen</div>
@@ -34,11 +34,6 @@ function CarProfile() {
             Купить сейчас за<span className={s.buy_now_price}>21500$</span>
           </a>
         </div>
-
-
-
-
-        
       </div>
     );
   }

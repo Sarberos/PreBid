@@ -1,11 +1,14 @@
   .left_column_wrap{
     width: 324px;
-    height: 1069px;
+    height: 952px;
+    display: flex;
+    flex-direction: column;
     border: 1px solid #A2A9B8;
     border-radius: 4px ;
     padding: 25px 12px 45px 12px ;
   }
   .filter_title_block{
+    height: 24px;
     display: flex;
     justify-content: space-between;
     margin: 0 0 32px 0 ;
@@ -33,9 +36,12 @@
     color: #004DD5;
     border-bottom: 1px solid #004DD5;
   }
-  .selested_extendios{
+  /* .selested_extendios{
+    width: 100%;
+    height: auto;
     display: flex;
     flex-wrap:wrap;
+    margin: 0 0 94px 0;
   }
   .left_c_first_row{
     display:flex;
@@ -70,24 +76,24 @@
   .properties_closed_btn{
     width:16px;
     height:16px;
-    background: url(./../img/cross.svg) no-repeat center;
+    background: url(./../../../../assets/img/cross.svg) no-repeat center;
     border: none;
-  }
+  } */
   .car_choose_property_list{
     display: flex;
     flex-direction: column;
     align-items: center;
     width:300px;
-    height:auto;
-    margin: 94px 0 16px 0;
+    height: 760px;
+    margin: 0 0 16px 0;
   
   }
   .property_trigger{
+    width:100%;
+    height:53px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width:100%;
-    height:40px;
     border-bottom: 1px solid #A2A9B8;
     margin: 0 0 6px 0;
     padding: 8px 12px ;

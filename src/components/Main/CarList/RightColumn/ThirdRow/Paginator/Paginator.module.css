@@ -1,5 +1,4 @@
-  /*  */
-  .paginator{
+.paginator{
     width:304px;
     height:40px;
     display:flex;
@@ -9,11 +8,11 @@
   .smash_page_btn{
     width: 35px;
     height:35px;
-    background: url(./../img/arrow_left.svg) no-repeat center ;
+    background: url(./../../../../../../assets/img/arrow_left.svg) no-repeat center ;
     border: none;
   }
   .smash_page_btn:last-child{
-    background: url(./../img/arrow_right.svg) no-repeat center ;
+    background: url(./../../../../../../assets/img/arrow_right.svg) no-repeat center ;
   }
   .smash_page_btn:hover,
   .smash_page_btn:focus {

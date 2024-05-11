@@ -1,5 +1,5 @@
 import s from './TileCarProfileRow.module.css'
-import blackMers_png from './../../../../../../../assets/black_mers.png'
+import blackMers_png from './../../../../../../../assets/img/black_mers.png'
 
 function TileCarProfileRow() {
     return (

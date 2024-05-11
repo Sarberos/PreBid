@@ -1,4 +1,5 @@
 import s from './LeftColumn.module.css'
+import accordionArrow from './../../../../assets/img/accordio_arrow.svg'
 
 function LeftColumn() {
     return (
@@ -7,7 +8,7 @@ function LeftColumn() {
             <p className={s.filters_subtitle}>Фильтры</p>
             <button className={s.reset_all_btn}>Сбросить все</button>
         </div>
-        <div className={s.selested_extendios}>
+        {/* <div className={s.selested_extendios}>
             <div className={s.left_c_first_row}>
                 <div className={s.selected_extend_block}>
                     <div className={s.select_properties_name}>
@@ -28,37 +29,37 @@ function LeftColumn() {
                 </div>
                 <button className={s.properties_closed_btn}></button>
             </div>
-        </div>
+        </div> */}
         <div className={s.car_choose_property_list}>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Все транспортные средства</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Cостояние</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
-            <div className={s.property_trigger_accordion}>
+            {/* <div className={s.property_trigger_accordion}>
                 <ul className={s.sostoyanie_choice}>
                     <li className={s.sostoyanie_value}>Не на ходу</li>
                     <li className={s.sostoyanie_value}>Заводится</li>
                 </ul>
-            </div>
+            </div> */}
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Тип</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
-            <div className={s.property_trigger_accordion}>
+            {/* <div className={s.property_trigger_accordion}>
                 <ul className={s.type_choice}>
                     <li className={s.sostoyanie_value}>Автомобиль</li>
                 </ul>
-            </div>
+            </div> */}
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Одометр</div>
                 <div className={s.property_trigger_from_to_block}>
@@ -70,7 +71,7 @@ function LeftColumn() {
                             </div>
 
                             <div className={s.from_to_img_block}>
-                                <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img_small}/>
+                                <img src={accordionArrow} className={s.property_accordion_arrow_img_small}/>
                             </div>
                         </div>
                         <div className={s.property_year_midle_block}>—</div>
@@ -79,7 +80,7 @@ function LeftColumn() {
                                 <label className={s.from_to_label}> 2022</label>
                             </div>
                             <div className={s.from_to_img_block}>
-                                <img src="./img/accordio_arrow.svg"className={s.property_accordion_arrow_img_small}/>
+                                <img src={accordionArrow}className={s.property_accordion_arrow_img_small}/>
                             </div>
                         </div>
                     </div>
@@ -95,7 +96,7 @@ function LeftColumn() {
                         </div>
 
                         <div className={s.from_to_img_block}>
-                            <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img_small}/>
+                            <img src={accordionArrow} className={s.property_accordion_arrow_img_small}/>
                         </div>
                     </div>
                     <div className={s.property_year_midle_block}>—</div>
@@ -104,7 +105,7 @@ function LeftColumn() {
                             <label className={s.from_to_label}> 2022</label>
                         </div>
                         <div className={s.from_to_img_block}>
-                            <img src="./img/accordio_arrow.svg"className={s.property_accordion_arrow_img_small}/>
+                            <img src={accordionArrow}className={s.property_accordion_arrow_img_small}/>
                         </div>
                     </div>
                 </div>
@@ -112,61 +113,61 @@ function LeftColumn() {
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Марка</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Модель</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={`${s.property_trigger_title} ${s.active_text}`}>Тип двигателя</div>
                 <span className={s.property_accordion_arrow} >
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Передача</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Тип топлива</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
-            <div className={s.property_trigger_accordion} >
+            {/* <div className={s.property_trigger_accordion} >
                 <ul className={s.type_choice}>
                     <li className={s.sostoyanie_value}>Бензин</li>
                     <li className={s.sostoyanie_value}>Гибрид</li>
                 </ul>
-            </div>
+            </div> */}
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Приводной механизм</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Цилиндр</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Тип кузова</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
             <div className={s.property_trigger}>
                 <div className={s.property_trigger_title}>Статус</div>
                 <span className={s.property_accordion_arrow}>
-                    <img src="./img/accordio_arrow.svg" className={s.property_accordion_arrow_img}/>
+                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
             </div>
         </div>

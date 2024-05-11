@@ -1,5 +1,5 @@
 import s from './Intro.module.css'
-
+import mainCar from './../../../assets/img/main_car.png'
 function Intro() {
     return (
         <div className={s.full_screen_intro}>
@@ -19,7 +19,7 @@ function Intro() {
                         </div>
                     </div>
                     <div className={s.main_car_img_block}>
-                        <img src="./img/main_car.png" alt="" className={s.main_car_img}/>
+                        <img src={mainCar} alt="" className={s.main_car_img}/>
                     </div>
                 </section>
             </div>

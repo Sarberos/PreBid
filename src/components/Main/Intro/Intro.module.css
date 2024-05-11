@@ -1,3 +1,7 @@
+.wrapper{
+  width:1720px;
+  margin: 0 auto;
+}
 .full_screen_intro{
     width:1920px;
     height: 500px;
@@ -15,13 +19,13 @@
     flex-wrap: wrap;
     width: 800px;
     height: 196px;
-    margin-right:73px;
+    margin: 0 73px 0 0;
     justify-content: left;
   }
   .title_block{
     width: 100%;
     height: 108px;
-    margin: -20px 73px 60px 0;
+    margin: 0 0 40px 0;
   }
   .title{
     font-family: 'Circe';

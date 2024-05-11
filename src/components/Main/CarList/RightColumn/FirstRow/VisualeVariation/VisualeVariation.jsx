@@ -4,7 +4,7 @@ import TilesActive from './TilesActive/TilesActive';
 import { useState } from 'react';
 
 function VisualeVariation() {
-    const [visStyle, changeVisStyle]=useState(false)
+    const [visStyle, changeVisStyle]=useState(true)
     
     return (
       <div className={s.car_list_variation_block}>

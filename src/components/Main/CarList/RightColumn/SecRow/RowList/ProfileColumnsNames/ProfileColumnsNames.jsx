@@ -1,4 +1,6 @@
 import s from './ProfileColumnsNames.module.css'
+import galochkaVerh from './../../../../../../../assets/img/galocha_verh.svg'
+import galochkaVniz from './../../../../../../../assets/img/galochka_vniz.svg'
 
 function ProfileColumnsNames() {
     return (
@@ -7,28 +9,28 @@ function ProfileColumnsNames() {
             <div className={s.name_of_column}>№ Лота</div>
             <div className={s.name_of_column}>Год
                 <span className={s.sort_up_down}>
-                    <img src="./img/galocha_verh.svg" alt="" className={s.sort_up_down}/>
-                    <img src="./img/galochka_vniz.svg" alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVerh} alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVniz} alt="" className={s.sort_up_down}/>
                 </span>
             </div>
             <div className={s.name_of_column}>Марка</div>
             <div className={s.name_of_column}>Модель</div>
             <div className={s.name_of_column}>Объем
                 <span className={s.sort_up_down}>
-                    <img src="./img/galocha_verh.svg" alt="" className={s.sort_up_down}/>
-                    <img src="./img/galochka_vniz.svg" alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVerh} alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVniz} alt="" className={s.sort_up_down}/>
                 </span>
             </div>
             <div className={s.name_of_column}>Одометр
                 <span className={s.sort_up_down}>
-                    <img src="./img/galocha_verh.svg" alt="" className={s.sort_up_down}/>
-                    <img src="./img/galochka_vniz.svg" alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVerh} alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVniz} alt="" className={s.sort_up_down}/>
                 </span>
             </div>
             <div className={s.name_of_column}>Дата
                 <span className={s.sort_up_down}>
-                    <img src="./img/galocha_verh.svg" alt="" className={s.sort_up_down}/>
-                    <img src="./img/galochka_vniz.svg" alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVerh} alt="" className={s.sort_up_down}/>
+                    <img src={galochkaVniz} alt="" className={s.sort_up_down}/>
                 </span>
             </div>
             <div className={s.name_of_column}>Ставка</div>

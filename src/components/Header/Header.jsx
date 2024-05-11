@@ -1,4 +1,6 @@
 import s from './Header.module.css'
+import logo from './../../assets/img/logo.svg'
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -22,47 +24,45 @@ function Header() {
             <div className={s.header__wrapper_sec_row}>
                 <div className={s.header__logo}>
                     <a href="/" className={s.header__logo_link}>
-                        <img src="./img/logo.svg" alt="logo" className={s.header__logo_img} />
+                        <img src={logo} alt="logo" className={s.header__logo_img} />
                     </a>
                 </div>
                 <nav className={s.header__nav}>
                     <ul className={s.header__list}>
                         <li className={`${s.header__item} ${s.all_use}`}>
-                            <a href="#" className={s.header__link}>Каталог</a>
+                            <Link to="/"  className={s.header__link}>Каталог</Link>
                         </li>
                         <li className={`${s.header__item} ${s.all_use}`}>
-                            <a href="#" className={s.header__link}>Аукционы</a>
+                            <Link to="/auctions"  className={s.header__link}>Аукционы</Link>
                         </li>
                         <li className={s.header__item}>
-                            <a href="#" className={s.header__link}>Тарифы</a>
+                            <Link to="/rates"  className={s.header__link}>Тарифы</Link>
                         </li>
                         <li className={s.header__item}>
-                            <a href="#" className={s.header__link}>Как это работает </a>
+                            <Link to="/help"  className={s.header__link}>Как это работает </Link>
                         </li>
                         <li className={`${s.header__item} ${s.width_1440}`}>
-                            <a href="#" className={s.header__link }>Мои ставки</a>
+                            <Link to=""  className={s.header__link }>Мои ставки</Link>
                         </li>
                         <li className={`${s.header__item} ${s.width_1440}`}>
-                            <a href="#" className={s.header__link}>Личный кабинет</a>
+                            <Link to=""  className={s.header__link}>Личный кабинет</Link>
                         </li>
                         <li className={`${s.header__item} ${s.width_1440}`}>
-                            <a href="#" className={s.header__link}>Мое избранное</a>
+                            <Link to=""  className={s.header__link}>Мое избранное</Link>
                         </li>
                         <li className={`${s.header__item} ${s.width_1024}`}>
-                            <a href="#" className={s.header__link}>Тарифы</a>
+                            <Link to=""  className={s.header__link}>Тарифы</Link>
                         </li>
                         <li className={`${s.header__item} ${s.width_1024}`}>
-                            <a href="#" className={s.header__link}>Как это работает</a>
+                            <Link to=""  className={s.header__link}>Как это работает</Link>
                         </li>
                     </ul>
                 </nav>
                 <form className={s.search_form}>
-                    <fieldset className={s.search_form__wrap}>
                         <input type="text" name="main_search" className={s.search_form__field} placeholder="Поиск"/>
                         <button type="submit" className={s.search_form__submit}></button>
-                    </fieldset>
                 </form>
-                <button type="submit" className={s.sign_login_btn}>Вход/Регистрация</button>
+                <Link to='/login' > <button type="submit" className={s.sign_login_btn}>Вход/Регистрация</button></Link>
                 <div className={s.header__burger}>
 				</div>
             </div>

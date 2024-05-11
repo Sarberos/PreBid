@@ -1,4 +1,10 @@
 import s from './Footer.module.css'
+import Copyright_logo from './../../assets/img/Copyright.svg'
+import VK from './../../assets/./img/VK.svg'
+import faceBook from './../../assets/img/faceBook.svg'
+import inst from './../../assets/./img/Inst.svg'
+import fourthNetwork from './../../assets/img/fourthNetwork.svg'
+import youtube from './../../assets/img/Youtube.svg'
 
 function Footer() {
     return (
@@ -40,24 +46,24 @@ function Footer() {
             <div className={s.footer_social_networks}>
                 <div className={s.footer_logo_wrap}>
                     <a href="#" className={s.footer_logo_link}>
-                        <img src="./img/Copyright.svg" alt="" className={s.footer_logo_img}/>
+                        <img src={Copyright_logo} alt="" className={s.footer_logo_img}/>
                     </a>
                 </div>
                 <div className={s.footer_networks_wrap}>
                     <a href="#" className={s.network_elem}>
-                        <img src="./img/faceBook.svg" alt="" className={s.network_elem_img}/>
+                        <img src={faceBook} alt="" className={s.network_elem_img}/>
                     </a>
                     <a href="#" className={s.network_elem}>
-                        <img src="./img/Inst.svg" alt="" className={s.network_elem_img}/>
+                        <img src={inst} alt="" className={s.network_elem_img}/>
                     </a>
                     <a href="#" className={s.network_elem}>
-                        <img src="./img/VK.svg" alt="" className={s.network_elem_img}/>
+                        <img src={VK} alt="" className={s.network_elem_img}/>
                     </a>
                     <a href="#" className={s.network_elem}>
-                        <img src="./img/fourthNetwork.svg" alt="" className={s.network_elem_img}/>
+                        <img src={fourthNetwork} alt="" className={s.network_elem_img}/>
                     </a>
                     <a href="#" className={s.network_elem}>
-                        <img src="./img/Youtube.svg" alt="" className={s.network_elem_img}/>
+                        <img src={youtube}alt="" className={s.network_elem_img}/>
                     </a>
                 </div>
             </div>
