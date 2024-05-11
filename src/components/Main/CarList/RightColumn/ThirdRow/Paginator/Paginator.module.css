@@ -1,0 +1,48 @@
+  /*  */
+  .paginator{
+    width:304px;
+    height:40px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+  }
+  .smash_page_btn{
+    width: 35px;
+    height:35px;
+    background: url(./../img/arrow_left.svg) no-repeat center ;
+    border: none;
+  }
+  .smash_page_btn:last-child{
+    background: url(./../img/arrow_right.svg) no-repeat center ;
+  }
+  .smash_page_btn:hover,
+  .smash_page_btn:focus {
+    background-color: #EDEFF3;
+    border-radius: 8px;
+    transition: 0.7s ;
+  }
+  .page_change_btn{
+    width: 35px;
+    height:35px;
+    border: none;
+    background: none;
+    font-weight: 700;
+  }
+  .page_change_btn:hover,.page_change_btn:focus{
+    color:rgba(0,0,0,0.5);
+    background:#EDEFF3 ;
+    border-radius: 8px;
+    transition:  0.3s ease;
+  }
+  .page_change_btn.page_change_btn_active{
+    width: 40px;
+    height:40px;
+    color:#FFFFFF;
+    background:#0050CF ;
+    border-radius: 8px;
+  }
+  .page_change_btn.page_change_btn_active:hover{
+    transform: scale(1.2);
+  }
+  /*  */
+  /* second section end */

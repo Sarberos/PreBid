@@ -1,0 +1,200 @@
+  .left_column_wrap{
+    width: 324px;
+    height: 1069px;
+    border: 1px solid #A2A9B8;
+    border-radius: 4px ;
+    padding: 25px 12px 45px 12px ;
+  }
+  .filter_title_block{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 32px 0 ;
+    padding: 0 13px 0 0;
+  }
+  .filters_subtitle{
+    font-family: 'Circe';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+  }
+  .reset_all_btn{
+    text-align: bottom;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+  }
+  .reset_all_btn:active,.reset_all_btn:focus,.reset_all_btn:hover{
+    color: #004DD5;
+    border-bottom: 1px solid #004DD5;
+  }
+  .selested_extendios{
+    display: flex;
+    flex-wrap:wrap;
+  }
+  .left_c_first_row{
+    display:flex;
+    justify-content: space-between;
+  }
+  .selected_extend_block{
+    display: flex;
+    width: 140px;
+    height: 36px;
+    justify-content: space-between;
+    align-items: center;
+    background: #7C89A3;
+    border-radius: 18px;
+  
+    padding: 12px 8px ;
+  }
+  .selected_extend_block:first-child{
+    margin: 0 8px 16px 0;
+  }
+  .selected_extend_block:last-child{
+   width: auto;
+  }
+  
+  .select_properties_name{
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFF;
+    margin: 0 8px 0 0;
+  }
+  .properties_closed_btn{
+    width:16px;
+    height:16px;
+    background: url(./../img/cross.svg) no-repeat center;
+    border: none;
+  }
+  .car_choose_property_list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:300px;
+    height:auto;
+    margin: 94px 0 16px 0;
+  
+  }
+  .property_trigger{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:40px;
+    border-bottom: 1px solid #A2A9B8;
+    margin: 0 0 6px 0;
+    padding: 8px 12px ;
+    cursor: pointer;
+  }
+  .property_trigger:last-child{
+    margin: 0 0 0 0;
+  
+  }
+  .property_trigger_title{
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #0F0F14;
+  }
+  .property_trigger:hover .property_trigger_title{
+    color:#004DD5
+  }
+  
+  .property_trigger_accordion{
+    display: none;
+  }
+  
+  .car_choose_property_list:hover > .property_trigger_accordion{
+    display: flex;
+    width:95%;
+    height: auto;
+    margin: 0 0 6px 0;
+    cursor: pointer;
+  }
+  .sostoyanie_choice{
+    width:100%;
+    height:80px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sostoyanie_value{
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 4px;
+    padding: 10px 10px ;
+    transition: 0.4s;
+  }
+  .sostoyanie_value:hover,.sostoyanie_value:active, .sostoyanie_value:focus{
+    color: #FFFFFF;
+    background-color: #004DD5 ;
+  }
+  .type_choice{
+    width:100%;
+    height:40px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .property_from_to_block{
+    display:flex;
+    flex-wrap: wrap;
+    width:165px;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  .property_year_block{
+    display: flex;
+    width:65px;
+    height:32px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #A2A9B8;
+    border-radius: 4px;
+    padding: 4px 0px 4px 8px;
+  }
+  .property_year_midle_block{
+    width: 16px;
+    margin: 0 8px;
+    color:#A2A9B8
+  }
+  
+  .from_to_img_block{
+    display: flex;
+    width:24px;
+    height:24px; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  .property_accordion_arrow_img_small{
+    width:10px;
+    height:5px;
+  }
+  .property_show_results_btn{
+    width:100%;
+    height:48px;
+    background: #004DD5;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+  }

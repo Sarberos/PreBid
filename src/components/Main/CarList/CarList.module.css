@@ -1,0 +1,8 @@
+   .car_list {
+     margin: 47px 0 89px 0;
+   }
+
+   .two_columns_wrapper {
+     display: flex;
+     justify-content: space-between;
+   }

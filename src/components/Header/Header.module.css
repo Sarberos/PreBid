@@ -1,0 +1,136 @@
+
+.max_width{
+    width: 1920px;
+    margin: 0 auto;
+    background: rgba(0, 80, 207,0.1);
+
+}
+.header__wrapper_first_row{
+    width: 1720px;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;    
+    margin: 0 auto;
+}
+.header_info{
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #252541;
+}
+.header__settings_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.setting_items{
+    margin: 0 24px 0 0 ;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #252541;
+}
+.setting_items:last-child{
+    margin-right:0;
+}
+
+/*  */
+.header__wrapper_sec_row{
+    display: flex;
+    width: 100%;
+    height: 77px;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__nav{
+    margin: 0 330px 0 40px
+}
+.header__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.header__item{
+    margin-right: 24px;
+}
+
+.header__item:last-child{
+    margin-right: 0;
+}
+.header__item.width_1440{
+    display: none;
+}
+.header__item.width_1024{
+    display: none;
+}
+.header__link{
+    text-decoration: none;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #252541;
+}
+.header__link:hover, .header__link:focus,.header__link:active{
+    border-bottom: 1px solid #004DD5 ;
+}
+.header__burger{
+    display: none;
+    width:44px;
+    height:24px;
+    background: url(./../img/burger_menu.svg)no-repeat center ;
+    background-size: 44px 24px;
+}
+.search_form{
+    width:455px;
+}
+.search_form__wrap{
+    height: 44px;
+    display: flex;
+    flex-wrap: wrap;    
+    align-items: center;
+
+}
+.search-form__field{
+    width:390px;
+    height:100%;
+    border: 1px solid #D3D8E6;
+    border-right: 0;
+    border-radius: 4px;
+    border-top-right-radius: 0 ;
+    border-bottom-right-radius: 0 ;
+}
+.search-form__field::placeholder{
+    padding: 0 0 0 12px;
+}
+.search-form__field:focus{
+    padding: 0 0 0 12px;
+}
+.search_form__submit{
+    width:50px;
+    height:100%;
+    background: url(./../img/search.svg) no-repeat center #66C314;
+    background-size: 34px;
+    border: none;
+    border-radius: 4px;
+    border-top-left-radius: 0 ;
+    border-bottom-left-radius: 0 ;
+}
+
+.sign_login_btn{
+    width:220px;
+    height:44px;
+    background: #0050CF;
+    border:0 ;
+    border-radius: 4px;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #FFFFFF;
+
+}

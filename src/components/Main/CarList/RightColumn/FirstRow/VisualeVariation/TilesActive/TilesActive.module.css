@@ -1,0 +1,22 @@
+.customization_wrap{
+    width:54px;
+    height:40px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.visualize_img_block{
+    width:18px;
+    height:18px;
+    display: flex;
+    align-items: center;
+}
+/* .customization_wrap.tiles_active{
+    display:none;
+} */
+.car_list_visual_variation{
+    display: flex;
+    width:54px;
+    height:100%;
+    align-items: center;
+}
