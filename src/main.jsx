@@ -20,7 +20,15 @@ const router = createBrowserRouter(
     {
       path: '/CarFullProfile/:profileId',
       element: <CarFullProfile/>
-    }
+    },
+    {
+      path: '/signup',
+      // element: </>
+    },
+    {
+      path: '/forgetpassword',
+      // element: </>
+    },
   ]
 )
 
