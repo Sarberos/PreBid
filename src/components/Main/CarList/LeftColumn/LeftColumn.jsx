@@ -1,6 +1,18 @@
 import s from './LeftColumn.module.css'
 import accordionArrow from './../../../../assets/img/accordio_arrow.svg'
 
+const FilterElem = ({filterName}) => {
+    return(
+  <div className={s.property_trigger}>
+    <div className={s.property_trigger_title}>{filterName}</div>
+    <span className={s.property_accordion_arrow}>
+      <img src={accordionArrow} className={s.property_accordion_arrow_img} />
+    </span>
+  </div>
+    )
+};
+
+
 function LeftColumn() {
     return (
     <div className={s.left_column_wrap}>
@@ -31,30 +43,16 @@ function LeftColumn() {
             </div>
         </div> */}
         <div className={s.car_choose_property_list}>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Все транспортные средства</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Cостояние</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
+            <FilterElem filterName={'Все транспортные средства'} />
+            <FilterElem filterName={'Cостояние'} />
+            
             {/* <div className={s.property_trigger_accordion}>
                 <ul className={s.sostoyanie_choice}>
                     <li className={s.sostoyanie_value}>Не на ходу</li>
                     <li className={s.sostoyanie_value}>Заводится</li>
                 </ul>
             </div> */}
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Тип</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
+           <FilterElem filterName={'Тип'} />
             {/* <div className={s.property_trigger_accordion}>
                 <ul className={s.type_choice}>
                     <li className={s.sostoyanie_value}>Автомобиль</li>
@@ -110,66 +108,27 @@ function LeftColumn() {
                     </div>
                 </div>
             </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Марка</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Модель</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
+            <FilterElem filterName={'Марка'} />
+            <FilterElem filterName={'Модель'} />
+            <FilterElem filterName={'Тип двигателя'} />
+            {/* <div className={s.property_trigger}>
                 <div className={`${s.property_trigger_title} ${s.active_text}`}>Тип двигателя</div>
                 <span className={s.property_accordion_arrow} >
                     <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
                 </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Передача</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Тип топлива</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
+            </div> */}
+            <FilterElem filterName={'Передача'} />
+            <FilterElem filterName={'Тип топлива'} />
             {/* <div className={s.property_trigger_accordion} >
                 <ul className={s.type_choice}>
                     <li className={s.sostoyanie_value}>Бензин</li>
                     <li className={s.sostoyanie_value}>Гибрид</li>
                 </ul>
             </div> */}
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Приводной механизм</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Цилиндр</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Тип кузова</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Статус</div>
-                <span className={s.property_accordion_arrow}>
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div>
+            <FilterElem filterName={'Приводной механизм'} />
+            <FilterElem filterName={'Цилиндр'} />
+            <FilterElem filterName={'Тип кузова'} />
+            <FilterElem filterName={'Статус'} />
         </div>
         <button className={s.property_show_results_btn}>Показать результаты</button>
     </div>            

@@ -2,7 +2,11 @@ import s from './Header.module.css'
 import logo from './../../assets/img/logo.svg'
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ setLoginStatus}) {
+    const openLogin=()=>{
+        setLoginStatus(true)
+      }
+
     return (
         <header className={s.header}>
             <div className={s.max_width}>
@@ -62,7 +66,7 @@ function Header() {
                         <input type="text" name="main_search" className={s.search_form__field} placeholder="Поиск"/>
                         <button type="submit" className={s.search_form__submit}></button>
                 </form>
-                <Link to='/login' > <button type="submit" className={s.sign_login_btn}>Вход/Регистрация</button></Link>
+                 <button onClick={openLogin} type="submit" className={s.sign_login_btn}>Вход/Регистрация</button>
                 <div className={s.header__burger}>
 				</div>
             </div>

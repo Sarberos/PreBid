@@ -3,7 +3,7 @@ import s from "./Login.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
 
-const Login = () => {
+const Login = ({loginOn, setLoginStatus}) => {
   const id = useId();
   const {
     register,
@@ -15,10 +15,16 @@ const Login = () => {
     console.log(data);
   };
 
+  const closeLogin = () => {
+    setLoginStatus(false);
+    console.log('Привет')
+  }
+
   return (
-    <div className={s.form_screen_wrapper}>
+    <div  className={!loginOn ? `${s.form_screen_wrapper} ${s.active}`:s.form_screen_wrapper}>
       <div className={s.login_wrapper}>
-        <div className={s.title}>
+      <button onClick={closeLogin} className={s.cross_btn}></button>
+          <div className={s.title}>
           <h2 className={s.login_title}>Вход в личный кабинет</h2>
           <div className={s.sign_up_row}>
             <p className={s.sign_up_title}>Еще нет аккаунта?</p>

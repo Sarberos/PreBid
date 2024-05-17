@@ -5,7 +5,7 @@ import VisualeVariation from './VisualeVariation/VisualeVariation';
 
 
 
-function FirstRow() {
+function FirstRow(props) {
     return (
        <div className={s.right_columns_first_row}>
             <div className={s.find_amount_block}>
@@ -16,7 +16,7 @@ function FirstRow() {
                 <TimeSort />
                 <QuantitySort />
             </div>
-            <VisualeVariation />
+            <VisualeVariation visStyle={props.visStyle} changeVisStyle={props.changeVisStyle} />
         </div>
     )
   }
