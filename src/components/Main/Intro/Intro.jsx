@@ -1,6 +1,6 @@
 import s from './Intro.module.css'
 import mainCar from './../../../assets/img/main_car.png'
-function Intro() {
+function Intro({openLogin}) {
     return (
         <div className={s.full_screen_intro}>
             <div className={s.wrapper}>
@@ -13,7 +13,7 @@ function Intro() {
                             <button className={s.main_login}>
                                 Зарегистрироваться
                             </button>
-                            <button className={s.main_sign_in}>
+                            <button onClick={()=>openLogin()} className={s.main_sign_in}>
                                 Войти
                             </button>
                         </div>

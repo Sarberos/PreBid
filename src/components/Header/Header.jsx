@@ -1,11 +1,13 @@
 import s from './Header.module.css'
 import logo from './../../assets/img/logo.svg'
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
-function Header({ setLoginStatus}) {
-    const openLogin=()=>{
-        setLoginStatus(true)
-      }
+function Header({ openLogin}) {
+    const{register,handleSubmit,formState: { isSubmitting},}=useForm()
+    const getFormData=(data)=>{
+        console.log(data)
+    }
 
     return (
         <header className={s.header}>
@@ -62,11 +64,11 @@ function Header({ setLoginStatus}) {
                         </li>
                     </ul>
                 </nav>
-                <form className={s.search_form}>
-                        <input type="text" name="main_search" className={s.search_form__field} placeholder="Поиск"/>
-                        <button type="submit" className={s.search_form__submit}></button>
+                <form onSubmit={handleSubmit(getFormData)} className={s.search_form}>
+                        <input type="text" {...register('search')} className={s.search_form__field} placeholder="Поиск"/>
+                        <button disabled={isSubmitting} type='submit' className={s.search_form__submit}></button>
                 </form>
-                 <button onClick={openLogin} type="submit" className={s.sign_login_btn}>Вход/Регистрация</button>
+                 <button onClick={()=>openLogin()} type="submit" className={s.sign_login_btn}>Вход/Регистрация</button>
                 <div className={s.header__burger}>
 				</div>
             </div>

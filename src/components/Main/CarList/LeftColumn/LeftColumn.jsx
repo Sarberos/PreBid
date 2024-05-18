@@ -1,16 +1,9 @@
 import s from './LeftColumn.module.css'
-import accordionArrow from './../../../../assets/img/accordio_arrow.svg'
+import FilterElem from './FilterElem/FilterElem'
+import FilterElemProperty from './FilterElemProperty/FilterElemProperty'
 
-const FilterElem = ({filterName}) => {
-    return(
-  <div className={s.property_trigger}>
-    <div className={s.property_trigger_title}>{filterName}</div>
-    <span className={s.property_accordion_arrow}>
-      <img src={accordionArrow} className={s.property_accordion_arrow_img} />
-    </span>
-  </div>
-    )
-};
+
+
 
 
 function LeftColumn() {
@@ -45,86 +38,14 @@ function LeftColumn() {
         <div className={s.car_choose_property_list}>
             <FilterElem filterName={'Все транспортные средства'} />
             <FilterElem filterName={'Cостояние'} />
-            
-            {/* <div className={s.property_trigger_accordion}>
-                <ul className={s.sostoyanie_choice}>
-                    <li className={s.sostoyanie_value}>Не на ходу</li>
-                    <li className={s.sostoyanie_value}>Заводится</li>
-                </ul>
-            </div> */}
-           <FilterElem filterName={'Тип'} />
-            {/* <div className={s.property_trigger_accordion}>
-                <ul className={s.type_choice}>
-                    <li className={s.sostoyanie_value}>Автомобиль</li>
-                </ul>
-            </div> */}
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Одометр</div>
-                <div className={s.property_trigger_from_to_block}>
-
-                    <div className={s.property_from_to_block}>
-                        <div className={s.property_year_block}>
-                            <div className={s.from_to_label_block}>
-                                <label className={s.from_to_label}> 2022</label>
-                            </div>
-
-                            <div className={s.from_to_img_block}>
-                                <img src={accordionArrow} className={s.property_accordion_arrow_img_small}/>
-                            </div>
-                        </div>
-                        <div className={s.property_year_midle_block}>—</div>
-                        <div className={s.property_year_block}>
-                            <div className={s.from_to_label_block}>
-                                <label className={s.from_to_label}> 2022</label>
-                            </div>
-                            <div className={s.from_to_img_block}>
-                                <img src={accordionArrow}className={s.property_accordion_arrow_img_small}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div className={s.property_trigger}>
-                <div className={s.property_trigger_title}>Название</div>
-                <div className={s.property_from_to_block}>
-                    <div className={s.property_year_block}>
-                        <div className={s.from_to_label_block}>
-                            <label className={s.from_to_label}> 2022</label>
-                        </div>
-
-                        <div className={s.from_to_img_block}>
-                            <img src={accordionArrow} className={s.property_accordion_arrow_img_small}/>
-                        </div>
-                    </div>
-                    <div className={s.property_year_midle_block}>—</div>
-                    <div className={s.property_year_block}>
-                        <div className={s.from_to_label_block}>
-                            <label className={s.from_to_label}> 2022</label>
-                        </div>
-                        <div className={s.from_to_img_block}>
-                            <img src={accordionArrow}className={s.property_accordion_arrow_img_small}/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <FilterElem filterName={'Тип'} />
+            <FilterElemProperty filterName={'Одометр'}/>
+            <FilterElemProperty filterName={'Название'}/>
             <FilterElem filterName={'Марка'} />
             <FilterElem filterName={'Модель'} />
             <FilterElem filterName={'Тип двигателя'} />
-            {/* <div className={s.property_trigger}>
-                <div className={`${s.property_trigger_title} ${s.active_text}`}>Тип двигателя</div>
-                <span className={s.property_accordion_arrow} >
-                    <img src={accordionArrow} className={s.property_accordion_arrow_img}/>
-                </span>
-            </div> */}
             <FilterElem filterName={'Передача'} />
             <FilterElem filterName={'Тип топлива'} />
-            {/* <div className={s.property_trigger_accordion} >
-                <ul className={s.type_choice}>
-                    <li className={s.sostoyanie_value}>Бензин</li>
-                    <li className={s.sostoyanie_value}>Гибрид</li>
-                </ul>
-            </div> */}
             <FilterElem filterName={'Приводной механизм'} />
             <FilterElem filterName={'Цилиндр'} />
             <FilterElem filterName={'Тип кузова'} />

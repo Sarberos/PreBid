@@ -2,7 +2,7 @@ import s from './QuantitySort.module.css'
 import accordionArrow_svg from './../../../../../../assets/img/accordio_arrow.svg'
 import { useState } from 'react';
 
-function QuantitySort() {
+function QuantitySort({isSort,changeSort}) {
   const [secondSort, changeSortStatus]=useState(false);
   const [statusTitle, changeStatusTitle]=useState(10);
 
@@ -18,7 +18,7 @@ function QuantitySort() {
   }
 
     return (
-      <div className={s.second_sort_param}>
+      <div tabindex="0" onBlur={() => {changeSortStatus(false)}} className={s.second_sort_param}>
         <p className={s.sec_sort_param_title}>Отображать по</p>
         <div className={s.change_active_disp_param_wrap}>
           <div onClick={changeTimeStatus} className={secondSort?`${s.change_disp_param_wrap} ${s.active}`:s.change_disp_param_wrap}>

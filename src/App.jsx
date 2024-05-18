@@ -18,8 +18,9 @@ function App() {
       onClose={()=>setmoduleStatus(false)}>
         <LoginModal />
       </SimpleModal>
-      <Header setLoginStatus={setmoduleStatus} />
-      <Main />
+
+      <Header openLogin={()=>setmoduleStatus(true)}/>
+      <Main  openLogin={()=>setmoduleStatus(true)} />
       <Footer/>
     </>
   )

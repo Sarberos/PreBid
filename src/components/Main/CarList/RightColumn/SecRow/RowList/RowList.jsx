@@ -9,6 +9,13 @@ function RowList() {
         <CarProfile />
         <CarProfile />
         <CarProfile />
+        <CarProfile />
+        <CarProfile />
+        <CarProfile />
+        <CarProfile />
+        <CarProfile />
+        <CarProfile />
+        <CarProfile />
     </div>
     )
   }

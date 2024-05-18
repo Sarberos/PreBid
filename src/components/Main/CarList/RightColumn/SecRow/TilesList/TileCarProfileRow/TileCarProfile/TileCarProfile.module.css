@@ -1,0 +1,174 @@
+  .car_profile_tile{
+    width:322px;
+    height:555px;
+    background: #F8F8F8;
+    overflow: hidden;
+  }
+  .car_profile_tile:last-child{
+    margin:0;
+  }
+  .main_tile_img_wrap{
+    width:322px;
+    height:170px;
+    display: flex;
+    overflow: hidden;
+  }
+  .main_tile_img{
+    position:relative;
+    width:100%;
+  }
+  .tile_added_to_bookmark{
+    z-index: 10;
+    position: absolute;
+    width:40px;
+    height:40px;
+    background: url(./../../../../../../../../assets/img/bookmark_added.svg)no-repeat transparent;
+    background-position: 12px 7px;
+    background-color: rgba(255,255,255, 0.4);
+    background-size: 16px 24px;
+    border:none;
+    border:  solid #66C314;
+    border-width: thin;
+    border-radius: 50px;
+    margin: 9px 0 0 15px;
+    transition: 0.3s;
+  }
+  .tile_delete_bookmark{
+    z-index: 10;
+    position: absolute;
+    width:40px;
+    height:40px;
+    background: url(./../../../../../../../../assets/img/bookmark_transparent.svg) no-repeat  transparent;
+    background-position: 12px 7px;
+    background-color: rgba(255,255,255, 0.4);
+    background-size: 16px 24px;
+    border:none;
+    border:  solid #6B7A99;
+    border-width: thin;
+    border-radius: 50px;
+    margin: 9px 0 0 15px;
+    transition: 0.3s;
+
+  }
+  .car_ava_whirligig{
+    z-index: 10;
+    position: absolute;
+    width:160px;
+    height: 3px;
+    display: flex;
+    justify-content: space-between;
+    margin: 152px 0 0 81px;
+  }
+  .car_ava_whirligig_elem{
+    width:48px;
+    height: 100%;
+    border-radius: 1px;
+    background: #FFFFFF;
+  }
+  .car_ava_whirligig_elem.active{
+    background: #66C314;
+  }
+  .main_tile_info_wrap{
+    width:100%;
+    height:361px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px 24px 12px;
+  }
+  .tile_title{
+    display: block;
+    width:100%;
+    height: auto;
+    font-family: 'Circe';
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .tile_info_wrap{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    padding: 12px 0 0 0;
+  }
+  .tile_charact_row{
+    width:100%;
+    height: 32px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #D9D9D9;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .tile_charact_row:nth-child(5){
+    border-bottom: none;
+  }
+  .tile_charact_name{
+    color:#6B7A99;
+  }
+  .tile_charact__value_link{
+    text-decoration: none;
+    color:#0050CF;
+    border-bottom: 1px solid #0050CF;   
+  }
+  .tile_main_actions{
+    width: 100%;
+    height:83px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0 0 0 ;
+  }
+  .tile_main_actions_bid{
+    width: 100%;
+    height:48px;
+    display:flex;
+    justify-content: space-between;
+    margin: 0 0 24px 0;
+  }
+  .now_prise{
+    width:111px;
+    height: 100%;
+    padding: 4px 0 4px 0;
+  }
+  .now_prise_title{
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 12px;
+    margin: 0  0 2px 0;
+  }
+  .now_price_value{
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .create_bid_btn{
+    width:172px;
+    height:48px;
+    line-height: 24px;
+    color: #FFFFFF;
+    background-color: #0050CF;
+    border: none;
+    border-radius: 4px;
+    margin: 0 0 16px 0;
+  }
+  .buy_now_wrap{
+    width:auto;
+    height:24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .buy_now_link{
+    text-decoration: none;
+    color:#004DD5;
+    border-bottom: 1px solid #004DD5;
+    font-family: 'Circe';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }

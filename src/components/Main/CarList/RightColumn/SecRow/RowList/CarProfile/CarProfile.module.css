@@ -33,6 +33,7 @@
   border-width: thin;
   border-radius: 50px;
   margin: 8px 0 0 7px;
+  transition: 0.3s;
 }
 .delete_bookmark{
   z-index: 10;
@@ -48,6 +49,7 @@
   border-width: thin;
   border-radius: 50px;
   margin: 8px 0 0 7px;
+  transition: 0.3s;
 }
 .lot_value{
   width:85px;

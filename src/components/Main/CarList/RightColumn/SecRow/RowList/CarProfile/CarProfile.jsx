@@ -1,14 +1,17 @@
 import s from './CarProfile.module.css'
 import blackMers_png from './../../../../../../../assets/img/black_mers.png'
 import { Link, NavLink } from 'react-router-dom';
+import {useState} from 'react'
 
 
 function CarProfile() {
+  const [rowBookmark, setRowBookmark]=useState(false)
+
     return (
       <div className={s.car_profile_row}>
         <div className={s.car_ava}>
           <img src={blackMers_png} className={s.car_ava_img} />
-          <button className={s.added_to_bookmark}></button>
+          <button onClick={()=>setRowBookmark(!rowBookmark)} className={rowBookmark?s.added_to_bookmark:s.delete_bookmark}></button>
         </div>
         <div className={s.lot_value}>
           <Link to='CarFullProfile/1' >12345</Link>

@@ -103,12 +103,12 @@
     border-radius: 4px;
     border-top-right-radius: 0 ;
     border-bottom-right-radius: 0 ;
-}
-.search_form__field::placeholder{
     padding: 0 0 0 12px;
 }
-.search_form__field:focus{
-    padding: 0 0 0 12px;
+
+.search_form__field:focus,.search_form__field:active{
+    outline: 0;
+    outline-offset: 0;
 }
 .search_form__submit{
     width:50px;

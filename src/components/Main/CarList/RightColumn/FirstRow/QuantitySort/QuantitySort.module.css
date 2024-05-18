@@ -24,11 +24,6 @@
     border: 1px solid #004DD5;
     box-shadow: 0 0 5px #004DD5;
 }
-
-.change_active_disp_param_wrap:hover>.change_disp_param_wrap{
-    border-bottom: none;
-}
-
 .change_disp_param_wrap{
     width:75px;
     height:100%;

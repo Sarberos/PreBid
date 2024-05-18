@@ -3,10 +3,10 @@ import Intro from './Intro/Intro'
 import s from './Main.module.css'
 import CarList from './CarList/CarList';
 
-function Main() {
+function Main({openLogin}) {
     return (
         <main className={s.main}>
-        <Intro />
+        <Intro  openLogin={openLogin} />
         <div className={s.wrapper}>
             <CarList />
             <Seo />
