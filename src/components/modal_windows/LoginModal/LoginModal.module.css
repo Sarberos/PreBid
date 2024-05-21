@@ -98,9 +98,15 @@
     justify-content: space-between;
     margin: 40px 0 0 0;
 }
+.button_wrap{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .continue_btn{
-    width:155px;
-    height: 100%;
+    width:210px;
+    height: 47px;
     display: flex;
     align-items: center;
     justify-content: center;

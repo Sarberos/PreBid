@@ -5,23 +5,29 @@ import Main from './components/Main/Main'
 import Footer from './components/Footer/Footer'
 import { SimpleModal } from './components/SImpleModal/SimpleModal'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal'
+import Registration from './components/modal_windows/Registration/Registration'
 
 function App() {
-  const [loginOn, setLoginStatus]=useState(false)
   const [moduleStatus, setmoduleStatus]=useState(false)
-
+  const [regStatus, setregStatus]=useState(false)
 
   return (
     <>
+      <Header  openLogin={()=>setmoduleStatus(true)}/>
+      <Main  openRegistration={()=>setregStatus(true)} openLogin={()=>setmoduleStatus(true)} />
+      <Footer/>
+
       <SimpleModal 
       isOpen={moduleStatus}
       onClose={()=>setmoduleStatus(false)}>
-        <LoginModal />
+        <LoginModal isRegOpen={regStatus}  onClose={()=>setmoduleStatus(false)} openRegistration={()=>setregStatus(true)} />
       </SimpleModal>
 
-      <Header openLogin={()=>setmoduleStatus(true)}/>
-      <Main  openLogin={()=>setmoduleStatus(true)} />
-      <Footer/>
+      <SimpleModal 
+      isOpen={regStatus}
+      onClose={()=>setregStatus(false)}>
+        <Registration />
+      </SimpleModal>
     </>
   )
 }

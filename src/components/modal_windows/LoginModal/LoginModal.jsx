@@ -3,10 +3,10 @@ import s from "./LoginModal.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
 
-const LoginModal = () => {
+const LoginModal = ({isRegOpen,onClose, openRegistration}) => {
   const id =useId();
   const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
-
+  isRegOpen ? onClose():''
   const onSubmiting=(data)=>{
     console.log(data);
   }
@@ -17,9 +17,7 @@ const LoginModal = () => {
         <h2 className={s.login_title}>Вход в личный кабинет</h2>
         <div className={s.sign_up_row}>
           <p className={s.sign_up_title}>Еще нет аккаунта?</p>
-          <Link className={s.sign_up_link} to="/signup">
-            <button className={s.sign_up_btn}>Зарегистрироваться</button>
-          </Link>
+            <button  onClick={()=>{openRegistration()}} className={s.sign_up_btn}>Зарегистрироваться</button>
         </div>
       </div>
       <div className={s.form}>
@@ -41,8 +39,6 @@ const LoginModal = () => {
             {errors.email && (
               <p
                 className={s.error_message_txt}
-                id={`${id}-error-email-message`}
-                aria-live="assertive"
               >
                 {errors.email.message}
               </p>
@@ -97,37 +93,7 @@ const LoginModal = () => {
       </div>
     </div>
 
-    // <div className={s.form}>
-    //   <form onSubmit={handleSubmit(onSubmiting)}>
-    //     <div className={s.field_pair}>
-    //       <label htmlFor={`${id}-email`} className={s.field_title}>
-    //         Электронная почта
-    //       </label>
-    //       <input
-    //         {...register("email")}
-    //         id={`${id}-email`}
-    //         type="email"
-    //         className={s.field_input}
-    //       />
-    //     </div>
-    //     <div className={s.field_pair}>
-    //       <label htmlFor={`${id}-password`} className={s.field_title}>
-    //         Password
-    //       </label>
-    //       <input
-    //         {...register("password")}
-    //         id={`${id}-password`}
-    //         type="password"
-    //         className={s.field_input}
-    //       />
-    //     </div>
-    //     <button
-    //     type="submit"
-    //     className={s.submit_btn}>
-    //       Продолжить
-    //     </button>
-    //   </form>
-    // </div>
+    
   );
 };
 export default LoginModal;
