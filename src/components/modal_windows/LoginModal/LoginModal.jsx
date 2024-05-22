@@ -2,13 +2,19 @@ import { Link } from "react-router-dom";
 import s from "./LoginModal.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
+import Fetching from "../../../api/api";
 
 const LoginModal = ({isRegOpen,onClose, openRegistration}) => {
   const id =useId();
   const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
-  isRegOpen ? onClose():''
+
+  const onOpenRgistrPage=()=>{openRegistration();
+    onClose();
+  }
+
   const onSubmiting=(data)=>{
     console.log(data);
+    Fetching.login(  "admin@autoru.by","7Z9H2hsF1x")
   }
 
   return (
@@ -17,7 +23,7 @@ const LoginModal = ({isRegOpen,onClose, openRegistration}) => {
         <h2 className={s.login_title}>Вход в личный кабинет</h2>
         <div className={s.sign_up_row}>
           <p className={s.sign_up_title}>Еще нет аккаунта?</p>
-            <button  onClick={()=>{openRegistration()}} className={s.sign_up_btn}>Зарегистрироваться</button>
+            <button  onClick={onOpenRgistrPage} className={s.sign_up_btn}>Зарегистрироваться</button>
         </div>
       </div>
       <div className={s.form}>
