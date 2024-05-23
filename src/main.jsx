@@ -5,7 +5,8 @@ import './index.css'
 import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CarFullProfile from './components/Main/CarList/RightColumn/SecRow/RowList/CarFullProfile/CarFullProfile.jsx'
 import NotFoundPage from './utilits/NotFoundPage/NotFoundPage.jsx'
-
+import store from './redux/store.jsx'
+import { Provider } from 'react-redux'
 
 
 
@@ -25,8 +26,10 @@ const router = createBrowserRouter(
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
+  <Provider store={store}>
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>
+
 )

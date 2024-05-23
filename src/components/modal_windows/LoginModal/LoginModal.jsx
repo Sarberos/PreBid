@@ -2,21 +2,24 @@ import { Link } from "react-router-dom";
 import s from "./LoginModal.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
-import Fetching from "../../../api/api";
+import { useSelector,useDispatch } from "react-redux";
+import { loginThunk,userInfThunk } from "../../../redux/counterSlice";
+import Fetching from "../../../http/api_request";
 
-const LoginModal = ({isRegOpen,onClose, openRegistration}) => {
+const LoginModal = ({ onClose, openRegistration}) => {
   const id =useId();
   const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
+
+  const dispatch=useDispatch();
 
   const onOpenRgistrPage=()=>{openRegistration();
     onClose();
   }
 
   const onSubmiting=(data)=>{
-    console.log(data);
-    Fetching.login(  "admin@autoru.by","7Z9H2hsF1x")
+     dispatch(loginThunk(data));
+     dispatch(userInfThunk());
   }
-
   return (
     <div className={s.login_wrapper}>
       <div className={s.title}>
@@ -98,8 +101,6 @@ const LoginModal = ({isRegOpen,onClose, openRegistration}) => {
         </form>
       </div>
     </div>
-
-    
   );
 };
 export default LoginModal;
