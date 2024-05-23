@@ -4,7 +4,6 @@ import { useId } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
 import { loginThunk,userInfThunk } from "../../../redux/counterSlice";
-import Fetching from "../../../http/api_request";
 
 const LoginModal = ({ onClose, openRegistration}) => {
   const id =useId();

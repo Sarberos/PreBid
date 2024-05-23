@@ -9,6 +9,7 @@ import store from './redux/store.jsx'
 import { Provider } from 'react-redux'
 
 
+window.store=store;
 
 const router = createBrowserRouter(
   [
@@ -24,7 +25,6 @@ const router = createBrowserRouter(
   ]
 )
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <React.StrictMode>
@@ -32,4 +32,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
   </Provider>
 
-)
+) 

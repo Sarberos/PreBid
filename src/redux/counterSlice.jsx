@@ -12,21 +12,29 @@ export const loginThunk = createAsyncThunk(
 export const userInfThunk = createAsyncThunk(
     'user/userInfThunk',
     async function (){
-        const response=Fetching.userInf()
+        const response= await Fetching.userInf()
         return response;
     }
 )
-
-
 
 const userSlice =createSlice({
     name: 'user',
     initialState :{
         isLoading: false,
+        userInf:{
+            access_rights: 0,
+            client: 0,
+            role: 0,
+            user: 0,
+        },
     },
     reducers:{
-        setAuthStatus:(state,action)=>{
-            state.isLoading=action.payload;
+        setUserInf:(state,action)=>{
+            state.userInf={};
+            state.userInf.access_rights=action.payload.access_rights;
+            state.userInf.client=action.payload.client;
+            state.userInf.role=action.payload.role;
+            state.userInf.user=action.payload.user;
         }
     },
     extraReducers: (builder) =>{
@@ -45,6 +53,6 @@ const userSlice =createSlice({
     }
 });
 
-export const {reducers} =userSlice.actions;
+export const {setUserInf} =userSlice.actions;
 
 export default userSlice.reducer;

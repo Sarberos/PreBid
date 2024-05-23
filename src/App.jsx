@@ -8,14 +8,26 @@ import { SimpleModal } from './components/SImpleModal/SimpleModal'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal'
 import Registration from './components/modal_windows/Registration/Registration'
 import Preloader from './components/Tools/Preloader';
+import { setUserInf, userInfThunk } from './redux/counterSlice';
 
 function App() {
   const [moduleStatus, setmoduleStatus]=useState(false)
   const [regStatus, setregStatus]=useState(false)
   
   const isLoading= useSelector((state)=>{return state.user.isLoading})
+  const userInf= useSelector((state)=>{return state.user.userInf})
+  const dispatch = useDispatch();
 
 
+  useEffect(() => {
+    const response=dispatch(userInfThunk());
+    const myPromise = new Promise((resolve, reject) => {
+      resolve(response);
+    });
+    myPromise.then((response)=>{dispatch(setUserInf(response.payload.data))});
+  }, [dispatch]);
+ 
+  
   if(isLoading){
     return <Preloader />
   }else{
@@ -28,7 +40,7 @@ function App() {
       />
       <Footer />
 
-      <SimpleModal isOpen={moduleStatus} onClose={() => setmoduleStatus(false)}>
+      <SimpleModal  isOpen={moduleStatus} onClose={() => setmoduleStatus(false)}>
         <LoginModal
           isRegOpen={regStatus}
           onClose={() => setmoduleStatus(false)}
