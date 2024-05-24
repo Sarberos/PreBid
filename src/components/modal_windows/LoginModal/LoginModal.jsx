@@ -3,12 +3,12 @@ import s from "./LoginModal.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
-import { loginThunk,userInfThunk } from "../../../redux/counterSlice";
+import { loginThunk,setIsAuth,userInfThunk } from "../../../redux/counterSlice";
 
 const LoginModal = ({ onClose, openRegistration}) => {
   const id =useId();
   const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
-
+  const isAuth=useSelector((state)=>{state.user.isAuth})
   const dispatch=useDispatch();
 
   const onOpenRgistrPage=()=>{openRegistration();
@@ -16,8 +16,15 @@ const LoginModal = ({ onClose, openRegistration}) => {
   }
 
   const onSubmiting=(data)=>{
-     dispatch(loginThunk(data));
-     dispatch(userInfThunk());
+     const loginResp=dispatch(loginThunk(data));
+     const userInfResp=dispatch(userInfThunk());
+     const myPromise= new Promise ((resolve, reject)=>{
+      resolve(userInfResp);
+     })
+     myPromise.then((response)=>{dispatch(setIsAuth(response.payload.data.status));
+      response.payload.data.status==="success" ? onClose():'';
+    });
+     
   }
   return (
     <div className={s.login_wrapper}>

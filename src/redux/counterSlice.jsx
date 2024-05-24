@@ -21,6 +21,7 @@ const userSlice =createSlice({
     name: 'user',
     initialState :{
         isLoading: false,
+        isAuth: false,
         userInf:{
             access_rights: 0,
             client: 0,
@@ -35,6 +36,9 @@ const userSlice =createSlice({
             state.userInf.client=action.payload.client;
             state.userInf.role=action.payload.role;
             state.userInf.user=action.payload.user;
+        },
+        setIsAuth: (state,action)=>{
+            state.isAuth=action.payload==="success"? true : action.payload===false ? false :'';
         }
     },
     extraReducers: (builder) =>{
@@ -53,6 +57,6 @@ const userSlice =createSlice({
     }
 });
 
-export const {setUserInf} =userSlice.actions;
+export const {setUserInf,setIsAuth} =userSlice.actions;
 
 export default userSlice.reducer;

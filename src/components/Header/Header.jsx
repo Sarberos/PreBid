@@ -1,13 +1,26 @@
 import s from './Header.module.css'
 import logo from './../../assets/img/logo.svg'
+import unknownUser from './../../assets/img/unknownUserImage.png'
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useSelector,useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { setIsAuth } from '../../redux/counterSlice';
 
 function Header({ openLogin}) {
     const{register,handleSubmit,formState: { isSubmitting},}=useForm()
     const getFormData=(data)=>{
         console.log(data)
     }
+    const isAuth=useSelector((state)=>state.user.isAuth);
+    const dispatch=useDispatch();
+
+    const [profileTools,setToolsStatus]= useState(false);
+
+    const resetAuth=()=>{
+        localStorage.removeItem('access_token')
+    }
+
 
     return (
         <header className={s.header}>
@@ -68,7 +81,21 @@ function Header({ openLogin}) {
                         <input type="text" {...register('search')} className={s.search_form__field} placeholder="Поиск"/>
                         <button disabled={isSubmitting} type='submit' className={s.search_form__submit}></button>
                 </form>
-                 <button onClick={()=>openLogin()} type="submit" className={s.sign_login_btn}>Вход/Регистрация</button>
+                 <button onClick={()=>openLogin()} type="submit" className={isAuth ?`${s.sign_login_btn} ${s.hide}`: s.sign_login_btn}>Вход/Регистрация</button>
+                 <div tabindex="0" onBlur={()=>{setToolsStatus(false)}} onClick={()=>{setToolsStatus(!profileTools)}} className={isAuth ?`${s.profile_preVis} ${s.active}`:s.profile_preVis}>
+                    <div className={s.mini_profile_wrap}>
+                        <div className={s.profile_mini_img_wrap}>
+                            <img src={unknownUser} alt="" className={s.profile_mini_img} />
+                        </div>
+                        <label htmlFor={'profile_preVis'} className={s.profile_preVis_lbl}>Артем Круглов</label>
+                        <button id={'profile_preVis'} className={s.profile_preVis_btn}></button>
+                    </div>
+                    <div className={profileTools? s.tools_for_mini_profile:`${s.tools_for_mini_profile} ${s.hiden}`}>
+                        <div className={s.mini_profile_tool}>Настройки аккаунта </div>
+                        <button onclick={()=>{resetAuth}} className={s.mini_profile_tool}>Выйти</button>
+                        
+                    </div>
+                 </div>
                 <div className={s.header__burger}>
 				</div>
             </div>
