@@ -8,50 +8,60 @@ import { SimpleModal } from './components/SImpleModal/SimpleModal'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal'
 import Registration from './components/modal_windows/Registration/Registration'
 import Preloader from './components/Tools/Preloader';
-import { setIsAuth, setUserInf, userInfThunk } from './redux/counterSlice';
+import { setFiltersInf, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function App() {
-  const [moduleStatus, setmoduleStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(false);
   const [regStatus, setregStatus] = useState(false);
 
   const isLoading = useSelector((state) => {
     return state.user.isLoading;
   });
-  const userInf = useSelector((state) => {
-    return state.user.userInf;
-  });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const response = dispatch(userInfThunk());
-    const myPromise = new Promise((resolve, reject) => {
+    if(localStorage.getItem('access_token')){
+      const response = dispatch(userInfThunk());
+      const myPromise = new Promise((resolve, reject) => {
       resolve(response);
     });
     myPromise.then((response) => {
       dispatch(setUserInf(response.payload.data));
       dispatch(setIsAuth(response.payload.data.status))
     });
+  
+    const filtersPromise= new Promise((resolve,reject)=>{
+      resolve(dispatch(userFiltersThunk()))
+    })
+    filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})
+  
+  }
   }, [dispatch]);
+
+
+
+
 
   if (isLoading) {
     return <Preloader />;
   } else {
     return (
       <>
-        <Header openLogin={() => setmoduleStatus(true)} />
+        <Header openLogin={() => setLoginStatus(true)} />
         <Main
           openRegistration={() => setregStatus(true)}
-          openLogin={() => setmoduleStatus(true)}
+          openLogin={() => setLoginStatus(true)}
         />
         <Footer />
 
         <SimpleModal
-          isOpen={moduleStatus}
-          onClose={() => setmoduleStatus(false)}
+          isOpen={loginStatus}
+          onClose={() => setLoginStatus(false)}
         >
           <LoginModal
             isRegOpen={regStatus}
-            onClose={() => setmoduleStatus(false)}
+            onClose={() => setLoginStatus(false)}
             openRegistration={() => setregStatus(true)}
           />
         </SimpleModal>

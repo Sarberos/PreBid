@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import s from './CarFullProfile.module.css'
-import {useId,useState} from 'react'
+import {useId,useState,useEffect} from 'react'
 import bugatti_img from './../../../../../../../assets/img/main_bugatti.jpg'
 import bugatti_side_img from './../../../../../../../assets/img/side_bugatti.jpg'
 import bugatti_back_img from './../../../../../../../assets/img/back_bugatti.jpg'
@@ -9,11 +9,34 @@ import transport_logo from './../../../../../../../assets/img/logo.svg'
 import copy_img from './../../../../../../../assets/img/copy_img.svg'
 import Header from '../../../../../../Header/Header';
 import Footer from '../../../../../../Footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsAuth, setUserInf, userInfThunk } from '../../../../../../../redux/mainSlice';
+import Preloader from '../../../../../../Tools/Preloader';
 
 function CarFullProfile() {
   const id=useId()
+  const dispatch=useDispatch()
   const [imgNumber, setImg]=useState(1)
   const [inBookmark, setBookmark]= useState(false)
+  const isLoading = useSelector((state) => { return state.user.isLoading;});
+
+  useEffect(()=>{
+    if(localStorage.getItem('access_token')){
+      const userInfPromise= new Promise((resolve,reject)=>{
+        resolve(dispatch(userInfThunk()))
+      })
+      userInfPromise.then(response=>{
+        dispatch(setUserInf(response.payload.data));
+        dispatch(setIsAuth(response.payload.data.status))
+      }) 
+    }
+  },[dispatch])
+
+
+
+  if (isLoading) {
+    return <Preloader />;
+  } else {
     return (
       <>
       <Header />
@@ -222,6 +245,7 @@ function CarFullProfile() {
       <Footer />
       </>
     );
+  }
   }
   
   export default CarFullProfile;

@@ -181,15 +181,11 @@
 .tools_for_mini_profile{
     position: absolute;
     width: 205px;
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
     padding: 8px;
-    margin: 44px 0 0 0;
+    margin: 44px 0 0 -50px;
     background: #ffffff;
     border-radius: 4px;
-    z-index: 2;
+    z-index: 1000;
     transition: .3;
 }
 .tools_for_mini_profile.hiden{
@@ -223,7 +219,11 @@
 .mini_profile_tool:last-child{
     margin:0
 }
-.mini_profile_tool:hover{
+.mini_profile_tool:hover,.mini_profile_tool:active,.mini_profile_tool:focus{
     color: #FFFFFF;
     background-color: #004DD5 ;
+}
+.mini_profile_tool_link{
+    text-decoration: none;
+    color: inherit;
 }

@@ -1,5 +1,7 @@
 import s from './Intro.module.css'
 import mainCar from './../../../assets/img/main_car.png'
+
+
 function Intro({openRegistration ,openLogin}) {
     return (
         <div className={s.full_screen_intro}>

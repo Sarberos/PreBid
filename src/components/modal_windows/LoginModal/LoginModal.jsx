@@ -3,12 +3,12 @@ import s from "./LoginModal.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
-import { loginThunk,setIsAuth,userInfThunk } from "../../../redux/counterSlice";
-
+import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf } from "../../../redux/mainSlice";
+ 
 const LoginModal = ({ onClose, openRegistration}) => {
   const id =useId();
   const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
-  const isAuth=useSelector((state)=>{state.user.isAuth})
+  const state=useSelector((state)=>{state})
   const dispatch=useDispatch();
 
   const onOpenRgistrPage=()=>{openRegistration();
@@ -16,14 +16,27 @@ const LoginModal = ({ onClose, openRegistration}) => {
   }
 
   const onSubmiting=(data)=>{
-     const loginResp=dispatch(loginThunk(data));
-     const userInfResp=dispatch(userInfThunk());
-     const myPromise= new Promise ((resolve, reject)=>{
-      resolve(userInfResp);
-     })
-     myPromise.then((response)=>{dispatch(setIsAuth(response.payload.data.status));
-      response.payload.data.status==="success" ? onClose():'';
+    const loginPromise = new Promise((resolve, reject)=>{
+      resolve(dispatch(loginThunk(data)))
+    })
+    loginPromise.then((response) => {
+      dispatch(setIsAuth(response.payload.data.status));
+      response.payload.data.status === "success" ? onClose() : "";
+
+      const infPromise = new Promise((resolve, reject) => {
+        resolve(dispatch(userInfThunk()));
+      });
+      infPromise.then((response) => {
+        dispatch(setUserInf(response.payload.data));
+      });
+    
+      const filtersPromise= new Promise((resolve,reject)=>{
+        resolve(dispatch(userFiltersThunk()))
+      })
+      filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})   
     });
+   
+    
      
   }
   return (

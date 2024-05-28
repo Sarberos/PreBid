@@ -39,11 +39,48 @@
     cursor: pointer;
    
 }
-.property_trigger_accordion{
-    display: none;
+.pop_up_filter_wrap.active{
+  width: 100%;
+  max-width: 150px;
+  display: flex;
  
+}
+.pop_up_filter_wrap{
+ display: none;
+}
+.pop_up_filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding: 7px 8px;
+  border: 1px solid #6B7A99;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.property_trigger_accordion {
+  display: none;
+
+}
+.pop_up_filter_label{
+  font-size: 16px;
+    color: #6b7a99;
+    font-weight: 400;
+    white-space: nowrap;
+}
+  .pop_up_filter_btn{    
+    width: 16px;
+    height: 16px;
+    background: url(./../../../../../assets/img/cross.svg);
+    background-position: center;
+    background-size: contain;
+    border: none;
   }
-  
   .property_trigger_accordion.active{
     position: absolute;
     z-index: 10;

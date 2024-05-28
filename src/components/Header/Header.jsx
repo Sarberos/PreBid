@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { setIsAuth } from '../../redux/counterSlice';
+import { logoutThunk } from '../../redux/mainSlice';
 
 function Header({ openLogin}) {
     const{register,handleSubmit,formState: { isSubmitting},}=useForm()
@@ -13,12 +13,15 @@ function Header({ openLogin}) {
         console.log(data)
     }
     const isAuth=useSelector((state)=>state.user.isAuth);
+    const client_name_ru=useSelector((state)=>state.user.userInf.client.name_ru);
+    const user_email=useSelector((state)=>state.user.userInf.user.email);
     const dispatch=useDispatch();
 
     const [profileTools,setToolsStatus]= useState(false);
 
+
     const resetAuth=()=>{
-        localStorage.removeItem('access_token')
+        dispatch(logoutThunk());
     }
 
 
@@ -82,18 +85,17 @@ function Header({ openLogin}) {
                         <button disabled={isSubmitting} type='submit' className={s.search_form__submit}></button>
                 </form>
                  <button onClick={()=>openLogin()} type="submit" className={isAuth ?`${s.sign_login_btn} ${s.hide}`: s.sign_login_btn}>Вход/Регистрация</button>
-                 <div tabindex="0" onBlur={()=>{setToolsStatus(false)}} onClick={()=>{setToolsStatus(!profileTools)}} className={isAuth ?`${s.profile_preVis} ${s.active}`:s.profile_preVis}>
+                 <div className={isAuth ?`${s.profile_preVis} ${s.active}`:s.profile_preVis}>
                     <div className={s.mini_profile_wrap}>
-                        <div className={s.profile_mini_img_wrap}>
-                            <img src={unknownUser} alt="" className={s.profile_mini_img} />
-                        </div>
-                        <label htmlFor={'profile_preVis'} className={s.profile_preVis_lbl}>Артем Круглов</label>
-                        <button id={'profile_preVis'} className={s.profile_preVis_btn}></button>
+                        {/* <div className={s.profile_mini_img_wrap}>
+                            <img src={unknownUser} alt="" className={s.profile_mini_img} />   Добавления рядом с имененм автарки 
+                        </div> */}
+                        <label htmlFor={'profile_preVis'} className={s.profile_preVis_lbl}>{client_name_ru ? client_name_ru : user_email}</label>
+                        <button id={'profile_preVis'} onClick={()=>{setToolsStatus(!profileTools)}} className={s.profile_preVis_btn}></button>
                     </div>
-                    <div className={profileTools? s.tools_for_mini_profile:`${s.tools_for_mini_profile} ${s.hiden}`}>
-                        <div className={s.mini_profile_tool}>Настройки аккаунта </div>
-                        <button onclick={()=>{resetAuth}} className={s.mini_profile_tool}>Выйти</button>
-                        
+                    <div  className={profileTools? s.tools_for_mini_profile:`${s.tools_for_mini_profile} ${s.hiden}`}>
+                        <div className={s.mini_profile_tool}><Link to='/profile' className={s.mini_profile_tool_link}>Настройки аккаунта </Link></div>
+                        <button onClick={()=> {resetAuth()}} className={s.mini_profile_tool}>Выйти</button>
                     </div>
                  </div>
                 <div className={s.header__burger}>
