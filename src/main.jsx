@@ -8,8 +8,6 @@ import NotFoundPage from './utilits/NotFoundPage/NotFoundPage.jsx'
 import store from './redux/store.jsx'
 import { Provider } from 'react-redux'
 import Profile from './components/Profile/Profile.jsx'
-import {useEffect} from 'react'
-
 
 window.store=store;
 
@@ -31,6 +29,15 @@ const router = createBrowserRouter(
   ]
 )
 
+if(localStorage.getItem('access_token')){
+      const userInfPromise= new Promise((resolve,reject)=>{
+        resolve(dispatch(userInfThunk()))
+      })
+      userInfPromise.then(response=>{
+        dispatch(setUserInf(response.payload.data));
+        dispatch(setIsAuth(response.payload.data.status))
+      }) 
+    }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

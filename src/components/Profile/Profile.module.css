@@ -301,6 +301,28 @@
     justify-content: center;
     gap:10px;
 }
+/* radio-btn */
+
+.entity_radio_btn{
+    width:15px;
+    height: 15px;
+    border-radius: 50px;
+    border: 1px solid grey;
+}
+.radioBtn_background{
+    display: none;
+}
+.radioBtn_background.active{
+    display: flex;
+    position : absolute;
+    width:11px;
+    height: 11px;
+    border-radius: 50px;
+    background-color: #004dd5;
+    margin-left: 2px;
+}
+/* radio-btn */
+
 
 /*  */
 /* .checkbox_input{

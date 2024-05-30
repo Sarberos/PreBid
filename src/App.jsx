@@ -15,9 +15,8 @@ function App() {
   const [loginStatus, setLoginStatus] = useState(false);
   const [regStatus, setregStatus] = useState(false);
 
-  const isLoading = useSelector((state) => {
-    return state.user.isLoading;
-  });
+  const isLoading = useSelector((state) => {return state.user.isLoading;});
+  const isAuth = useSelector((state) => {return state.user.isAuth;});
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,20 +26,26 @@ function App() {
       resolve(response);
     });
     myPromise.then((response) => {
-      dispatch(setUserInf(response.payload.data));
-      dispatch(setIsAuth(response.payload.data.status))
+      dispatch(setUserInf(response?.payload?.data));
+      dispatch(setIsAuth(response?.payload?.data?.status))
     });
   
     const filtersPromise= new Promise((resolve,reject)=>{
       resolve(dispatch(userFiltersThunk()))
     })
     filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})
-  
   }
   }, [dispatch]);
 
-
-
+  // useEffect(()=>{
+  //   const userInfPromise = new Promise((resolve, reject) => {
+  //     resolve(dispatch(userInfThunk()));
+  //   });
+  //   userInfPromise.then(response=>{
+  //     dispatch(setIsAuth(response.payload?.data?.status))
+  //     console.log(isAuth)
+  //   });
+  // },[])
 
 
   if (isLoading) {

@@ -4,7 +4,7 @@ import Footer from './../Footer/Footer'
 import s from "./Profile.module.css";
 import pdf_ico from "./../../assets/img/pdf_ico.svg";
 import logout_ico from "./../../assets/img/logout_ico.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { logoutThunk, setIsAuth, setUserInf, userInfThunk } from "../../redux/mainSlice";
 import Preloader from "../Tools/Preloader";
 
@@ -12,8 +12,12 @@ const Profile = () => {
   const dispatch =useDispatch();
   const isLoading = useSelector((state) =>state.user.isLoading);
   const user_email = useSelector((state) => state.user.userInf.user.email);
+  const user = useSelector((state) => state.user.userInf.user);
   const client = useSelector((state) => state.user.userInf.client);
-
+  const [radioBtnNum, setRadioBtnNum]=useState({
+    legal: true,
+    physical: false,
+  })
   useEffect(()=>{
     if(localStorage.getItem('access_token')){
       const userInfPromise= new Promise((resolve,reject)=>{
@@ -26,15 +30,83 @@ const Profile = () => {
     }
   },[dispatch])
 
-
   const resetAuth=()=>{
     dispatch(logoutThunk());
 }
+  const legalEntity=[{
+    fieldName: 'Наименнование компании', 
+    value: client.company_name, 
+  },
+  {
+    fieldName: 'Страна регистрации', 
+    value: client.country, 
+  },
+  {
+    fieldName: 'Номер свидетельства', 
+    value: client.certificate_number, 
+  },
+  {
+    fieldName: 'Дата регистрации', 
+    value: client.date_register, 
+  },
+  {
+    fieldName: 'Юридический адрес', 
+    value: client.ur_address, 
+  },
+  {
+    fieldName: 'Учетные номера налогоплательщика', 
+    value: client.unp, 
+  },
+  {
+    fieldName: 'ФИО директора', 
+    value: client.fio_director, 
+  },
+  {
+    fieldName: 'Телефон', 
+    value: client.phone, 
+  },
+  {
+    fieldName: 'Telegram', 
+    value: client.telegram, 
+  },
+  {
+    fieldName: 'ID Telegram  для получения уведомлений', 
+    value: user.telegram_id, 
+  },
+  {
+    fieldName: 'Email', 
+    value: user.email, 
+  },
+  {
+    fieldName: 'Web', 
+    value: client.web, 
+  },
+]
+  const physicalEntity=[{
+    fieldName: 'Как давно в бизнесе', 
+    value: '', 
+  },
+  {
+    fieldName: 'Номер телефона', 
+    value: client.phone, 
+  },
+  {
+    fieldName: 'Как обращаться(Имя)', 
+    value: client.name_ru, 
+  },
+  {
+    fieldName: 'Email', 
+    value: user_email, 
+  },
+]
   const arr = [];
   const arr4 = [1, 2, 3, 4];
   for (let i = 1; i <= 15; i++) {
     arr.push(i);
   }
+
+
+
 
   if (isLoading) {
     return <Preloader />;
@@ -44,7 +116,7 @@ const Profile = () => {
       <Header />
       <div className={s.profile_setting_wrapper}>
         <div className={s.wrapper}>
-          <h2 className={s.profile_title}>Настройка аккаунта {user_email}</h2>
+          <h2 className={s.profile_title}>Настройка аккаунта {user.email}</h2>
           <div className={s.main_info_wrap}>
             <div className={s.menu_wrap}>
               <ul className={s.menu_list}>
@@ -152,31 +224,24 @@ const Profile = () => {
                 </p>
                 <div className={s.choose_entity}>
                   <div className={s.entity}>
-                    <input type="radio" className={s.ur_entity_radio} />
-                    <div className={s.entity_txt}>Юридическое лицо</div>
+                    <span id="legal"  onClick={()=>{setRadioBtnNum({legal:true, physical: false})}} className={s.entity_radio_btn}/>
+                    <span className={radioBtnNum.legal ? `${s.radioBtn_background} ${s.active}`: s.radioBtn_background }></span>
+                    <label htmlFor="legal" onClick={()=>{setRadioBtnNum({legal:true, physical: false})}}  className={s.entity_txt}>Юридическое лицо</label>
                   </div>
                   <div className={s.entity}>
-                    <input type="radio" className={s.fiz_entity_radio} />
-                    <div className={s.entity_txt}>Физическое лицо</div>
+                    <span  id="physical" onClick={()=>{setRadioBtnNum({legal:false, physical: true})}} className={s.entity_radio_btn} />
+                    <span className={radioBtnNum.physical ? `${s.radioBtn_background} ${s.active}`: s.radioBtn_background }></span>
+                    <label htmlFor="physical" onClick={()=>{setRadioBtnNum({legal:false, physical: true})}} className={s.entity_txt}>Физическое лицо</label>
                   </div>
+                  
                   <ul className={s.company_info_list}>
-                    {arr.map((item) => {
-                      return (
-                        <li className={s.company_info_item}>
-                          <p className={s.company_info_item_name}>
-                            Наименование компании
-                          </p>
-                          <input
-                            type="text"
-                            className={s.company_info_item_value}
-                          />
-                        </li>
-                      );
-                    })}
+                    {radioBtnNum.legal ?legalEntity.map((item) => <EntityFielInfo name={item.fieldName} value={item.value}/>)
+                    : radioBtnNum.physical?physicalEntity.map(item=><EntityFielInfo name={item.fieldName} value={item.value}/>):''
+                    }
                   </ul>
                   <div className={s.bottom_line}>
                     <span className={s.user_regist_doc}>
-                      Свидетельство о регистрации
+                      Свидетельство о регистрации 
                       <img src={pdf_ico} className={s.user_regist_doc_ico} />
                     </span>
                   </div>
@@ -227,5 +292,22 @@ const Profile = () => {
   );
                 }
 };
+
+
+export  function EntityFielInfo({name,value}){
+  return(
+    <li className={s.company_info_item}>
+      <p className={s.company_info_item_name}>
+        {name}
+      </p>
+      <input
+        disabled={true}
+        type="text"
+        className={s.company_info_item_value}
+        value={value}
+      />
+    </li>
+  )
+}
 
 export default Profile;

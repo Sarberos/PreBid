@@ -1,11 +1,11 @@
 import s from './Header.module.css'
 import logo from './../../assets/img/logo.svg'
 import unknownUser from './../../assets/img/unknownUserImage.png'
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { logoutThunk } from '../../redux/mainSlice';
+import { logoutThunk, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from '../../redux/mainSlice';
 
 function Header({ openLogin}) {
     const{register,handleSubmit,formState: { isSubmitting},}=useForm()
@@ -16,12 +16,14 @@ function Header({ openLogin}) {
     const client_name_ru=useSelector((state)=>state.user.userInf.client.name_ru);
     const user_email=useSelector((state)=>state.user.userInf.user.email);
     const dispatch=useDispatch();
+    const navigate=useNavigate()
 
     const [profileTools,setToolsStatus]= useState(false);
 
 
     const resetAuth=()=>{
         dispatch(logoutThunk());
+        navigate('/')
     }
 
 
