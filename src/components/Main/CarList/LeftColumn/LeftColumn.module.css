@@ -1,17 +1,18 @@
   .left_column_wrap{
     width: 324px;
-    height: 960px;
+    height: 100%;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
+    gap:32px;
     border: 1px solid #A2A9B8;
-    border-radius: 4px ;
+    border-radius: 8px ;
     padding: 25px 12px 55px 12px ;
   }
   .filter_title_block{
     height: 24px;
     display: flex;
     justify-content: space-between;
-    margin: 0 0 32px 0 ;
     padding: 0 13px 0 0;
   }
   .filters_subtitle{
@@ -39,13 +40,26 @@
   .car_choose_property_list{
     display: flex;
     flex-direction: column;
+    gap: 12px;
+  }
+  /* .car_choose_property_list{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     width:300px;
-    height: 748px;
     margin: 0 0 16px 0;
     cursor: pointer;
-  }
+  } */
+  /* .car_choose_property_list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:300px;
+    margin: 0 0 16px 0;
+    cursor: pointer;
+  } */
   .property_show_results_btn{
+    position: relative;
     width:100%;
     height:48px;
     background: #004DD5;
@@ -56,7 +70,7 @@
     font-size: 16px;
     line-height: 24px;
     color: #FFFFFF;
-    margin-top: 10px;;
+    bottom:0;
   }
   /* .selested_extendios{
     width: 100%;

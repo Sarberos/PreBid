@@ -7,7 +7,7 @@ class Fetching {
       localStorage.setItem("access_token", response.data.access_token);
       return response
     } catch (e) {
-      console.log(e);
+      console.log(e +'login request errror');
     }
   }
   static async logout() {
@@ -15,7 +15,7 @@ class Fetching {
       const response = await AuthService.logout()
       return response;
     } catch (e) {
-      console.log(e);
+      console.log(e+'logout request errror');
     }
   }
   static async userInf() {
@@ -23,7 +23,7 @@ class Fetching {
       const response = await AuthService.userInf();
       return response;
     } catch (e) {
-      console.log(e);
+      console.log(e+'userInf request errror');
     }
   }
   static async filterInf() {
@@ -31,7 +31,7 @@ class Fetching {
       const response = await AuthService.filterInf();
       return response;
     } catch (e) {
-      console.log(e);
+      console.log(e+'filterInf request errror');
     }
   }
 }

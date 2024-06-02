@@ -7,14 +7,13 @@ function TimeSort({isSort,changeSort}) {
   const [statusTitle, changeStatusTitle]=useState(true);
 
   
-  let changeTimeStatus=()=>{
+  const changeTimeStatus=()=>{
     changeSortStatus(!firstSort)
   }
-  let changeSortTitle=()=>{
+  const changeSortTitle=()=>{
     changeStatusTitle(!statusTitle)
     changeSortStatus(!firstSort)
   }
-
 
     return (
       <div  tabindex="0" onBlur={() => {changeSortStatus(false)}} className={s.first_sort_param}>

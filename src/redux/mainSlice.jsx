@@ -5,14 +5,14 @@ import Fetching from '../http/api_request';
 export const loginThunk = createAsyncThunk(
     'user/loginThunk',
     async function (data){
-        const response= Fetching.login(data.email,data.password)
+        const response=  await Fetching.login(data.email,data.password)
         return response;
     }
 )
 export const logoutThunk = createAsyncThunk(
     'user/logoutThunk',
     async function (){
-        const response= Fetching.logout()
+        const response= await Fetching.logout()
         return response;
     }
 )
@@ -42,7 +42,7 @@ const userSlice =createSlice({
             role: 0,
             user: 0,
         },
-        filters:{},
+        filters:[],
         myFilters:{ },
     },
     reducers:{

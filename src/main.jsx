@@ -29,16 +29,6 @@ const router = createBrowserRouter(
   ]
 )
 
-if(localStorage.getItem('access_token')){
-      const userInfPromise= new Promise((resolve,reject)=>{
-        resolve(dispatch(userInfThunk()))
-      })
-      userInfPromise.then(response=>{
-        dispatch(setUserInf(response.payload.data));
-        dispatch(setIsAuth(response.payload.data.status))
-      }) 
-    }
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <React.StrictMode>

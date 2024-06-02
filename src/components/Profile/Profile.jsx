@@ -19,7 +19,7 @@ const Profile = () => {
     physical: false,
   })
   useEffect(()=>{
-    if(localStorage.getItem('access_token')){
+    if(user===0){
       const userInfPromise= new Promise((resolve,reject)=>{
         resolve(dispatch(userInfThunk()))
       })
@@ -27,6 +27,8 @@ const Profile = () => {
         dispatch(setUserInf(response.payload.data));
         dispatch(setIsAuth(response.payload.data.status))
       }) 
+    }else{
+      console.log('userInf been exist')
     }
   },[dispatch])
 

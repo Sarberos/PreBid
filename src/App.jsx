@@ -17,36 +17,30 @@ function App() {
 
   const isLoading = useSelector((state) => {return state.user.isLoading;});
   const isAuth = useSelector((state) => {return state.user.isAuth;});
+  const user = useSelector((state) => state.user.userInf.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(localStorage.getItem('access_token')){
-      const response = dispatch(userInfThunk());
-      const myPromise = new Promise((resolve, reject) => {
-      resolve(response);
-    });
-    myPromise.then((response) => {
-      dispatch(setUserInf(response?.payload?.data));
-      dispatch(setIsAuth(response?.payload?.data?.status))
-    });
-  
-    const filtersPromise= new Promise((resolve,reject)=>{
-      resolve(dispatch(userFiltersThunk()))
-    })
-    filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})
-  }
+    if(user===0){
+      if(localStorage.getItem('access_token')){
+        const myPromise = new Promise((resolve, reject) => {
+        resolve( dispatch(userInfThunk()));
+      });
+      myPromise.then((response) => {
+        dispatch(setUserInf(response?.payload?.data));
+        dispatch(setIsAuth(response?.payload?.data?.status))
+      });
+    
+      const filtersPromise= new Promise((resolve,reject)=>{
+        resolve(dispatch(userFiltersThunk()))
+      })
+      filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})
+    }
+    }else {
+      console.log('user inf been exist in appp')
+    }
+    
   }, [dispatch]);
-
-  // useEffect(()=>{
-  //   const userInfPromise = new Promise((resolve, reject) => {
-  //     resolve(dispatch(userInfThunk()));
-  //   });
-  //   userInfPromise.then(response=>{
-  //     dispatch(setIsAuth(response.payload?.data?.status))
-  //     console.log(isAuth)
-  //   });
-  // },[])
-
 
   if (isLoading) {
     return <Preloader />;

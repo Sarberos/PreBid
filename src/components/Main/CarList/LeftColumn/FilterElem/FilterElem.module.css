@@ -7,7 +7,9 @@
     width:300px;
     height:53px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    overflow: hidden;
     align-items: center;
     border-bottom: 1px solid #A2A9B8;
     margin: 0 0 6px 0;
@@ -42,7 +44,9 @@
 .pop_up_filter_wrap.active{
   width: 100%;
   max-width: 150px;
+  min-width: 100px;
   display: flex;
+  flex-wrap: wrap,
  
 }
 .pop_up_filter_wrap{
@@ -52,13 +56,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
-  flex-wrap: wrap;
   padding: 7px 8px;
   border: 1px solid #6B7A99;
   border-radius: 18px;
-  display: flex;
-  align-items: center;
   gap: 8px;
   margin: 0;
 }

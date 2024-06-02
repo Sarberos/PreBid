@@ -48,9 +48,6 @@
     justify-content: center;
 }
 .change_disp_param_pop_up{
-    display: none;
-}
-.change_disp_param_pop_up.active{
     position: absolute;
     z-index: 20;
     width: 78px;
@@ -61,7 +58,12 @@
     background: #FFFFFF;
     border-radius:4px;
     padding: 3px 0;
-
+    transition: 0.3s;
+    transform-origin: 0 0;
+    transform: rotateX(90deg);
+}
+.change_disp_param_pop_up.active{
+    transform: rotateX(0);
 }
 .basic_disp_param.choose_disp_param{
     width: 100%;
