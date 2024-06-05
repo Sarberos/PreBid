@@ -7,6 +7,49 @@ import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { logoutThunk, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from '../../redux/mainSlice';
 
+export const Navigation=()=>{
+
+    const navigationElemsArr=[{
+        name:'Каталог',
+        link:'/',
+    },
+    {
+        name:'Аукционы',
+        link:'/auctions',
+    },
+    {
+        name:'Мои продажи',
+        link:'/my-sels',
+    },
+    {
+        name:'Мои заказы',
+        link:'/my-by',
+    },
+    {
+        name:'Мои ставки',
+        link:'/my-rates',
+    },
+    {
+        name:'Избранное',
+        link:'/my-favourite',
+    },
+]
+
+
+    return(
+        <ul className={s.header__list}>
+            {navigationElemsArr.map(navElem=>(
+                <li className={`${s.header__item} ${s.all_use}`}>
+                    <Link to={navElem.link}  className={s.header__link}>{navElem.name}</Link>
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+
+
+
 function Header({ openLogin}) {
     const{register,handleSubmit,formState: { isSubmitting},}=useForm()
     const getFormData=(data)=>{
@@ -19,17 +62,13 @@ function Header({ openLogin}) {
     const navigate=useNavigate()
 
     const [profileTools,setToolsStatus]= useState(false);
-
-
     const resetAuth=()=>{
         dispatch(logoutThunk());
         navigate('/')
     }
-
-
     return (
         <header className={s.header}>
-            <div className={s.max_width}>
+            {/* <div className={s.max_width}>
             <div className={s.header__wrapper_first_row}>
                 <div className={s.header_info}>
                     <span className={s.header_info_country}>Название страны</span>,
@@ -43,62 +82,40 @@ function Header({ openLogin}) {
                     <div className={s.setting_items}>Валюта</div>
                 </div>
             </div>
-        </div>
+        </div> */}
         <div className={s.wrapper}>
             <div className={s.header__wrapper_sec_row}>
-                <div className={s.header__logo}>
+                <div style={{display:'flex',['flex-direction']:'row',gap:'40px'}}>
                     <a href="/" className={s.header__logo_link}>
                         <img src={logo} alt="logo" className={s.header__logo_img} />
                     </a>
+                    <nav className={s.header__nav}>
+                        <Navigation />
+                     </nav>
                 </div>
-                <nav className={s.header__nav}>
-                    <ul className={s.header__list}>
-                        <li className={`${s.header__item} ${s.all_use}`}>
-                            <Link to="/"  className={s.header__link}>Каталог</Link>
-                        </li>
-                        <li className={`${s.header__item} ${s.all_use}`}>
-                            <Link to="/auctions"  className={s.header__link}>Аукционы</Link>
-                        </li>
-                        <li className={s.header__item}>
-                            <Link to="/rates"  className={s.header__link}>Тарифы</Link>
-                        </li>
-                        <li className={s.header__item}>
-                            <Link to="/help"  className={s.header__link}>Как это работает </Link>
-                        </li>
-                        <li className={`${s.header__item} ${s.width_1440}`}>
-                            <Link to=""  className={s.header__link }>Мои ставки</Link>
-                        </li>
-                        <li className={`${s.header__item} ${s.width_1440}`}>
-                            <Link to=""  className={s.header__link}>Личный кабинет</Link>
-                        </li>
-                        <li className={`${s.header__item} ${s.width_1440}`}>
-                            <Link to=""  className={s.header__link}>Мое избранное</Link>
-                        </li>
-                        <li className={`${s.header__item} ${s.width_1024}`}>
-                            <Link to=""  className={s.header__link}>Тарифы</Link>
-                        </li>
-                        <li className={`${s.header__item} ${s.width_1024}`}>
-                            <Link to=""  className={s.header__link}>Как это работает</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <form onSubmit={handleSubmit(getFormData)} className={s.search_form}>
+                <div style={{display:'flex','flex-direction':'row',gap:'40px'}}>
+                    <form onSubmit={handleSubmit(getFormData)} className={s.search_form}>
                         <input type="text" {...register('search')} className={s.search_form__field} placeholder="Поиск"/>
                         <button disabled={isSubmitting} type='submit' className={s.search_form__submit}></button>
-                </form>
-                 <button onClick={()=>openLogin()} type="submit" className={isAuth ?`${s.sign_login_btn} ${s.hide}`: s.sign_login_btn}>Вход/Регистрация</button>
-                 <div className={isAuth ?`${s.profile_preVis} ${s.active}`:s.profile_preVis}>
-                    <div className={s.mini_profile_wrap}>
-                        {/* <div className={s.profile_mini_img_wrap}>
-                            <img src={unknownUser} alt="" className={s.profile_mini_img} />   Добавления рядом с имененм автарки 
-                        </div> */}
-                        <label htmlFor={'profile_preVis'} className={s.profile_preVis_lbl}>{client_name_ru ? client_name_ru : user_email}</label>
-                        <button id={'profile_preVis'} onClick={()=>{setToolsStatus(!profileTools)}} className={s.profile_preVis_btn}></button>
-                    </div>
-                    <div  className={profileTools? s.tools_for_mini_profile:`${s.tools_for_mini_profile} ${s.hiden}`}>
-                        <div className={s.mini_profile_tool}><Link to='/profile' className={s.mini_profile_tool_link}>Настройки аккаунта </Link></div>
-                        <button onClick={()=> {resetAuth()}} className={s.mini_profile_tool}>Выйти</button>
-                    </div>
+                    </form>
+                    <button onClick={()=>openLogin()} type="submit" className={isAuth ?`${s.sign_login_btn} ${s.hide}`: s.sign_login_btn}>Вход/Регистрация</button>
+                    <div className={isAuth ?`${s.profile_preVis} ${s.active}`:s.profile_preVis}>
+                        <div className={s.mini_profile_wrap}>
+                            {/* <div className={s.profile_mini_img_wrap}>
+                                <img src={unknownUser} alt="" className={s.profile_mini_img} />   Добавления рядом с имененм автарки 
+                            </div> */}
+                            <label htmlFor={'profile_preVis'} className={s.profile_preVis_lbl}>{client_name_ru ? client_name_ru : user_email}</label>
+                            <button id={'profile_preVis'} onClick={()=>{setToolsStatus(!profileTools)}} className={s.profile_preVis_btn}></button>
+                        </div>
+                        <div  className={profileTools? s.tools_for_mini_profile:`${s.tools_for_mini_profile} ${s.hiden}`}>
+                            <Link to='/profile' className={s.mini_profile_tool_link}>
+                                <div className={s.mini_profile_tool}>Настройки аккаунта</div>
+                            </Link>
+                            <button onClick={()=> {resetAuth()}} className={s.mini_profile_tool}>Выйти</button>
+                            
+                        </div>
+                </div>
+                
                  </div>
                 <div className={s.header__burger}>
 				</div>

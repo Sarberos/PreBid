@@ -6,26 +6,17 @@ import { useSelector,useDispatch } from 'react-redux'
 
 const FilterElemRed = ({fieldValue ,children}) => {
   const[propertyOn, setPropertyStat]=useState(false);
-  const[filterOn,setFilterStat]=useState({
-    status: false,
-    value:'',
-  })                                                    //переделать 
+  const[filterOn,setFilterStat]=useState(false)   
+  const[filtersArr,setFiltersArr]=useState([])                                                 
   const onsetFilterStat=(e)=>{
     if(filtersArr.find(filter=>filter===e.target.innerText)){
       console.log('Элемент существует')
     }else{
       setFiltersArr([...filtersArr, e.target.innerText])
     }
-    
-    setFilterStat({
-      status: true,
-      value:e.target.innerText});
-      setPropertyStat(false)
+    setFilterStat(true)
+    setPropertyStat(false)
   }
-
-
-
-  const[filtersArr,setFiltersArr]=useState([])
   const removeFilter=(filterName)=>{
     setFiltersArr(filtersArr.filter(filter=> filter !==filterName))
   }
@@ -88,12 +79,12 @@ const FilterElemRed = ({fieldValue ,children}) => {
             <div className={s.select_list_item}>
               <div onClick={()=>setPropertyStat(!propertyOn)} className={s.select_box}>
               <div className={s.item_value}>
-                <div className={s.multi_filter}>
+                <div  className={s.multi_filter}>
                   <p className={s.filter_text}>{transFilterName(children)}</p>
                   {filtersArr.map(filter=>(
-                     <div   className={filterOn.status ? `${s.choose_box} ${s.active}`:`${s.choose_box}`}>
-                    <p className={s.pop_up_filter_label} >{filter}</p>
-                    <button onClick={()=>removeFilter(filter)}className={s.pop_up_filter_btn}></button>
+                  <div className={filterOn? `${s.choose_box} ${s.active}`:`${s.choose_box}`}>
+                      <p className={s.pop_up_filter_label} >{filter}</p>
+                      <button onClick={(e) => { e.stopPropagation(); removeFilter(filter) }} className={s.pop_up_filter_btn}></button>
                   </div> 
                   ))}
                 </div>

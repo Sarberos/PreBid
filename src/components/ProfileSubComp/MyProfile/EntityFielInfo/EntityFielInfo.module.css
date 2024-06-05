@@ -1,0 +1,21 @@
+.company_info_item{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.company_info_item_name{
+    font-size: 17px;
+    color: #000;
+    font-weight: 400;
+}
+.company_info_item_value{
+    appearance: none;
+    padding: 10px;
+    border: 1px solid #D3D8E6;
+    border-radius: 4px;
+    color: #000;
+    outline: none;
+    transition: .3s;
+    cursor: not-allowed;
+}

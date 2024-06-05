@@ -67,9 +67,6 @@
   transition: .3s;
 }
 .choose_box{
-  display:none;
-}
-.choose_box.active{
   display: flex;
   align-items: center;
   gap: 5px;
@@ -77,6 +74,12 @@
   padding: 7px 8px;
   border: 1px solid #6B7A99;
   border-radius: 18px;
+  transform-origin:top left ;
+  transition:5s;
+  transform: rotateX(90deg);
+}
+.choose_box.active{
+  transform: rotateX(0);
 }
 .pop_up_filter_label{
   font-size: 16px;
@@ -84,13 +87,17 @@
   font-weight: 400;
   white-space: nowrap;
 }
+/* .pop_up_filter_btn_box{
+  background: #000;
+} */
 .pop_up_filter_btn{
   width: 16px;
   height: 16px;
-  background: url(./../../../../../assets/img/cross.svg);
+  background: url(./../../../../../assets/img/cross_grey_background.svg);
   background-position: center;
   background-size: contain;
   border: none;
+  border-radius: 50%;
 }
 
 .item_btn{

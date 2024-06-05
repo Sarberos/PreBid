@@ -1,0 +1,98 @@
+.main_wrapper{
+    font-size: 18px;
+    color: #000;
+    font-weight: 400;
+}
+.my_tarif_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #6b7a99;
+}
+.title{
+    padding: 0;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+.subtitle{
+    color: #000;
+    font-size: 24px;
+    font-family: 400;
+}
+.tarif_plan_description, .item_tarif_description{
+    color: #6b7a99;
+}
+.change_tarif{
+    display:flex;
+    flex-direction:column;
+}
+.tarifs_list{
+    display: flex;
+    flex-direction: column;
+}
+.tarif_list_item{
+    line-height: 1;
+    display: flex;
+    flex-direction: row;
+    min-height: 36px;
+    padding: 10px 0;
+    position: relative;
+}
+
+.item_new_tarif_info{
+    display: flex;
+    flex-direction:column ;
+    gap:5px;
+    position: relative;
+    left:21px;
+    top:0;
+}
+
+.item_title{
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.item_tarif_name{
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 1.14285714;
+}
+.contine_btn{
+    padding: 12px 32px;
+    background-color: #004dd5;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: left;
+    margin-top: 40px;
+}
+/* radio-btn */
+.radio_btn_inner_wrap{
+    display: flex;
+    padding: 3px 0  0 0 ;
+}
+.entity_radio_btn{
+    width:15px;
+    height: 15px;
+    border-radius: 50px;
+    border: 1px solid grey;
+}
+.radioBtn_background{
+    display: none;
+}
+.radioBtn_background.active{
+    display: flex;
+    position : absolute;
+    width:9px;
+    height: 9px;
+    border-radius: 50px;
+    background-color: #004dd5;
+    margin: 3px 0  0 3px;
+}
+/* radio-btn */
