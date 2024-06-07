@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useLayoutEffect } from 'react'
 import { useSelector,useDispatch } from "react-redux";
 import './App.css'
 import Header from './components/Header/Header'
@@ -8,8 +8,7 @@ import { SimpleModal } from './components/SImpleModal/SimpleModal'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal'
 import Registration from './components/modal_windows/Registration/Registration'
 import Preloader from './components/Tools/Preloader';
-import { setFiltersInf, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -20,21 +19,25 @@ function App() {
   const user = useSelector((state) => state.user.userInf.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+const handlingPromise=(actionCreator)=>{
+      return new Promise( (resolve,reject)=>{
+        resolve(dispatch(actionCreator))
+      })
+  }
+  useLayoutEffect(() => {
     if(user===0){
       if(localStorage.getItem('access_token')){
-        const myPromise = new Promise((resolve, reject) => {
-        resolve( dispatch(userInfThunk()));
-      });
-      myPromise.then((response) => {
-        dispatch(setUserInf(response?.payload?.data));
-        dispatch(setIsAuth(response?.payload?.data?.status))
-      });
-    
-      const filtersPromise= new Promise((resolve,reject)=>{
-        resolve(dispatch(userFiltersThunk()))
-      })
-      filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})
+      const userInfPromise = handlingPromise(userInfThunk());
+        userInfPromise.then((response) => {
+          dispatch(setUserInf(response?.payload?.data));
+          dispatch(setIsAuth(response?.payload?.data?.status))
+        });
+      const filtersPromise=handlingPromise(userFiltersThunk())
+      filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))});
+
+      const carListPromise=handlingPromise(carInfThunk())
+      carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
+  
     }
     }else {
       console.log('user inf been exist in appp')

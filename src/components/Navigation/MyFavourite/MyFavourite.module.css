@@ -1,0 +1,36 @@
+.main_info{
+    width:1490px;
+    margin: 0 auto;
+    margin-top: 60px;
+    font-family: 'Circe';
+}
+
+  .two_columns_wrapper {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 48px;
+  }
+  .right_column{
+    display: flex;
+    flex-direction: column;
+  }
+.rigth_column_title{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 41px;
+    gap: 30px;
+}
+.column_title_txt{
+    color: rgb(15, 15, 20);
+    font-size: 18px;
+    font-weight: 700;
+}
+.column_title_pice{
+    color: rgb(107, 122, 153);
+    font-size: 18px;
+    font-weight: 400;
+}

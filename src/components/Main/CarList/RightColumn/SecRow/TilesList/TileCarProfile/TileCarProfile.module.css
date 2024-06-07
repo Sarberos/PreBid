@@ -12,9 +12,11 @@
     height:170px;
     display: flex;
     overflow: hidden;
+    object-fit: fill;
   }
   .main_tile_img{
     position:relative;
+    object-fit: cover;
     width:100%;
   }
   .tile_added_to_bookmark{
@@ -22,7 +24,7 @@
     position: absolute;
     width:40px;
     height:40px;
-    background: url(./../../../../../../../../assets/img/bookmark_added.svg)no-repeat transparent;
+    background: url(./../../../../../../../assets/img/bookmark_added.svg)no-repeat transparent;
     background-position: 12px 7px;
     background-color: rgba(255,255,255, 0.4);
     background-size: 16px 24px;
@@ -38,7 +40,7 @@
     position: absolute;
     width:40px;
     height:40px;
-    background: url(./../../../../../../../../assets/img/bookmark_transparent.svg) no-repeat  transparent;
+    background: url(./../../../../../../../assets/img/bookmark_transparent.svg) no-repeat  transparent;
     background-position: 12px 7px;
     background-color: rgba(255,255,255, 0.4);
     background-size: 16px 24px;

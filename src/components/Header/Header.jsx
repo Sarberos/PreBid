@@ -35,11 +35,10 @@ export const Navigation=()=>{
     },
 ]
 
-
     return(
         <ul className={s.header__list}>
-            {navigationElemsArr.map(navElem=>(
-                <li className={`${s.header__item} ${s.all_use}`}>
+            {navigationElemsArr.map((navElem,index)=>(
+                <li key={index} className={`${s.header__item} ${s.all_use}`}>
                     <Link to={navElem.link}  className={s.header__link}>{navElem.name}</Link>
                 </li>
             ))}

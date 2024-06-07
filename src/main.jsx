@@ -13,6 +13,11 @@ import { DeliveryAdress } from './components/ProfileSubComp/DeliveryAdress/Deliv
 import { TariffPlan } from './components/ProfileSubComp/TariffPlan/TariffPlan.jsx'
 import { Support } from './components/ProfileSubComp/Support/Support.jsx'
 import { NotificationSettings } from './components/ProfileSubComp/NotificationSettings/NotificationSettings.jsx'
+import { Auctions } from './components/Navigation/Auctions/Auctions.jsx'
+import { MySels } from './components/Navigation/MySels/MySels.jsx'
+import { MyBy } from './components/Navigation/MyBy/MyBy.jsx'
+import { MyRates } from './components/Navigation/MyRates/MyRates.jsx'
+import { MyFavourite } from './components/Navigation/MyFavourite/MyFavourite.jsx'
 
 window.store=store;
 
@@ -21,31 +26,51 @@ const router = createBrowserRouter(
     {
       path: '/',
       element: <App/>,
-      errorElement:<NotFoundPage />
+      errorElement:<NotFoundPage />,
     },
     {
       path: '/CarFullProfile/:profileId',
-      element: <CarFullProfile/>
+      element: <CarFullProfile/>,
     },
     {
       path: '/profile',
-      element:<Profile><MyProfile/></Profile>
+      element:<Profile><MyProfile/></Profile>,
     },
     {
       path: '/deliveryAdress',
-      element: <Profile><DeliveryAdress/></Profile>
+      element: <Profile><DeliveryAdress/></Profile>,
     },
     {
       path: '/notifications',
-      element: <Profile><NotificationSettings/></Profile>
+      element: <Profile><NotificationSettings/></Profile>,
     },
     {
       path: '/support',
-      element: <Profile><Support/></Profile>
+      element: <Profile><Support/></Profile>,
     },
     {
       path: '/tarifPlan',
-      element: <Profile><TariffPlan/></Profile>
+      element: <Profile><TariffPlan/></Profile>,
+    },
+    {
+      path: '/auctions',
+      element: <Auctions />,
+    },
+    {
+      path: '/my-sels',
+      element: <MySels />,
+    },
+    {
+      path: '/my-by',
+      element: <MyBy />,
+    },
+    {
+      path: '/my-rates',
+      element: <MyRates />,
+    },
+    {
+      path: '/my-favourite',
+      element: <MyFavourite />,
     },
   ]
 )

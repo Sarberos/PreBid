@@ -2,4 +2,6 @@
     width: 1360px;
     /* height: 2050px; */
     height: auto;
+    display: flex;
+    flex-wrap: wrap;
 } 

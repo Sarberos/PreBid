@@ -6,7 +6,6 @@ import { useState } from 'react';
 
 function RightColumn() {
   const [visStyle, changeVisStyle]=useState(false);
-
     return (
       <div className={s.right_column_wrap}>
         <FirstRow visStyle={visStyle} changeVisStyle={changeVisStyle} />

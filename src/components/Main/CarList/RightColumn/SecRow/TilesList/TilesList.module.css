@@ -1,7 +1,9 @@
   .right_columns_sec_row_tiles{
     width: 100%;
     height: 100%;
-    flex-direction: column;
-    
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
   }
  

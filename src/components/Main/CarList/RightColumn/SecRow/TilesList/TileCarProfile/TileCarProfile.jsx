@@ -1,11 +1,11 @@
 import s from './TileCarProfile.module.css'
-import blackMers_png from './../../../../../../../../assets/img/black_mers.png'
-import lamba_png from './../../../../../../../../assets/img/lamba.png'
-import redcar_png from './../../../../../../../../assets/img/redcar.png'
+import blackMers_png from './../../../../../../../assets/img/black_mers.png'
+import lamba_png from './../../../../../../../assets/img/lamba.png'
+import redcar_png from './../../../../../../../assets/img/redcar.png'
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 
-function TileCarProfile() {
+function TileCarProfile({img,id,year,marka,model,volume,odometr,data,now_price,show_button_buy_now}) {
   const [tileBookmark, setTileBookmark]=useState(false)
   const [carImgNum,setCarImgNum]=useState(1)
 
@@ -14,14 +14,14 @@ function TileCarProfile() {
         <div className={s.main_tile_img_wrap}>
           <Link className={s.main_tile_img_wrap} to="/CarFullProfile/1">
             <img
-              src={
+              src={img?[
                 carImgNum === 1
-                  ? blackMers_png
+                  ? img
                   : carImgNum === 2
                   ? lamba_png
                   : carImgNum === 3
                   ? redcar_png
-                  : ""
+                  : ""]:blackMers_png
               }
               className={s.main_tile_img}
             />{" "}
@@ -71,17 +71,17 @@ function TileCarProfile() {
                   to="/CarFullProfile/1"
                   className={s.tile_charact__value_link}
                 >
-                  2345678
+                  {id}
                 </Link>
               </div>
             </div>
             <div className={s.tile_charact_row}>
               <div className={s.tile_charact_name}>Дата акциона</div>
-              <div className={s.tile_charact__value}>01.07.2023</div>
+              <div className={s.tile_charact__value}>{data}</div>
             </div>
             <div className={s.tile_charact_row}>
               <div className={s.tile_charact_name}>Объем двигателя</div>
-              <div className={s.tile_charact__value}>2997</div>
+              <div className={s.tile_charact__value}>{volume}</div>
             </div>
             <div className={s.tile_charact_row}>
               <div className={s.tile_charact_name}>Тип топлива</div>
@@ -90,7 +90,7 @@ function TileCarProfile() {
             <div className={s.tile_charact_row}>
               <div className={s.tile_charact_name}>Одометр</div>
               <div className={s.tile_charact__value}>
-                <span>31 068</span> км
+                <span>{odometr}</span> км
               </div>
             </div>
             <div className={s.tile_main_actions}>
@@ -98,13 +98,13 @@ function TileCarProfile() {
                 <div className={s.now_prise}>
                   <div className={s.now_prise_title}>Текущая ставка</div>
                   <div className={s.now_price_value}>
-                    $ <span>20 000</span>
+                    $ <span>{now_price}</span>
                   </div>
                 </div>
                 <button className={s.create_bid_btn}>Сделать ставку</button>
               </div>
               <div className={s.buy_now_wrap}>
-                <a href="#" className={s.buy_now_link}>
+                <a style={{display: show_button_buy_now ? 'flex':'none',}} href="#" className={s.buy_now_link}>
                   Купить сейчас за <span>21500</span>$
                 </a>
               </div>

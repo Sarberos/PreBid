@@ -34,5 +34,13 @@ class Fetching {
       console.log(e+'filterInf request errror');
     }
   }
+  static async carList(carsLimit,listPage){
+    try{
+      const response= await AuthService.carList(carsLimit,listPage);
+      return response;
+    }catch(e){
+      console.log(e);
+    }
+  }
 }
 export default Fetching;

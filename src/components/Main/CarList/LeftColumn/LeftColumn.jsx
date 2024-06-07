@@ -1,5 +1,4 @@
 import s from './LeftColumn.module.css'
-import FilterElem from './FilterElem/FilterElem'
 import FilterElemProperty from './FilterElemProperty/FilterElemProperty'
 import { useSelector,useDispatch } from 'react-redux'
 import FilterElemRed from './FilterElemRed/FilterElemRed';

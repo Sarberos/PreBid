@@ -30,6 +30,17 @@ export const userFiltersThunk = createAsyncThunk(
         return response;
     }
 )
+export const carInfThunk = createAsyncThunk(
+    'user/carInfThunk',
+    async function (_,{ getState }){
+        const state=getState()
+        const response= await Fetching.carList(state.user.transports.carsLimit,state.user.transports.pagination.page)
+        return response;
+    }
+)
+
+
+
 
 const userSlice =createSlice({
     name: 'user',
@@ -43,7 +54,14 @@ const userSlice =createSlice({
             user: 0,
         },
         filters:[],
-        myFilters:{ },
+        myFilters:[],
+        transports:{
+            content:[],
+            pagination:{
+                page:1,
+            },
+            carsLimit:10,
+        }
     },
     reducers:{
         setUserInf:(state,action)=>{
@@ -62,7 +80,17 @@ const userSlice =createSlice({
         },
         setIsLoading: (state,action)=>{
             state.isLoading=action.payload;
-        }
+        },
+        setTransportsInf:(state,action)=>{
+            state.transports.content=action.payload.content
+            state.transports.pagination=action.payload.pagination           
+        },
+        setCarsLimit(state,action){
+            state.transports.carsLimit=action.payload
+        },
+        setCarsListPage(state,action){
+            state.transports.pagination.page=action.payload;
+        },
     },
     extraReducers: (builder) =>{
         builder.addCase(loginThunk.pending,(state)=>{
@@ -84,10 +112,16 @@ const userSlice =createSlice({
             state.isLoading=false;
             state.isAuth=false;
             localStorage.removeItem('access_token');
-        })
+        });
+        builder.addCase(carInfThunk.pending,(state)=>{
+            state.isLoading=true;
+        });
+        builder.addCase(carInfThunk.fulfilled,(state)=>{
+            state.isLoading=false;
+        });
     }
 });
 
-export const {setUserInf,setIsAuth,setFiltersInf} =userSlice.actions;
+export const {setUserInf,setIsAuth,setFiltersInf,setTransportsInf,setCarsLimit,setCarsListPage} =userSlice.actions;
 
 export default userSlice.reducer;

@@ -93,7 +93,6 @@
     display: flex;
     flex-wrap: wrap;    
     align-items: center;
-    margin: 0 34px 0 0;
 }
 .search_form__field{
    width: 420px;
@@ -227,4 +226,14 @@
 .mini_profile_tool_link{
     text-decoration: none;
     color: inherit;
+}
+
+@media screen and (max-width: 1496px) {
+    .wrapper{
+        width: 1495px;
+    }
+    .search_form__field{
+        width: 220px;
+     }
+    
 }

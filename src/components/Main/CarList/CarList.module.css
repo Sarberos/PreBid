@@ -4,5 +4,6 @@
 
    .two_columns_wrapper {
      display: flex;
-     justify-content: space-between;
+     flex-direction: row;
+     gap: 36px;
    }

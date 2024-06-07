@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import api from "./apiSetting";
+
 
 class AuthService {
   static async login(username, password) {
@@ -18,5 +20,9 @@ class AuthService {
   static async filterInf() {
     return await api.get("/transport/filters")
   }
+
+  static async carList(carsLimit,listPage) {
+    return await api.get(`/transport?page=${listPage}&limit=${carsLimit}&order=id&by=asc`)
+}
 }
 export default AuthService;
