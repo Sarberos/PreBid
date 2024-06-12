@@ -18,6 +18,7 @@ import { MySels } from './components/Navigation/MySels/MySels.jsx'
 import { MyBy } from './components/Navigation/MyBy/MyBy.jsx'
 import { MyRates } from './components/Navigation/MyRates/MyRates.jsx'
 import { MyFavourite } from './components/Navigation/MyFavourite/MyFavourite.jsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 window.store=store;
 
@@ -74,11 +75,15 @@ const router = createBrowserRouter(
     },
   ]
 )
-
+const queryClient=new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <React.StrictMode>
-    <RouterProvider router={router}><App/></RouterProvider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router}>
+        <App/>
+      </RouterProvider>
+    </QueryClientProvider>
   </React.StrictMode>
   </Provider>
 

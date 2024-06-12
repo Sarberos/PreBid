@@ -6,50 +6,13 @@ import { useForm } from 'react-hook-form';
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { logoutThunk, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from '../../redux/mainSlice';
-
-export const Navigation=()=>{
-
-    const navigationElemsArr=[{
-        name:'Каталог',
-        link:'/',
-    },
-    {
-        name:'Аукционы',
-        link:'/auctions',
-    },
-    {
-        name:'Мои продажи',
-        link:'/my-sels',
-    },
-    {
-        name:'Мои заказы',
-        link:'/my-by',
-    },
-    {
-        name:'Мои ставки',
-        link:'/my-rates',
-    },
-    {
-        name:'Избранное',
-        link:'/my-favourite',
-    },
-]
-
-    return(
-        <ul className={s.header__list}>
-            {navigationElemsArr.map((navElem,index)=>(
-                <li key={index} className={`${s.header__item} ${s.all_use}`}>
-                    <Link to={navElem.link}  className={s.header__link}>{navElem.name}</Link>
-                </li>
-            ))}
-        </ul>
-    )
-}
+import { Navigation } from '../Navigation/Navigation';
 
 
 
 
 function Header({ openLogin}) {
+    
     const{register,handleSubmit,formState: { isSubmitting},}=useForm()
     const getFormData=(data)=>{
         console.log(data)

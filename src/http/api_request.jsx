@@ -42,5 +42,20 @@ class Fetching {
       console.log(e);
     }
   }
+  static async favourite(prebid_transport_id,add){
+    try {
+      return AuthService.favorite(prebid_transport_id,add)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async favoriteCarList(carsLimit,listPage){
+    try{
+      const response= await AuthService.favoriteCarList(carsLimit,listPage);
+      return response;
+    }catch(e){
+      console.log(e);
+    }
+  }
 }
 export default Fetching;

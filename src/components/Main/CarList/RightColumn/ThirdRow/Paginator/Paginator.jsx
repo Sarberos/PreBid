@@ -29,13 +29,27 @@ function Paginator() {
     
     return (
     <div className={s.paginator}>
-        <button className={s.pagination_btn}>
+        <button 
+        disabled={!transports.pagination.prev_page} 
+        onClick={()=>{
+            dispatch(setCarsListPage(transports.pagination.prev_page));
+            const carListPromise=handlingPromise(carInfThunk())
+            carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
+        }} 
+        className={s.pagination_btn}>
         <img src={prev_page} alt="" className={s.change_page_img} />
         </button>
         {pagesCount.map(pageNumber=>(
             <button key={pageNumber} onClick={onChangeActivePage} className={transports.pagination.page===pageNumber? `${s.pagination_btn} ${s.active}`:s.pagination_btn}>{pageNumber}</button>
         ))}
-        <button className={s.pagination_btn}>
+        <button     
+        disabled={!transports.pagination.next_page} 
+        onClick={()=>{
+            dispatch(setCarsListPage(transports.pagination.next_page));
+            const carListPromise=handlingPromise(carInfThunk())
+            carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
+        }} 
+        className={s.pagination_btn}>
             <img src={next_page} alt="" className={s.change_page_img} />
         </button>
     </div>

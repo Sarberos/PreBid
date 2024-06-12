@@ -18,6 +18,7 @@ function QuantitySort() {
     changeSortStatus(!secondSort);
   }
   const changeSortTitle=(e) => {
+    dispatch(setCarsListPage(1))
     let currentValue=e.target.innerText
     changeSortStatus(!secondSort)
     dispatch(setCarsLimit(currentValue));
@@ -37,8 +38,8 @@ function QuantitySort() {
             </div>
           </div>
           <div className={secondSort?`${s.change_disp_param_pop_up} ${s.active}`:s.change_disp_param_pop_up}>
-            <div onClick={changeSortTitle} className={ transports.carsLimit == 1 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` } >
-              1
+            <div onClick={changeSortTitle} className={ transports.carsLimit == 10 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` } >
+              10
             </div>
             <div onClick={changeSortTitle} className={ transports.carsLimit == 20 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` } >
               20

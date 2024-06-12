@@ -1,5 +1,21 @@
-.main_info{
+.wrapper{
+  width: 1720px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .main_info{
     width:1490px;
+    width:1720px;
     margin: 0 auto;
     margin-top: 60px;
     font-family: 'Circe';
@@ -33,4 +49,4 @@
     color: rgb(107, 122, 153);
     font-size: 18px;
     font-weight: 400;
-}
+} */

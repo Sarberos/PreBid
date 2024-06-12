@@ -9,8 +9,10 @@ function TilesList() {
       <div className={s.right_columns_sec_row_tiles}>
         {transports.content.map(carProfile=>(
           <TileCarProfile
+            name={carProfile.general?.name}
             img={carProfile.general?.photo?.img}
             id={carProfile.general.id}
+            favourite={carProfile.general?.favourite}
             year={carProfile.general?.year}
             marka={carProfile.general?.transportModel?.transport_brand?.name}
             model={carProfile.general?.transportModel?.name}

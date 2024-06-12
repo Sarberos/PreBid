@@ -12,7 +12,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@rsuite/icons": "^1.0.3",
-    "@tanstack/react-query": "^5.40.0",
+    "@tanstack/react-query": "^5.44.0",
+    "@tanstack/react-query-devtools": "^5.45.0",
     "axios": "^1.7.2",
     "preload-it": "^1.4.0",
     "react": "^18.2.0",

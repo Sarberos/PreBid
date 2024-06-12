@@ -33,6 +33,15 @@
 .pagination_btn:last-child{
   margin-left: 3px;
 }
+.pagination_btn:hover>.change_page_img{
+  opacity:0.5
+}
+.pagination_btn:disabled{
+  background: none;
+  opacity:0.3;
+  cursor:not-allowed;
+}
+
 .change_page_img{
   vertical-align: middle;
   object-fit: contain;

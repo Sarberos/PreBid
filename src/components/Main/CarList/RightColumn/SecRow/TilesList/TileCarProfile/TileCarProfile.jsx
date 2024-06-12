@@ -4,11 +4,28 @@ import lamba_png from './../../../../../../../assets/img/lamba.png'
 import redcar_png from './../../../../../../../assets/img/redcar.png'
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addToFavStatus, carInfThunk, carInfThunkWithOutAnim, setFavouriteStatus, setTransportsInf } from '../../../../../../../redux/mainSlice'
+import { useQuery } from '@tanstack/react-query'
+import Fetching from '../../../../../../../http/api_request'
 
-function TileCarProfile({img,id,year,marka,model,volume,odometr,data,now_price,show_button_buy_now}) {
-  const [tileBookmark, setTileBookmark]=useState(false)
+function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,data,now_price,show_button_buy_now}) {
+  const dispatch=useDispatch()
   const [carImgNum,setCarImgNum]=useState(1)
+  
 
+  const handlingPromise=(actionCreator)=>{
+    return new Promise( (resolve,reject)=>{
+      resolve(dispatch(actionCreator))
+    })
+  }
+  const onSetBookMarkStatus=(id,favourite)=>{
+    dispatch(addToFavStatus({id,add:!favourite}))
+    const carListPromise=handlingPromise(carInfThunkWithOutAnim())
+    carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
+  }
+  
+  
     return (
       <div className={s.car_profile_tile}>
         <div className={s.main_tile_img_wrap}>
@@ -26,12 +43,12 @@ function TileCarProfile({img,id,year,marka,model,volume,odometr,data,now_price,s
               className={s.main_tile_img}
             />{" "}
           </Link>
-          <button
-            onClick={() => setTileBookmark(!tileBookmark)}
+          <span
+            onClick={()=>onSetBookMarkStatus(id,favourite)}
             className={
-              tileBookmark ? s.tile_added_to_bookmark : s.tile_delete_bookmark
+              favourite ? s.tile_added_to_bookmark : s.tile_delete_bookmark
             }
-          ></button>
+          ></span>
           <span className={s.car_ava_whirligig}>
             <div
               onClick={() => setCarImgNum(1)}
@@ -61,7 +78,7 @@ function TileCarProfile({img,id,year,marka,model,volume,odometr,data,now_price,s
         </div>
         <div className={s.main_tile_info_wrap}>
           <h2 className={s.tile_title}>
-          <Link className={s.car_full_profile_link} to="/CarFullProfile/1">2020 VOLKSWAGENGolf Sportsvan VII плюс длинное название</Link>
+          <Link className={s.car_full_profile_link} to="/CarFullProfile/1">{name}</Link>
           </h2>
           <div className={s.tile_info_wrap}>
             <div className={s.tile_charact_row}>

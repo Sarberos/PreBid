@@ -1,3 +1,4 @@
+
 import { useState,useEffect,useLayoutEffect } from 'react'
 import { useSelector,useDispatch } from "react-redux";
 import './App.css'
@@ -9,6 +10,9 @@ import LoginModal from './components/modal_windows/LoginModal/LoginModal'
 import Registration from './components/modal_windows/Registration/Registration'
 import Preloader from './components/Tools/Preloader';
 import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
+import { useQuery } from '@tanstack/react-query';
+import Fetching from './http/api_request';
+
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -24,7 +28,7 @@ const handlingPromise=(actionCreator)=>{
         resolve(dispatch(actionCreator))
       })
   }
-  useLayoutEffect(() => {
+  useEffect(() => {
     if(user===0){
       if(localStorage.getItem('access_token')){
       const userInfPromise = handlingPromise(userInfThunk());
@@ -34,21 +38,27 @@ const handlingPromise=(actionCreator)=>{
         });
       const filtersPromise=handlingPromise(userFiltersThunk())
       filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))});
-
       const carListPromise=handlingPromise(carInfThunk())
       carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
-  
     }
     }else {
       console.log('user inf been exist in appp')
     }
     
   }, [dispatch]);
-
+  // const {data:info,isLoading:queryLoading,refetch,isSuccess}=useQuery({
+  //   queryKey:['carList' ],
+  //   queryFn: handlingPromise(Fetching.carList(1,2)),
+  //   enabled: false,
+  // })
+  // useEffect(()=>{
+  //   isSuccess? console.log(info):''
+  // })
   if (isLoading) {
     return <Preloader />;
   } else {
     return (
+      
       <>
         <Header openLogin={() => setLoginStatus(true)} />
         <Main

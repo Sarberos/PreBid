@@ -38,6 +38,28 @@ export const carInfThunk = createAsyncThunk(
         return response;
     }
 )
+export const carInfThunkWithOutAnim = createAsyncThunk(
+    'user/carInfThunkWithOutAnim',
+    async function (_,{ getState }){
+        const state=getState()
+        const response= await Fetching.carList(state.user.transports.carsLimit,state.user.transports.pagination.page)
+        return response;
+    }
+)
+export const addToFavStatus= createAsyncThunk(
+    'user/addToFavStatus',
+    async function(data){
+        return await Fetching.favourite(data.id, data.add)
+    }
+)
+export const getFavouriteList=createAsyncThunk(
+    'user/getFavouriteList',
+    async function(_,{ getState }){
+        const state=getState()
+        const response=Fetching.favoriteCarList(state.user.transports.carsLimit,state.user.transports.pagination.page);
+        return response;
+    }
+)
 
 
 
@@ -119,9 +141,25 @@ const userSlice =createSlice({
         builder.addCase(carInfThunk.fulfilled,(state)=>{
             state.isLoading=false;
         });
+        builder.addCase(getFavouriteList.pending,(state)=>{
+            state.isLoading=true;
+        });
+        builder.addCase(getFavouriteList.fulfilled,(state)=>{
+            state.isLoading=false;
+        });
+        
     }
 });
 
-export const {setUserInf,setIsAuth,setFiltersInf,setTransportsInf,setCarsLimit,setCarsListPage} =userSlice.actions;
+export const {
+  setIsLoading,
+  setUserInf,
+  setIsAuth,
+  setFiltersInf,
+  setTransportsInf,
+  setCarsLimit,
+  setCarsListPage,
+  setFavouriteStatus,
+} = userSlice.actions;
 
 export default userSlice.reducer;

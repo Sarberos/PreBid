@@ -7,7 +7,6 @@ import FilterElemRed from './FilterElemRed/FilterElemRed';
 
 function LeftColumn() {
     const filters =useSelector((state) => {return state.user.filters;}); /// array of filters name ...
-    const dispatch = useDispatch();
 
     return(
     <div className={s.left_column_wrap}>

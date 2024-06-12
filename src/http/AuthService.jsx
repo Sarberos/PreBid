@@ -20,9 +20,14 @@ class AuthService {
   static async filterInf() {
     return await api.get("/transport/filters")
   }
-
   static async carList(carsLimit,listPage) {
     return await api.get(`/transport?page=${listPage}&limit=${carsLimit}&order=id&by=asc`)
-}
+  }
+  static async favorite(prebid_transport_id, add) {
+    return await api.post("/transport/favourite", {prebid_transport_id, add});
+  }
+  static async favoriteCarList(carsLimit,listPage){
+    return await api.get(`/transport/favourite?page=1&limit=2&order=id&by=asc`)
+  }
 }
 export default AuthService;
