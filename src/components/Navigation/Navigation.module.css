@@ -7,7 +7,7 @@
     padding: 0px;
 }
 .header__link{
-    text-decoration: none;
+    text-decoration: none !important;
     font-family: 'Circe';
     font-weight: 500;
     font-size: 18px;
@@ -17,6 +17,4 @@
 .header__link:hover, .header__link:focus,.header__link:active{
     border-bottom: 1px solid #004DD5 ;
 }
-.header__item.active{
-    border-bottom: 1px solid #004DD5 ;
-}
+

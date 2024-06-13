@@ -12,7 +12,7 @@ import { Navigation } from '../Navigation/Navigation';
 
 
 function Header({ openLogin}) {
-    
+
     const{register,handleSubmit,formState: { isSubmitting},}=useForm()
     const getFormData=(data)=>{
         console.log(data)

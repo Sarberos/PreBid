@@ -83,6 +83,13 @@ const userSlice =createSlice({
                 page:1,
             },
             carsLimit:10,
+        },
+        auctions:{
+            countries:[],
+            pagination:{
+                page:1,
+            },
+            auctionsLimit:10,
         }
     },
     reducers:{
