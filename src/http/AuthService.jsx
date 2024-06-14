@@ -29,5 +29,12 @@ class AuthService {
   static async favoriteCarList(carsLimit,listPage){
     return await api.get(`/transport/favourite?page=1&limit=2&order=id&by=asc`)
   }
+  static async getCountries(){
+    return await api.get(`/countries`)
+  }
+  static async getAuctionList(auctionsLimit,listPage,search) {
+    return await api.post(`/auctions/search?page=${listPage}&limit=${auctionsLimit}`,{search})
+  }
+  
 }
 export default AuthService;

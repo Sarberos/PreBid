@@ -2,15 +2,56 @@ import Header from '../../Header/Header'
 import Footer from './../../Footer/Footer'
 import Paginator from './../../Main/CarList/RightColumn/ThirdRow/Paginator/Paginator'
 import s from './Auctions.module.css'
-import { DateRangePicker, Pagination } from 'rsuite';
-import {useState} from 'react';
+import { DateRangePicker} from 'rsuite';
+import {useEffect, useState} from 'react';
 import QuantitySort from './../../Main/CarList/RightColumn/FirstRow/QuantitySort/QuantitySort'
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuctionCurrentPage,setAuctionCurrentLimit } from '../../../redux/mainSlice';
+import { useCountries } from '../../hooks/useCountries';
+import { useSearch } from '../../hooks/useSearch';
+import { toDate } from './stringToDate';
+
 
 
 export const Auctions=()=>{
-    const[value,setValue]= useState(null);
-    const countries=['Беларусь','США','Канада','Китай'];
-    const total_results=1;
+    const dispatch=useDispatch();
+    const auctions=useSelector(state=>state.user.auctions)
+    const[valueStart,setValueStart]= useState(null);
+    const[valueEnd,setValueEnd]= useState(null);
+    const[currentPage,setcurrentPage]= useState(auctions.currentPage);
+    const[auctionsLimit,setAuctionsLimit]= useState(auctions.auctionsLimit);
+    const[countryId, setCountryId]=useState(0);
+    const {data,isLoading}=useCountries();
+    const {
+      data: searchData,
+      isLoading: searchLoading,
+      refetch: refetchSearchInfo,
+    } = useSearch(auctionsLimit, currentPage,countryId);
+    
+    const changeSortTitle=(e) => {
+        dispatch(setAuctionCurrentPage(1))
+        setcurrentPage(1)
+        let currentValue=e.target.innerText
+        dispatch(setAuctionCurrentLimit(currentValue));
+        setAuctionsLimit(currentValue);
+      }
+
+    const total_results=searchData?.pagination.total_results;
+    let pagesQuantity=Math.ceil(total_results/auctionsLimit)
+    const onChangeActivePage=(e)=>{
+        const eventPage=parseInt(e.target.innerText);
+        setcurrentPage(eventPage);
+        dispatch(setAuctionCurrentPage(eventPage))
+        
+    }
+    function prevPage(){
+       setcurrentPage(searchData?.pagination.prev_page)
+       dispatch(setAuctionCurrentPage(searchData?.pagination.prev_page))
+    }
+    function nextPage(){
+        setcurrentPage(searchData?.pagination.next_page)
+        dispatch(setAuctionCurrentPage(searchData?.pagination.next_page)) 
+  }
 
     return (
       <>
@@ -24,21 +65,23 @@ export const Auctions=()=>{
                     <div className={s.filter_wrap}>
                     <ul className={s.countries_wrap}>
                         <li
+                        onClick={()=>setCountryId(1)}
                         className={
-                            !true ? `${s.one_country} ${s.active}` : s.one_country
+                            countryId===1 ? `${s.one_country} ${s.active}` : s.one_country
                         }
                         >
                         Все
                         </li>
-                        {countries.map((country) => (
+                        {!isLoading? data?.countries.map((country) => (
                         <li
+                            onClick={()=>{setCountryId(country.id)}}
                             className={
-                            !true ? `${s.one_country} ${s.active}` : s.one_country
+                                countryId===country.id ? `${s.one_country} ${s.active}` : s.one_country
                             }
                         >
-                            {country}
+                            {country.name_ru}
                         </li>
-                        ))}
+                        )):<li className={s.one_country}>{'Загрузка'}</li>}
                     </ul>
                     <div className={s.sub_sort}>
                         <div className={s.select_data_wrap}>
@@ -50,9 +93,12 @@ export const Auctions=()=>{
                         </label>
                         <DateRangePicker
                             id="DateRangePicker"
-                            value={value}
+                            value={[valueStart,valueEnd]}
                             onChange={(date) => {
-                            setValue(date);
+                                let valueFirst=toDate(date[0]);
+                                let valueSec=toDate(date[1]);
+                                setValueStart(valueFirst);
+                                setValueEnd(valueSec);
                             }}
                             className={s.dataRangePicker}
                             size="lg"
@@ -62,7 +108,10 @@ export const Auctions=()=>{
                         />
                         </div>
                         <div className={s.select_quantity_wrap}>
-                        <QuantitySort />
+                        <QuantitySort
+                            activeLimitValue={auctions.auctionsLimit}
+                            onChangeSortTitle={(e)=>changeSortTitle(e)}
+                        />
                         </div>
                     </div>
                     </div>
@@ -83,153 +132,61 @@ export const Auctions=()=>{
                         </span>
                     </div>
                     <ul className={s.auctions_list_innerWrap}>
+                        {!searchLoading ? searchData?.content?.map(auction=>(
                             <li className={s.auctionns_byData_wrap}>
 
-                                <article className={s.day_auction}>
-                                    <h3 className={s.day_auction_date}>12.12.2005</h3>
+                            <article className={s.day_auction}>
+                                <h3 className={s.day_auction_date}>{auction.date}</h3>
+                                {auction?.contents?.map(auctionItem=>(
                                     <div className={s.day_auction_content}>
-                                        <ul className={s.content_list}>
-                                            <li className={s.content_item}>
-                                                <div className={s.day_auction_country}>
+                                    <ul className={s.content_list}>
+                                        <li className={s.content_item}>
+                                            <div className={s.day_auction_country}>
+                                                {auctionItem?.countries?.map(auctionItemCountry=>(
                                                     <p className={s.day_auction_country_name}>
-                                                        США
+                                                        {auctionItemCountry.name_ru}
                                                     </p>
-                                                </div>
-                                                <div className={s.day_auction_id}>
-                                                    <p className={s.day_auction_name}>Аукцион</p>
-                                                    <span className={s.auction_id_result}>
-                                                        ID аукциона 
-                                                        <p className={s.auction_id_number}>
-                                                            123
-                                                        </p>
-                                                    </span>
-                                                </div>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.cars_sum_txt}>Количество транспортных средств</span>
-                                                <span className={s.cars_sum_number}>0</span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.passing_status}>Проходит сейчас </span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <button className={s.more_btn}>Смотреть подробнее</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className={s.day_auction_content}>
-                                        <ul className={s.content_list}>
-                                            <li className={s.content_item}>
-                                                <div className={s.day_auction_country}>
-                                                    <p className={s.day_auction_country_name}>
-                                                        США
+                                                ))}
+                                                
+                                            </div>
+                                            <div className={s.day_auction_id}>
+                                                <p className={s.day_auction_name}>{auctionItem.name}</p>
+                                                <span className={s.auction_id_result}>
+                                                    ID аукциона 
+                                                    <p className={s.auction_id_number}>
+                                                        {auctionItem.id}
                                                     </p>
-                                                    <p className={s.day_auction_country_name}>
-                                                    Латвия
-                                                    </p>
-                                                </div>
-                                                <div className={s.day_auction_id}>
-                                                    <p className={s.day_auction_name}>Аукцион</p>
-                                                    <span className={s.auction_id_result}>
-                                                        ID аукциона 
-                                                        <p className={s.auction_id_number}>
-                                                            123
-                                                        </p>
-                                                    </span>
-                                                </div>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.cars_sum_txt}>Количество транспортных средств</span>
-                                                <span className={s.cars_sum_number}>0</span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.passing_status}>Проходит сейчас </span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <button className={s.more_btn}>Смотреть подробнее</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className={s.day_auction_content}>
-                                        <ul className={s.content_list}>
-                                            <li className={s.content_item}>
-                                                <div className={s.day_auction_country}>
-                                                    <p className={s.day_auction_country_name}>
-                                                        США
-                                                    </p>
-                                                    <p className={s.day_auction_country_name}>
-                                                    Латвия
-                                                    </p>
-                                                </div>
-                                                <div className={s.day_auction_id}>
-                                                    <p className={s.day_auction_name}>Аукцион</p>
-                                                    <span className={s.auction_id_result}>
-                                                        ID аукциона 
-                                                        <p className={s.auction_id_number}>
-                                                            123
-                                                        </p>
-                                                    </span>
-                                                </div>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.cars_sum_txt}>Количество транспортных средств</span>
-                                                <span className={s.cars_sum_number}>0</span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.passing_status}>Проходит сейчас </span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <button className={s.more_btn}>Смотреть подробнее</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className={s.day_auction_content}>
-                                        <ul className={s.content_list}>
-                                            <li className={s.content_item}>
-                                                <div className={s.day_auction_country}>
-                                                    <p className={s.day_auction_country_name}>
-                                                        США
-                                                    </p>
-                                                    <p className={s.day_auction_country_name}>
-                                                    Латвия
-                                                    </p>
-                                                </div>
-                                                <div className={s.day_auction_id}>
-                                                    <p className={s.day_auction_name}>Аукцион</p>
-                                                    <span className={s.auction_id_result}>
-                                                        ID аукциона 
-                                                        <p className={s.auction_id_number}>
-                                                            123
-                                                        </p>
-                                                    </span>
-                                                </div>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.cars_sum_txt}>Количество транспортных средств</span>
-                                                <span className={s.cars_sum_number}>0</span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <span className={s.passing_status}>Проходит сейчас </span>
-                                            </li>
-                                            <li className={s.content_item}>
-                                                <button className={s.more_btn}>Смотреть подробнее</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </article>
-                                
-                                </li>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li className={s.content_item}>
+                                            <span className={s.cars_sum_txt}>Количество транспортных средств</span>
+                                            <span className={s.cars_sum_number}>{auctionItem.transports_count}</span>
+                                        </li>
+                                        <li className={s.content_item}>
+                                            <span className={s.passing_status}>{auctionItem.status.name}</span>
+                                        </li>
+                                        <li className={s.content_item}>
+                                            <button className={s.more_btn}>Смотреть подробнее</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                ))}
+                            </article>
+                            
+                            </li>
+                        )):'Загрузка'}
+                            
                     </ul>
                     </div>
                     <div className={s.pagination}>
-                        {/* <Paginator
-                        //  pagesQuantity={pagesQuantity} 
-                        //  paginationObj={transports.pagination}
-                        //  changeActivePage={(e)=>onChangeActivePage(e)}
-                        //  prevPage={()=>prevPage()}
-                        //  nextPage={()=>nextPage()}
-                        /> */}
+                        <Paginator
+                         pagesQuantity={pagesQuantity} 
+                         paginationObj={searchData?.pagination}
+                         changeActivePage={(e)=>onChangeActivePage(e)}
+                         prevPage={()=>prevPage()}
+                         nextPage={()=>nextPage()}
+                        />
                     </div>
                     
                </div>

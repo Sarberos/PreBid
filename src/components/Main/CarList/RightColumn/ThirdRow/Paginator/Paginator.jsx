@@ -15,7 +15,7 @@ function Paginator({pagesQuantity,paginationObj,changeActivePage,prevPage,nextPa
   return(
       <div className={s.paginator}>
       <button 
-      disabled={!paginationObj.prev_page} 
+      disabled={!paginationObj?.prev_page} 
       onClick={()=>prevPage()} 
       className={s.pagination_btn}>
       <img src={prev_page} alt="" className={s.change_page_img} />
@@ -24,7 +24,7 @@ function Paginator({pagesQuantity,paginationObj,changeActivePage,prevPage,nextPa
           <button key={pageNumber} onClick={(e)=>changeActivePage(e)} className={paginationObj.page===pageNumber? `${s.pagination_btn} ${s.active}`:s.pagination_btn}>{pageNumber}</button>
       ))}
       <button     
-      disabled={!paginationObj.next_page} 
+      disabled={!paginationObj?.next_page} 
       onClick={()=>nextPage()} 
       className={s.pagination_btn}>
           <img src={next_page} alt="" className={s.change_page_img} />

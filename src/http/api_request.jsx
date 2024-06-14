@@ -57,5 +57,19 @@ class Fetching {
       console.log(e);
     }
   }
+  static async getCountries(){
+    try {
+      return await AuthService.getCountries()
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async getAuctionList(auctionsLimit,listPage,search){
+    try {
+      return await AuthService.getAuctionList(auctionsLimit,listPage,search)
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 export default Fetching;

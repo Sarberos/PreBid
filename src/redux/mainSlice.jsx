@@ -1,7 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import Fetching from '../http/api_request';
 
-
 export const loginThunk = createAsyncThunk(
     'user/loginThunk',
     async function (data){
@@ -85,11 +84,8 @@ const userSlice =createSlice({
             carsLimit:10,
         },
         auctions:{
-            countries:[],
-            pagination:{
-                page:1,
-            },
-            auctionsLimit:10,
+            currentPage:1,
+            auctionsLimit:5,
         }
     },
     reducers:{
@@ -119,6 +115,12 @@ const userSlice =createSlice({
         },
         setCarsListPage(state,action){
             state.transports.pagination.page=action.payload;
+        },
+        setAuctionCurrentPage(state,action){
+            state.auctions.currentPage=action.payload
+        },
+        setAuctionCurrentLimit(state,action){
+            state.auctions.auctionsLimit=action.payload
         },
     },
     extraReducers: (builder) =>{
@@ -167,6 +169,8 @@ export const {
   setCarsLimit,
   setCarsListPage,
   setFavouriteStatus,
+  setAuctionCurrentPage,
+  setAuctionCurrentLimit
 } = userSlice.actions;
 
 export default userSlice.reducer;
