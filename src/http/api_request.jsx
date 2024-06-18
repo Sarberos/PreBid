@@ -71,5 +71,19 @@ class Fetching {
       console.log(e);
     }
   }
+  static async getListOptions(){
+    try {
+      return await AuthService.getListOptions()
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async getSalesCount(){
+    try {
+      return await AuthService.getSalesCount()
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 export default Fetching;

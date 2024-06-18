@@ -35,6 +35,12 @@ class AuthService {
   static async getAuctionList(auctionsLimit,listPage,search) {
     return await api.post(`/auctions/search?page=${listPage}&limit=${auctionsLimit}`,{search})
   }
-  
+  static async getListOptions () {
+    return await api.get(`/transport/list-options`)
+  }
+  static async getSalesCount () {
+    return await api.get(`/transport/count`)
+  }
+   
 }
 export default AuthService;

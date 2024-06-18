@@ -7,17 +7,20 @@ import {useEffect, useState} from 'react';
 import QuantitySort from './../../Main/CarList/RightColumn/FirstRow/QuantitySort/QuantitySort'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuctionCurrentPage,setAuctionCurrentLimit } from '../../../redux/mainSlice';
-import { useCountries } from '../../hooks/useCountries';
-import { useSearch } from '../../hooks/useSearch';
+import { useCountries } from '../../hooks/auctions/useCountries';
+import { useSearch } from '../../hooks/auctions/useSearch';
 import { toDate } from './stringToDate';
+
 
 
 
 export const Auctions=()=>{
     const dispatch=useDispatch();
     const auctions=useSelector(state=>state.user.auctions)
-    const[valueStart,setValueStart]= useState(null);
-    const[valueEnd,setValueEnd]= useState(null);
+    const[value,setValue]= useState(null);
+    const [dateValue,setDateValue]=useState({date1:null,date2:null})
+    const [value1,setValue1]=useState(null)
+    const [value2,setValue2]=useState(null)
     const[currentPage,setcurrentPage]= useState(auctions.currentPage);
     const[auctionsLimit,setAuctionsLimit]= useState(auctions.auctionsLimit);
     const[countryId, setCountryId]=useState(0);
@@ -26,7 +29,7 @@ export const Auctions=()=>{
       data: searchData,
       isLoading: searchLoading,
       refetch: refetchSearchInfo,
-    } = useSearch(auctionsLimit, currentPage,countryId);
+    } = useSearch(auctionsLimit, currentPage,countryId,dateValue.date1,dateValue.date2);
     
     const changeSortTitle=(e) => {
         dispatch(setAuctionCurrentPage(1))
@@ -38,6 +41,7 @@ export const Auctions=()=>{
 
     const total_results=searchData?.pagination.total_results;
     let pagesQuantity=Math.ceil(total_results/auctionsLimit)
+    
     const onChangeActivePage=(e)=>{
         const eventPage=parseInt(e.target.innerText);
         setcurrentPage(eventPage);
@@ -53,6 +57,11 @@ export const Auctions=()=>{
         dispatch(setAuctionCurrentPage(searchData?.pagination.next_page)) 
   }
 
+  const onDateRangePickerVhange = (date) => {
+    setValue(date);
+    setDateValue({date1:date[0],date2:date[1]});
+    console.log(date[0],date[1])
+  };
     return (
       <>
         <div className={s.wrapper}>
@@ -93,13 +102,8 @@ export const Auctions=()=>{
                         </label>
                         <DateRangePicker
                             id="DateRangePicker"
-                            value={[valueStart,valueEnd]}
-                            onChange={(date) => {
-                                let valueFirst=toDate(date[0]);
-                                let valueSec=toDate(date[1]);
-                                setValueStart(valueFirst);
-                                setValueEnd(valueSec);
-                            }}
+                            value={value}
+                            onChange={(date)=>onDateRangePickerVhange(date)}
                             className={s.dataRangePicker}
                             size="lg"
                             today="false"
