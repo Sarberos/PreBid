@@ -14,7 +14,7 @@ import { TariffPlan } from './components/ProfileSubComp/TariffPlan/TariffPlan.js
 import { Support } from './components/ProfileSubComp/Support/Support.jsx'
 import { NotificationSettings } from './components/ProfileSubComp/NotificationSettings/NotificationSettings.jsx'
 import { Auctions } from './components/Navigation/Auctions/Auctions.jsx'
-import { MySels } from './components/Navigation/MySels/MySels.jsx'
+import { MySales } from './components/Navigation/MySales/MySales.jsx'
 import { MyBy } from './components/Navigation/MyBy/MyBy.jsx'
 import { MyRates } from './components/Navigation/MyRates/MyRates.jsx'
 import { MyFavourite } from './components/Navigation/MyFavourite/MyFavourite.jsx'
@@ -22,6 +22,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import 'rsuite/dist/rsuite.min.css';
 import { CustomProvider } from 'rsuite';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { MyLots } from './components/Navigation/MySales/MyLots/MyLots.jsx'
+import { CoordinationLots } from './components/Navigation/MySales/CoordinationLots/CoordinationLots.jsx'
+import { CreateLot } from './components/Navigation/MySales/CreateLot/CreateLot.jsx'
+import { WaitingLots } from './components/Navigation/MySales/WaitingLots/WaitingLots.jsx'
+import { SoldLots } from './components/Navigation/MySales/SoldLots/SoldLots.jsx'
 
 window.store=store;
 
@@ -61,8 +66,24 @@ const router = createBrowserRouter(
       element: <Auctions />,
     },
     {
-      path: '/my-sels',
-      element: <MySels />,
+      path: '/my-sales',
+      element: <MySales><CreateLot /></MySales>,
+    },
+    {
+      path: '/my-lots',
+      element:<MySales><MyLots /></MySales> ,
+    },
+    {
+      path: '/coordination-lots',
+      element: <MySales><CoordinationLots /></MySales>
+    },
+    {
+      path: '/waiting-lots',
+      element: <MySales><WaitingLots/></MySales>
+    },
+    {
+      path: '/sold-lots',
+      element: <MySales><SoldLots/></MySales>,
     },
     {
       path: '/my-by',

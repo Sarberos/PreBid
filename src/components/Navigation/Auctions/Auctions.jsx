@@ -19,8 +19,6 @@ export const Auctions=()=>{
     const auctions=useSelector(state=>state.user.auctions)
     const[value,setValue]= useState(null);
     const [dateValue,setDateValue]=useState({date1:null,date2:null})
-    const [value1,setValue1]=useState(null)
-    const [value2,setValue2]=useState(null)
     const[currentPage,setcurrentPage]= useState(auctions.currentPage);
     const[auctionsLimit,setAuctionsLimit]= useState(auctions.auctionsLimit);
     const[countryId, setCountryId]=useState(0);

@@ -13,7 +13,7 @@ export const Navigation=(selectedItem,setToolsStatus)=>{
     },
     {
         name:'Мои продажи',
-        link:'/my-sels',
+        link:'/my-sales',
     },
     {
         name:'Мои заказы',

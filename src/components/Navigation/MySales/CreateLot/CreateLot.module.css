@@ -1,0 +1,209 @@
+.right_column{
+    margin-bottom: 55px;
+}
+.right_title_wrap{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+.right_title{
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #000;
+    text-align: left;
+}
+.main_characteristic_grid{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    column-gap: 80px;
+}
+.main_characteristic_column{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.main_characteristic_item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.main_char_item_label{
+    font-size: 16px;
+    font-weight: 400;
+    color: #0f0f14;
+}
+.main_char_item_select{
+    padding-bottom: 9px;
+    padding-top: 9px;
+}
+.rs_select_picker{
+    display: flex;
+    flex-direction: row;
+    align-items:  center;
+    gap:10px;
+}
+.price_grid{
+    display: flex;
+    margin: 55px 0 40px;
+    padding-top: 39px;
+    border-top: 1px solid #6B7A99;
+    gap:203px;
+}
+.reservу_price_column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 31px;
+}
+.price_title{
+    font-weight: 700;
+    font-size: 22px;
+    color: #000;
+}
+.price_subtitle{
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+}
+.price_inputNumber{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+.span_usd_ico{
+    font-size: 16px;
+    font-weight: 400;
+    color: #0f0f14;
+}
+.price_grid_inputNumber{
+    border: 1px solid #D3D8E6;
+    border-radius: 4px;
+    border:0;
+    color: #000;
+    outline: none;
+    transition: .3s;
+}
+.price_grid_inputNumber{
+    max-height: 37px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 16px;
+}
+.additional_grid{
+    border-top: 1px solid #6b7a99;
+    border-bottom: 1px solid #6b7a99;
+    padding: 55px 0;
+}
+.price_title_wrap{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+.additionals_inputs_list{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.additionals_inputs_item{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 0 1 300px;
+    max-width: 300px;
+}
+.additionals_inputs_item:last-child{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 0 auto;
+}
+.select_with_file{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex: 1 1 auto;
+}
+.rs_select_picker{
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: middle;
+}
+.clip_file label{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.clip_file label span{
+    font-size: 14px;
+    font-weight: 400;
+    color: #0050cf;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+.clip_img{
+    width: 24px;
+    height: 24px;
+}
+.button_pair{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.upload_img_grid{
+    margin: 55px 0 125px;
+}
+.to_admin_btn{
+    padding: 15px 25px;
+    color: #fff;
+    border: 1px solid #0050cf;
+    background-color: #0050cf;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 65px;
+}
+.upload_img_wrap{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 35px;
+    transition: .3s;
+    border: 1px dashed white;
+}
+.uploading_img_list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+.uploading_img_txt_item{
+    margin-bottom: 15px;
+    position: relative;
+    height: 135px;
+}
+.upload_file_ico{
+    display: flex;
+    text-align: center;
+    padding: 54px 45px;
+    color: #0050cf;
+    border: 1px dashed #0050cf;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+}

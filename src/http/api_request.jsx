@@ -85,5 +85,26 @@ class Fetching {
       console.log(e);
     }
   }
+  static async getMySales(lotsLimit,listPage,lotStatus){
+    try {
+      return await AuthService.getMySales(lotsLimit,listPage,lotStatus)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async getCoordinLots(lotsLimit,listPage){
+    try {
+      return await AuthService.getCoordinLots(lotsLimit,listPage)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async transport(createLot){
+    try {
+      return await AuthService.transport(createLot)
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 export default Fetching;

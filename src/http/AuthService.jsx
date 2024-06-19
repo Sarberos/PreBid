@@ -41,6 +41,14 @@ class AuthService {
   static async getSalesCount () {
     return await api.get(`/transport/count`)
   }
-   
+  static async getMySales(lotsLimit,listPage,lotStatus){
+    return await api.get(`/transport/my-sales?page=${listPage}&limit=${lotsLimit}&status=${lotStatus}`)
+  }
+  static async  getCoordinLots(lotsLimit,listPage){
+    return await api.get(`transport/search?page=${listPage}&limit=${lotsLimit}&status=0`)
+  }
+  static async transport(createLot) {
+    return await api.post("/transport", {...createLot});
+  }
 }
 export default AuthService;
