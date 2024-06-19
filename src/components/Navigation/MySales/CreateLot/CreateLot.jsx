@@ -32,7 +32,6 @@ const CustomInputGroupWidthButton = ({ placeholder, ...props }) => (
   }
 
   export const CreateLot=()=>{
-    
     const [lotConfig, setLotConfig] = useState({
       arrival_end:1, //
       auction_id:1, //
@@ -450,17 +449,22 @@ const CustomInputGroupWidthButton = ({ placeholder, ...props }) => (
                               />
                             </div>
                             <div className={s.clip_file}>
-                              <label htmlFor="clip file">
+                              <label
+                                 htmlFor="clip file">
                                 <img src={clipImg} className={s.clip_img} />
-                                <input
-                                  id={"clip file"}
-                                  type="file"
-                                  style={{ display: "none" }}
-                                  className={s.clip_file_input}
-                                />
+                                
                                 <span className={s.clip_file_txt}>
                                   Прикрепить файл
                                 </span>
+                                <input
+                                  onClick={()=>{
+                                    debugger
+                                    console.log('sdsdsds.dsdsds')}}
+                                  id={"clip file"}
+                                  type="file"
+                                  style={{ transform: 'rotateY(90deg)'}}
+                                  className={s.clip_file_input}
+                                />
                               </label>
                             </div>
                           </div>
