@@ -30,8 +30,25 @@ const CustomInputGroupWidthButton = ({ placeholder, ...props }) => (
       value: item.id, 
     }));
   }
+  const toModelSelectList=(localData,data, dataKey,nameKey,idKey='id')=>{
+    let helpArr =[]
+    data?.forEach((elem) => {
+      elem[dataKey].forEach((item) => {
+        helpArr.push({
+          id: item[idKey],
+          name:item[nameKey],
+          transport_brand_id:item['transport_brand_id'],
+        });  
+      });
+    });  
+    return helpArr.filter(item=> item.transport_brand_id===localData.transport_brand_id).map((item) => ({
+      label: item.name,
+      value: item.id, 
+    }));
+  }
 
   export const CreateLot=()=>{
+
     const [lotConfig, setLotConfig] = useState({
       arrival_end:1, //
       auction_id:1, //
@@ -61,6 +78,7 @@ const CustomInputGroupWidthButton = ({ placeholder, ...props }) => (
       vin: 1,
       year:'',
     });
+  
     const {mutate,isPending}=useCreateLot()
     const {data:listData, isLoading: isListInfo}=useListOptions();
     const keysAmount = [{
@@ -116,11 +134,11 @@ const CustomInputGroupWidthButton = ({ placeholder, ...props }) => (
                           <SelectPicker
                             onChange={(value)=>{setLotConfig({...lotConfig,transport_model_id: value})}}
                             className={s.main_char_item_select}
-                            data={toSelectList(
+                            data={toModelSelectList(
+                              lotConfig,
                               listData,
                               "transportModel",
-                              "name"
-                            )}
+                              "name")}
                             searchable={true}
                             style={{ width: 332, heigth: 43 }}
                             placeholder="Select"
@@ -209,7 +227,7 @@ const CustomInputGroupWidthButton = ({ placeholder, ...props }) => (
                         <div className={s.rs_select_picker}>
                           <SelectPicker
                             className={s.main_char_item_select}
-                            onChange={(value)=>{setLotConfig({...lotConfig,transport_tr_id: value})}}
+                            onChange={(value)=>{setLotConfig({...lotConfig,transport_drive_id: value})}}
                             data={toSelectList(
                               listData,
                               "transportDrive",

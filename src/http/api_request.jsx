@@ -106,5 +106,12 @@ class Fetching {
       console.log(e);
     }
   }
+  static async bidSearch(lotsLimit,listPage,search){
+    try {
+      return await AuthService.bidSearch(lotsLimit,listPage,search)
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 export default Fetching;

@@ -8,7 +8,7 @@ export const useCreateLot=()=>{
     const {mutate,isPending}=useMutation({
         mutationKey:['create lot'],
         mutationFn: (createLotConfig)=>Fetching.transport(createLotConfig),
-        onSuccess: ()=>queryClient.invalidateQueries({queryKey:['my lots',10,1,0]}),
+        onSuccess: ()=>queryClient.invalidateQueries({queryKey:['my lots']}),
     })
     return {mutate,isPending}
 }

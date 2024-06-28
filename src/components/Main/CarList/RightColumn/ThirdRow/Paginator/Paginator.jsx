@@ -1,9 +1,6 @@
 import s from './Paginator.module.css'
-import {useState} from 'react'
-import {useDispatch, useSelector } from "react-redux";
 import next_page from './../../../../../../assets/img/arrow_right.svg'
 import prev_page from './../../../../../../assets/img/arrow_left.svg'
-import { carInfThunk, setCarsListPage, setTransportsInf } from '../../../../../../redux/mainSlice';
 
 
 function Paginator({pagesQuantity,paginationObj,changeActivePage,prevPage,nextPage}) {
@@ -11,7 +8,9 @@ function Paginator({pagesQuantity,paginationObj,changeActivePage,prevPage,nextPa
     for(let i=1; i<=pagesQuantity;i++){
         pagesCount.push(i)
     }
-
+    if (pagesQuantity===1) {
+        return(<div></div>)
+    }else{
   return(
       <div className={s.paginator}>
       <button 
@@ -31,7 +30,7 @@ function Paginator({pagesQuantity,paginationObj,changeActivePage,prevPage,nextPa
       </button>
   </div>
   )
-
-  }
+    }
+}
   
   export default Paginator;

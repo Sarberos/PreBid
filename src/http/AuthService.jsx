@@ -50,5 +50,8 @@ class AuthService {
   static async transport(createLot) {
     return await api.post("/transport", {...createLot});
   }
+  static async bidSearch(lotsLimit,listPage,search) {
+    return await api.post(`/transport/bid/search?limit=${lotsLimit}&page=${listPage}`,{search});
+  }
 }
 export default AuthService;

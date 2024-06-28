@@ -15,7 +15,7 @@ import { Support } from './components/ProfileSubComp/Support/Support.jsx'
 import { NotificationSettings } from './components/ProfileSubComp/NotificationSettings/NotificationSettings.jsx'
 import { Auctions } from './components/Navigation/Auctions/Auctions.jsx'
 import { MySales } from './components/Navigation/MySales/MySales.jsx'
-import { MyBy } from './components/Navigation/MyBy/MyBy.jsx'
+import { MyOrders } from './components/Navigation/MyOrders/MyOrders.jsx'
 import { MyRates } from './components/Navigation/MyRates/MyRates.jsx'
 import { MyFavourite } from './components/Navigation/MyFavourite/MyFavourite.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -27,6 +27,9 @@ import { CoordinationLots } from './components/Navigation/MySales/CoordinationLo
 import { CreateLot } from './components/Navigation/MySales/CreateLot/CreateLot.jsx'
 import { WaitingLots } from './components/Navigation/MySales/WaitingLots/WaitingLots.jsx'
 import { SoldLots } from './components/Navigation/MySales/SoldLots/SoldLots.jsx'
+import { PayWaiting } from './components/Navigation/MyOrders/PayWaiting/PayWaiting.jsx'
+import { Purchases } from './components/Navigation/MyOrders/PurchasesHistory/Purchases.jsx'
+import { PeekUpLot } from './components/Navigation/MyOrders/PeekUpLot/PeekUpLot.jsx'
 
 window.store=store;
 
@@ -86,8 +89,16 @@ const router = createBrowserRouter(
       element: <MySales><SoldLots/></MySales>,
     },
     {
-      path: '/my-by',
-      element: <MyBy />,
+      path: '/my-orders/',
+      element: <MyOrders><PayWaiting /></MyOrders>
+    },
+    {
+      path: '/my-orders/peekUp',
+      element: <MyOrders ><PeekUpLot /></MyOrders>,
+    },
+    {
+      path: '/my-orders/purchases',
+      element: <MyOrders ><Purchases /></MyOrders>,
     },
     {
       path: '/my-rates',

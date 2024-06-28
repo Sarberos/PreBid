@@ -17,7 +17,7 @@ export const Navigation=(selectedItem,setToolsStatus)=>{
     },
     {
         name:'Мои заказы',
-        link:'/my-by',
+        link:'/my-orders',
     },
     {
         name:'Мои ставки',
