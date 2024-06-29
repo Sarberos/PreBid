@@ -1,0 +1,292 @@
+.wrapper{
+    width:1490px;
+    margin: 0 auto;
+}
+.car_profile_wrap{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Circe';
+    margin: 0 0 200px 0
+}
+.go_home{
+    width: 100%;
+    height:24px;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    margin: 25px 0 30px 0;
+}
+.home_page_link{
+    text-decoration: none;
+    color: #0065b0;
+    margin: 0 0 0 10px;
+    font-size: 16px;
+}
+.profile_head{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 24px 0;
+}
+.title{
+    font-size: 36px;
+    line-height: 50px;
+}
+.head_tools{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.head_tool{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0065b0;
+    margin: 0 16px 0 0;
+}
+.head_tool:last-child{
+    margin: 0;
+}
+.added__to_bookmark_btn{
+    width: 15px;
+    height:15px;
+    background: url(./../../../../../../../assets/img/blue_bookmark.svg);
+    background-size: 15px 15px;
+    border:0;
+    margin: 0 5px 0 0;
+}
+.deleted_bookmark{
+    width: 15px;
+    height:15px;
+    background: url(./../../../../../../../assets/img/blue_bookmark.svg);
+    background-size: 15px 15px;
+    border:0;
+    margin: 0 5px 0 0;
+}
+.share_btn{
+    width: 15px;
+    height:15px;
+    background: url(./../../../../../../../assets/img/inst_blue.svg);
+    background-size: 15px 15px;
+    border:0;
+    margin: 0 5px 0 0;
+}
+
+
+.car_info_wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: left;
+}
+.car_img_c{
+    width: 592px;
+    height: 400px;
+    margin: 0 34px 0 0;
+}
+.main_img_wrpa{
+    width:592px;
+}
+.main_img{
+    width: 100%;
+    object-fit: cover;
+    height: 400px;
+    border-radius: 4px;
+    max-height: 465px;
+}
+.suggestes_img{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+.small_img_wrap{
+    cursor: pointer;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    width: calc((100% - 32px) / 5);
+}
+.small_img{
+    width: 100%;
+    max-height: 67px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+.tools_btns{
+    width: 258px;
+    height: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tool_btn{
+    background: none;
+    border-bottom: 1px solid #004dd5;
+    border: none;
+    color: #004dd5;
+    position: relative;
+}
+.tool_btn.all_img::after{
+    width: 1px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    content: "";
+    background-color: #004dd5;
+    top: 0;
+    right: -4px;
+}
+
+.car_charact_с{
+    width:385px;
+    margin-right: 32px;
+    color: #000;
+}
+.main_charact{
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+    margin:0 0 24px 0 ;
+}
+.charact_title{
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: #f0f5ff;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 12px;
+}
+.property_list{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 12px;
+}
+.property_row{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: 1px solid #6b7a99;
+    padding: 12px 0;
+}
+.property_row:last-child{
+    border: 0;
+    padding-bottom: 0;
+}
+.property_title{
+    width: 40%;
+    color: #6b7a99;
+}
+.property_value{
+    width: 40%;
+    margin-right: 5px;
+}
+.property_img{
+    display: flex;
+    align-items: center;
+    margin-top: -2px;
+}
+.copy_img{
+    height: 16px;
+    object-fit: contain;
+    cursor: pointer;
+}
+.additional_charact{
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+}
+
+
+
+.bid_c{
+    width: 470px;
+}
+.create_bid{
+    display: none;
+}
+.leave_bid{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+    gap:16px;
+    padding: 15px 30px;
+}
+.leave_bid_choose{
+    height: 32px;
+    display: flex;
+    align-items: center;
+    margin: 16px 0 0 0;
+}
+.win_txt{
+    font-weight: 400;
+    font-size: 22px;
+    color: #438b03;
+    line-height: 32px;
+    position: relative;
+}
+.win_txt::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 32px;
+    background-color: #004dd5;
+    top: 0;
+    right: -20px;
+}
+.out_txt{
+    color: #c20316;
+    margin-left: 33px;
+}
+.buy_now_btn{
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    background-color: #0050cf;
+    border:0;
+    padding: 12px;
+}
+.bid_calculator_btn{
+    height: 24px;
+    background: none;
+    margin-left: 8px;
+    border: none;
+    border-bottom: 1px solid #0050cf;
+    color: #0050cf;
+    margin: 32px 0;
+}
+.common_inf{
+    width: 100%;
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+}
+.common_inf_list{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 12px;
+}
+.inf_property_row{
+    width: 100%;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #6b7a99;
+    padding: 12px 0;
+}
+.inf_property_title{
+    color: #6b7a99;
+}
+.common_logo_img{
+    width: 120px;
+    height:35px;
+    padding: 0 0 12px 12px;
+}

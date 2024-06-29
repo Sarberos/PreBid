@@ -1,0 +1,141 @@
+.car_profile_row{
+  width: 100%;
+  height:110px;
+  display:flex;
+  justify-content: space-between;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;   
+  border: 1px solid #D3D8E6;
+}
+.car_ava{
+  position: relative;
+  width:200px;
+  height: 100%;
+  display:flex;
+  overflow: hidden;
+}
+.car_ava_img{
+  object-fit: cover;
+}
+.added_to_bookmark{
+  z-index: 10;
+  position: absolute;
+  width:25px;
+  height:24px;
+  background: url(./../../../../../../../assets/img/bookmark_added.svg)no-repeat transparent;
+  background-position: 7px 4px;
+  background-color: rgba(255,255,255, 0.4);
+  background-size: 9px 14px;
+  border:none;
+  border:  solid #66C314;
+  border-width: thin;
+  border-radius: 50px;
+  margin: 8px 0 0 7px;
+  transition: 0.3s;
+}
+.delete_bookmark{
+  z-index: 10;
+  position: absolute;
+  width:25px;
+  height:24px;
+  background: url(./../../../../../../../assets/img/bookmark_transparent.svg) no-repeat  transparent;
+  background-position: 7px 3px;
+  background-color: rgba(255,255,255, 0.4);
+  background-size: 9px 14px;
+  border:none;
+  border:  solid #6B7A99;
+  border-width: thin;
+  border-radius: 50px;
+  margin: 8px 0 0 7px;
+  transition: 0.3s;
+}
+.lot_value{
+  width:85px;
+  height: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.lot_value_link{
+  text-decoration: none;
+  color: #7C89A3;
+}
+.lot_value_link:hover, .lot_value_link:focus, .lot_value_link:active{
+  color: #0050CF;
+  border-bottom: 1px solid #0050CF;
+}
+.car_year_value{
+  width:85px;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.car_firm_value{
+  width:160px;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.car_make_value{
+  width:160px;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.car_volume{
+  width:100px;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.car_odometer_value{
+  width:120px;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.lot_release_date{
+  width:120px;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bid_price{
+  width:110px;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.main_actions{
+  width:220px;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.create_bid_btn{
+  width:172px;
+  height:48px;
+  line-height: 24px;
+  color: #FFFFFF;
+  background-color: #0050CF;
+  border: none;
+  border-radius: 4px;
+  margin: 0 0 16px 0;
+}
+.buy_now_link{
+  text-decoration: none;
+  border-bottom: 1px solid #0050CF;
+  color: #0050CF;
+}

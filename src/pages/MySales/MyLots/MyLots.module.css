@@ -1,0 +1,113 @@
+.main_wrapper{
+    margin-bottom: 100px;
+}
+.lots_filters_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.lots_filters_list{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.lots_filters_item{
+    color: rgb(107, 122, 153);
+    border: 1px solid rgb(237, 239, 243);
+    background: rgb(237, 239, 243);
+    border-radius: 40px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+.lots_filters_item.active {
+    color: rgb(0, 77, 213);
+    border: 1px solid rgb(0, 77, 213);
+    background: none;
+}
+.lots_list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+.lot_card_wrap{
+    display: flex;
+    gap: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #A2A9B8;
+    align-items: center;
+}
+.car_profile_img{
+    width: 200px;
+    height: 138px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.cars_lot_info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 1 auto;
+}
+.lot_name{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 1 auto;
+}
+.lot_status{
+    font-weight: 400;
+    font-size: 14px;
+    color: #002d6e;
+}
+.car_params_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+.car_params{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.car_params_column:first-child{
+    padding-right: 10px;
+    border-right: 1px solid #D9D9D9;
+}
+.car_params_column{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.car_param{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.param_text{
+    font-weight: 400;
+    font-size: 14px;
+    color: #6b7a99;
+}
+.param_value{
+    font-size: 14px;
+    font-weight: 400;
+    color: #0f0f14;
+}
+.pagination{
+    margin-top:40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

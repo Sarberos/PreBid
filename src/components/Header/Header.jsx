@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { logoutThunk, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from '../../redux/mainSlice';
+import { logoutThunk, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from '../../app/redux/mainSlice';
 import { Navigation } from '../Navigation/Navigation';
 
 

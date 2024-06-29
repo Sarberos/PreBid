@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Paginator from './Paginator/Paginator';
 import s from './ThirdRow.module.css'
-import { carInfThunk, setCarsListPage, setTransportsInf } from '../../../../../redux/mainSlice';
+import { carInfThunk, setCarsListPage, setTransportsInf } from '../../../../../app/redux/mainSlice';
 
 function ThirdRow() {
   const dispatch=useDispatch();

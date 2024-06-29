@@ -1,0 +1,6 @@
+  .right_column_wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  

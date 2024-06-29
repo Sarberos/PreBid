@@ -3,7 +3,7 @@ import Intro from './Intro/Intro'
 import s from './Main.module.css'
 import CarList from './CarList/CarList';
 import {useDispatch, useSelector} from 'react-redux'
-import { carInfThunk, setFiltersInf, setTransportsInf, userFiltersThunk } from '../../redux/mainSlice';
+import { carInfThunk, setFiltersInf, setTransportsInf, userFiltersThunk } from '../../app/redux/mainSlice';
 import { useEffect } from 'react';
 
 

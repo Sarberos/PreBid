@@ -4,7 +4,7 @@ import QuantitySort from './QuantitySort/QuantitySort';
 import VisualeVariation from './VisualeVariation/VisualeVariation';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { carInfThunk, setCarsLimit, setCarsListPage, setTransportsInf } from '../../../../../redux/mainSlice';
+import { carInfThunk, setCarsLimit, setCarsListPage, setTransportsInf } from '../../../../../app/redux/mainSlice';
 
 function FirstRow(props) {
   const dispatch=useDispatch()

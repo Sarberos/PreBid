@@ -5,7 +5,7 @@ import Footer from './../Footer/Footer'
 import s from "./Profile.module.css";
 import logout_ico from "./../../assets/img/logout_ico.svg";
 import { useEffect, useState } from "react";
-import { logoutThunk, setIsAuth, setUserInf, userInfThunk } from "../../redux/mainSlice";
+import { logoutThunk, setIsAuth, setUserInf, userInfThunk } from "../../app/redux/mainSlice";
 import Preloader from "../Tools/Preloader";
 
 export const Profile = ({children}) => {

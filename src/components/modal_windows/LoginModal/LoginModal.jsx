@@ -3,7 +3,7 @@ import s from "./LoginModal.module.css";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
-import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf } from "../../../redux/mainSlice";
+import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf } from "../../../app/redux/mainSlice";
  
 const LoginModal = ({ onClose, openRegistration}) => {
   const id =useId();

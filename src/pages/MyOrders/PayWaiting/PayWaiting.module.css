@@ -1,0 +1,110 @@
+.profile_wrapper{
+    width: 100%; 
+}
+.profile__inner_wrapper{
+    width: 100%;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    font-family: 'Circe';
+}
+.wrapper_for_card{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap:24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #A2A9B8;
+}
+
+.card_img{
+    width: 200px;
+    height: 138px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.card_info_title{
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+}
+
+.bid_characteristics{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.pair_info_wrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.one_of_pair_info{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+.one_of_pair_info:first-child{
+    border-right: 1px solid #6b7a99 ;
+    padding-right: 8px;
+}
+.pair_title{
+    font-weight: 400;
+    font-size: 14px;
+    color: #6b7a99;
+}
+.pair_lot_number_subtitle{
+    color: #004dd5;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.pair_subtitle{
+    color: #000;
+    text-decoration: none;
+}
+.next_info_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 12px;
+}
+.one_span_info{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+.btns_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:8px;
+    margin-top: 12px;
+}
+.pay_btn{
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #004dd5;
+    padding:8px 28px;
+}
+.documents_btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #004DD5;
+    cursor: pointer;
+}
+.documents_txt{
+    font-weight: 400;
+    font-size: 16px;
+    color:#004DD5
+}
+.doc_btn{
+    background: transparent;
+}

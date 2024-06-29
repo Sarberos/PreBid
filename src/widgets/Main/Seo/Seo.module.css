@@ -1,0 +1,39 @@
+ 
+  .seo_txt_wrap{
+    height: 231px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 124px 0;
+  }
+  .seo_title_block{
+    margin: 0 0 9px 0 ;
+  }
+  .seo_title{
+    font-family: 'Circe';
+    font-weight: 900;
+    font-size: 46px;
+    line-height: 54px;
+  }
+  .main_seo_txt_block{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .left_seo_txt{
+    width:830px;
+    height:168px
+  }
+  .right_seo_txt{
+    width:830px;
+    height:192px
+  }
+  .seo_txt{
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .seo_txt_list{
+    padding-left: 20px ;
+  }
+ /* third section end */
