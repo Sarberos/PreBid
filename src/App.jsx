@@ -52,7 +52,7 @@ const handlingPromise=(actionCreator)=>{
       
       <>
         <Header openLogin={() => setLoginStatus(true)} />
-        <Main
+        {/* <Main
           openRegistration={() => setregStatus(true)}
           openLogin={() => setLoginStatus(true)}
         />
@@ -71,7 +71,7 @@ const handlingPromise=(actionCreator)=>{
 
         <SimpleModal isOpen={regStatus} onClose={() => setregStatus(false)}>
           <Registration />
-        </SimpleModal>
+        </SimpleModal> */}
       </>
     );
   }

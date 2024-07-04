@@ -1,6 +1,6 @@
 .right_columns_first_row{
-    width: 1360px;
-    height: 40px;
+    max-width: 1360px;
+    width: 100%;
     display:flex;
     justify-content: space-between;
     margin : 0 0 40px 0;
@@ -27,11 +27,11 @@
     font-size: 18px;
     line-height: 24px;
     color: #0F0F14;
+    margin: 0;
 }
 .sort_main_list_param{
-    width:584px;
     height:40px;
     display: flex;
     flex-direction: row;
-    margin: 0 40px 0 474px;
+    gap:40px;
 }

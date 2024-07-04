@@ -43,13 +43,14 @@ function FirstRow(props) {
           </p>
         </div>
         <div className={s.sort_main_list_param}>
-          <TimeSort isSort={isSort} changeSort={changeSort} />
+          {/* <TimeSort isSort={isSort} changeSort={changeSort} /> */}
           <QuantitySort 
           activeLimitValue={transports.carsLimit}
           onChangeSortTitle={(e)=>changeSortTitle(e)}
           />
+          <VisualeVariation visStyle={props.visStyle} changeVisStyle={props.changeVisStyle} />
         </div>
-        <VisualeVariation visStyle={props.visStyle} changeVisStyle={props.changeVisStyle} />
+        
       </div>
     );
   }

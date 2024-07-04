@@ -152,6 +152,9 @@
     margin-bottom: 0;
     white-space: nowrap;
 }
+.cliped_file_name{
+    color:#0f0f14;
+}
 .clip_img{
     width: 24px;
     height: 24px;
@@ -160,9 +163,7 @@
     display: flex;
     align-items: center;
     gap: 50px;
-}
-.upload_img_grid{
-    margin: 55px 0 125px;
+    margin-bottom: 125px;
 }
 .to_admin_btn{
     padding: 15px 25px;
@@ -173,37 +174,4 @@
     font-weight: 700;
     font-size: 16px;
     margin-top: 65px;
-}
-.upload_img_wrap{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 35px;
-    transition: .3s;
-    border: 1px dashed white;
-}
-.uploading_img_list{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style: none;
-    gap: 30px;
-    padding: 0;
-    margin: 0;
-}
-.uploading_img_txt_item{
-    margin-bottom: 15px;
-    position: relative;
-    height: 135px;
-}
-.upload_file_ico{
-    display: flex;
-    text-align: center;
-    padding: 54px 45px;
-    color: #0050cf;
-    border: 1px dashed #0050cf;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 18px;
-    cursor: pointer;
 }
