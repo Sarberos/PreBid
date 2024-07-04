@@ -1,15 +1,15 @@
 
 import { useState,useEffect,useLayoutEffect } from 'react'
 import { useSelector,useDispatch } from "react-redux";
-import './App.css'
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import Footer from './components/Footer/Footer'
-import { SimpleModal } from './components/SImpleModal/SimpleModal'
-import LoginModal from './components/modal_windows/LoginModal/LoginModal'
-import Registration from './components/modal_windows/Registration/Registration'
-import Preloader from './components/Tools/Preloader';
-import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
+import './../App.css'
+import Header from '../components/Header/Header'
+import Main from '../components/Main/Main'
+import Footer from '../components/Footer/Footer'
+import { SimpleModal } from '../components/SImpleModal/SimpleModal'
+import LoginModal from '../components/modal_windows/LoginModal/LoginModal'
+import Registration from '../components/modal_windows/Registration/Registration'
+import Preloader from '../components/Tools/Preloader';
+import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from '../app/redux/mainSlice';
 
 
 

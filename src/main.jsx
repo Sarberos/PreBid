@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App from './pages/App.jsx'
 import './index.css'
 import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CarFullProfile from './components/Main/CarList/RightColumn/SecRow/RowList/CarFullProfile/CarFullProfile.jsx'
 import NotFoundPage from './utilits/NotFoundPage/NotFoundPage.jsx'
-import store from './redux/store.jsx'
-import { Provider } from 'react-redux'
+import store from './app/redux/store.jsx'
 import { MyProfile} from './components/ProfileSubComp/MyProfile/MyProfile.jsx'
 import Profile from './components/Profile/Profile.jsx'
 import { DeliveryAdress } from './components/ProfileSubComp/DeliveryAdress/DeliveryAdress.jsx'
@@ -30,6 +29,7 @@ import { SoldLots } from './components/Navigation/MySales/SoldLots/SoldLots.jsx'
 import { PayWaiting } from './components/Navigation/MyOrders/PayWaiting/PayWaiting.jsx'
 import { Purchases } from './components/Navigation/MyOrders/PurchasesHistory/Purchases.jsx'
 import { PeekUpLot } from './components/Navigation/MyOrders/PeekUpLot/PeekUpLot.jsx'
+import { AppProvider } from './app/Provider/AppProvider.jsx'
 
 window.store=store;
 
@@ -111,18 +111,10 @@ const router = createBrowserRouter(
   ]
 )
 const queryClient=new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <CustomProvider >
-        <RouterProvider router={router}>
-          <App/>
-        </RouterProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </CustomProvider>
-    </QueryClientProvider>
+  <React.StrictMode >
+      <AppProvider store={store} queryClient={queryClient}  router={router}/>
   </React.StrictMode>
-  </Provider>
 
 ) 

@@ -1,0 +1,132 @@
+.list_box_item{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Circe';
+}
+.list_item{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+.select_list_item{
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 12px 10px;
+  border-bottom: 1px solid #D3D8E6;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.select_box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  justify-content: space-between;
+}
+.select_list{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    border: 1px solid #F0F2F5;
+    background-color: #fff;
+    transition: .3s;
+    padding: 12px;
+    left: 0;
+    cursor: pointer;
+    transform-origin: 0 0;
+    transform: rotateX(90deg);
+    z-index: 2;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.select_list.active{
+  transform: rotateX(0);
+}
+.item_value{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.multi_filter{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter_text{
+  color: #3d434f;
+  font-size: 16px;
+  font-weight: 400;
+  /* flex: 1 1 auto; */
+  transition: .3s;
+}
+.choose_box{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding: 7px 8px;
+  border: 1px solid #6B7A99;
+  border-radius: 18px;
+  transform-origin:top left ;
+  transition:5s;
+  transform: rotateX(90deg);
+}
+.choose_box.active{
+  transform: rotateX(0);
+}
+.pop_up_filter_label{
+  font-size: 16px;
+  color: #6b7a99;
+  font-weight: 400;
+  white-space: nowrap;
+}
+/* .pop_up_filter_btn_box{
+  background: #000;
+} */
+.pop_up_filter_btn{
+  width: 16px;
+  height: 16px;
+  background: url(./../../../../../assets/img/cross_grey_background.svg);
+  background-position: center;
+  background-size: contain;
+  border: none;
+  border-radius: 50%;
+}
+
+.item_btn{
+  background-image: url(./../../../../../assets/img/accordio_arrow.svg);
+  background-position: center;
+  background-size: cover;
+  min-height: 7px;
+  min-width: 14px;
+  width: 14px;
+  height: 7px;
+  cursor: pointer;
+  background-color: inherit;
+  border:0;
+}
+.select_box_item{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.select_point{
+  font-size: 16px;
+  color: #000;
+  transition: .5s;
+  padding: 10px 0 10px 12px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.select_point:hover,.select_point:focus,.select_point:active{
+  color: #FFFFFF;
+  background-color: #004DD5 ;
+}

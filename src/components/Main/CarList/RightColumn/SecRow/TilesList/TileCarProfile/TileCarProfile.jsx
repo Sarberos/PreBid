@@ -5,7 +5,7 @@ import redcar_png from './../../../../../../../assets/img/redcar.png'
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addToFavStatus, carInfThunk, carInfThunkWithOutAnim, setFavouriteStatus, setTransportsInf } from '../../../../../../../redux/mainSlice'
+import { addToFavStatus, carInfThunk, carInfThunkWithOutAnim, setFavouriteStatus, setTransportsInf } from '../../../../../../../app/redux/mainSlice'
 import { useQuery } from '@tanstack/react-query'
 import Fetching from '../../../../../../../http/api_request'
 

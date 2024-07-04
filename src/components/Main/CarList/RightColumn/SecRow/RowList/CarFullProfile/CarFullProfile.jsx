@@ -10,7 +10,7 @@ import copy_img from './../../../../../../../assets/img/copy_img.svg'
 import Header from '../../../../../../Header/Header';
 import Footer from '../../../../../../Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsAuth, setUserInf, userInfThunk } from '../../../../../../../redux/mainSlice';
+import { setIsAuth, setUserInf, userInfThunk } from '../../../../../../../app/redux/mainSlice';
 import Preloader from '../../../../../../Tools/Preloader';
 
 function CarFullProfile() {
