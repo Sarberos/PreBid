@@ -9,7 +9,8 @@ function Intro({openRegistration ,openLogin}) {
                 <section className={s.intro}>
                     <div className={s.main_left_column_block}>
                         <div className={s.title_block}>
-                            <h1 className={s.title}> Надежный способ продажи и покупки авто через аукцион </h1>
+                            <h1 className={s.title}> {'Надежный способ продажи   и покупки авто через аукцион '}
+                             </h1>
                         </div>
                         <div className={s.main_sign_login}>
                             <button onClick={()=>openRegistration()} className={s.main_login}>
@@ -20,9 +21,7 @@ function Intro({openRegistration ,openLogin}) {
                             </button>
                         </div>
                     </div>
-                    <div className={s.main_car_img_block}>
                         <img src={mainCar} alt="" className={s.main_car_img}/>
-                    </div>
                 </section>
             </div>
         </div>

@@ -1,0 +1,167 @@
+[33mcommit 5d9dc7f22e1a0f00fa37052b550f5dca39071179[m[33m ([m[1;36mHEAD -> [m[1;32mFSD_out[m[33m)[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Thu Jul 4 12:44:44 2024 +0300
+
+    clip images and files
+
+[33mcommit e2a26d974905631b5fc28583d9c9bbcfcd58b2d3[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri Jun 28 19:18:15 2024 +0300
+
+    before FSD arhitecture
+
+[33mcommit c4fa579fcb52dfb79bc4084d75b3cc031be65e0e[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed Jun 19 20:38:14 2024 +0300
+
+    freeInf commit
+
+[33mcommit fba38cb4fc0a287627a9d78a29731c5d23f72265[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed Jun 19 19:49:48 2024 +0300
+
+    attached fields to request in create lot page
+
+[33mcommit d66e46d7cf845252eeee7d6573a16bbb933ed71c[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Tue Jun 18 12:03:02 2024 +0300
+
+    added  hooks
+
+[33mcommit 2c933463c29d2a758f6d072aaedbcfe2d1a17fd7[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Tue Jun 18 11:57:24 2024 +0300
+
+    my-sales without fields pop up info
+
+[33mcommit 08651020c2323c811c1472540c609728c7f92b2d[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri Jun 14 17:16:42 2024 +0300
+
+    auctions without date filter
+
+[33mcommit 74e86ed3d326386d7b812bb26da48c347c0fe7ef[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri Jun 14 00:29:24 2024 +0300
+
+    auctions maket + remake paginator
+
+[33mcommit 3618eb742ded143968045983002210296db7e563[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed Jun 12 18:11:15 2024 +0300
+
+    add and delete bookmark(start use react-query)
+
+[33mcommit 17dcffa1f1dd3167a95781d43d21a8c469943aec[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri Jun 7 20:44:08 2024 +0300
+
+    dinamic car list, ready  pagination
+
+[33mcommit f227fbd2161b128693d33f5e825da3782d359334[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed Jun 5 18:18:06 2024 +0300
+
+    my profile all pages
+
+[33mcommit 724c27c91a0fcc9414e2778eead2e99f5aad9ca0[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Mon Jun 3 20:49:34 2024 +0300
+
+    car filters final
+
+[33mcommit 37bf168d9486592009896cba3364a93abad704ae[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Sun Jun 2 17:11:41 2024 +0300
+
+    working functionality of filters, added smooth animation
+
+[33mcommit 0dab92489864c32c302711703d0ea4b2af1db41a[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Thu May 30 12:59:40 2024 +0300
+
+    user profile (with extra user inf request)
+
+[33mcommit d8c69b633077ce6643987be890fb7ba0de500ee4[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Tue May 28 20:24:39 2024 +0300
+
+    logout, userProfile page
+
+[33mcommit 0a628d61938dd6d243c684d850576c7e76ccdde1[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri May 24 20:08:50 2024 +0300
+
+    sign in full
+
+[33mcommit 2984b3a7cfd3ff752a2ec01c5808a3e1b357e6e6[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Thu May 23 20:10:05 2024 +0300
+
+    ready get user information requst(writing)
+
+[33mcommit 0cdf44b0ff70499503fb77415f863c5c5ae39ead[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Thu May 23 18:12:22 2024 +0300
+
+    midle (2 request, redux(without writing fields)
+
+[33mcommit 96fbb48f43b381790c09ae9e086f9457fb52239b[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed May 22 12:22:36 2024 +0300
+
+    Get JWT(right)
+
+[33mcommit e8e12c328da7f54780fe155aa47aa1d5eda684b7[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed May 22 12:09:41 2024 +0300
+
+    JWT auth(not work) CORS eror
+
+[33mcommit 9ac52862ad4bc2c6adb6d543de0a364d0a2eb7b0[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Tue May 21 17:03:58 2024 +0300
+
+    create modal registration window
+
+[33mcommit dc11939dd3072929fa4338c88241fc322d0e02d3[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Tue May 21 07:55:05 2024 +0300
+
+    Car full profile with basi(not full) functional
+
+[33mcommit 656aa7a4b2e3965ae1e42b5c0cc5336dabcd7b11[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Sat May 18 23:35:28 2024 +0300
+
+    made all movable elements
+
+[33mcommit 13e1a59a434f0b2b631f69ea59d466ba9f676e89[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri May 17 21:01:47 2024 +0300
+
+    modal_window  component, rebuild Login
+
+[33mcommit 37ff61258d26bde0d0d307b50ae30d8930942add[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Fri May 17 13:37:56 2024 +0300
+
+    modal login, functionals  select
+
+[33mcommit 81153bdb03515a405a0a7c17d446458491811fab[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Wed May 15 21:52:50 2024 +0300
+
+    login form
+
+[33mcommit 6f9b46259feea767f8d65e70689de47e8f57b33b[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Sat May 11 23:38:32 2024 +0300
+
+    maket with basic routing
+
+[33mcommit bf49ba19fd0840fb00cdb1decfb4a9a44063e407[m
+Author: sarberos <denismasters@mail.ru>
+Date:   Sat May 11 12:55:08 2024 +0300
+
+    transfer maket

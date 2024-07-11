@@ -1,5 +1,5 @@
 import s from './TimeSort.module.css'
-import accordionArrow_svg from './../../../../../../assets/img/accordio_arrow.svg'
+import accordionArrow_svg from './../../../../../assets/img/accordio_arrow.svg'
 import { useState } from 'react';
 
 function TimeSort({isSort,changeSort}) {

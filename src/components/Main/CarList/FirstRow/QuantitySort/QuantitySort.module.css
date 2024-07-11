@@ -80,3 +80,8 @@
     color: rgba(0, 77, 213, 1);
     background: rgba(0, 77, 213, 0.1);
 }
+@media screen and (max-width: 492px){
+    .second_sort_param{
+        display: none;
+    }
+}

@@ -1,6 +1,6 @@
 import s from './TilesActive.module.css'
-import listDisable_svg from './../../../../../../../assets/img/listDisable.svg'
-import tilesActive_svg from './../../../../../../../assets/img/tilesActive.svg'
+import listDisable_svg from './../../../../../../assets/img/listDisable.svg'
+import tilesActive_svg from './../../../../../../assets/img/tilesActive.svg'
 
 function TilesActive(props) {
   const changeVis = () => {
