@@ -1,6 +1,6 @@
 import s from './ListActive.module.css'
-import listActive_svg from './../../../../../../../assets/img/listActive.svg'
-import tilsDisable_svg from './../../../../../../../assets/img/tilsDisable.svg'
+import listActive_svg from './../../../../../../assets/img/listActive.svg'
+import tilsDisable_svg from './../../../../../../assets/img/tilsDisable.svg'
 
 function ListActive(props){
   const changeVis = () => {

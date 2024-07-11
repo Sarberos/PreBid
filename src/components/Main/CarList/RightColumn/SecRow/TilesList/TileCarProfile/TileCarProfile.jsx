@@ -49,7 +49,7 @@ function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,d
               favourite ? s.tile_added_to_bookmark : s.tile_delete_bookmark
             }
           ></span>
-          <span className={s.car_ava_whirligig}>
+          {/* <span className={s.car_ava_whirligig}>
             <div
               onClick={() => setCarImgNum(1)}
               className={
@@ -74,7 +74,7 @@ function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,d
                   : s.car_ava_whirligig_elem
               }
             ></div>
-          </span>
+          </span> */}
         </div>
         <div className={s.main_tile_info_wrap}>
           <h2 className={s.tile_title}>

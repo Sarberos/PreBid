@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
 import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CarFullProfile from './components/Main/CarList/RightColumn/SecRow/RowList/CarFullProfile/CarFullProfile.jsx'
 import NotFoundPage from './utilits/NotFoundPage/NotFoundPage.jsx'
@@ -30,6 +29,9 @@ import { SoldLots } from './components/Navigation/MySales/SoldLots/SoldLots.jsx'
 import { PayWaiting } from './components/Navigation/MyOrders/PayWaiting/PayWaiting.jsx'
 import { Purchases } from './components/Navigation/MyOrders/PurchasesHistory/Purchases.jsx'
 import { PeekUpLot } from './components/Navigation/MyOrders/PeekUpLot/PeekUpLot.jsx'
+
+import './index.css'
+import './utilits/i18n/i18n.jsx'
 
 window.store=store;
 

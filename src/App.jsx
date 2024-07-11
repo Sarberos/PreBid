@@ -1,7 +1,7 @@
 
 import { useState,useEffect,useLayoutEffect } from 'react'
 import { useSelector,useDispatch } from "react-redux";
-import './App.css'
+import s from './App.module.css'
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import Footer from './components/Footer/Footer'
@@ -50,13 +50,13 @@ const handlingPromise=(actionCreator)=>{
   } else {
     return (
       
-      <>
+      <div className={s.wrapperForAll}>
         <Header openLogin={() => setLoginStatus(true)} />
-        {/* <Main
+        <Main
           openRegistration={() => setregStatus(true)}
           openLogin={() => setLoginStatus(true)}
         />
-        <Footer />
+       
 
         <SimpleModal
           isOpen={loginStatus}
@@ -71,8 +71,9 @@ const handlingPromise=(actionCreator)=>{
 
         <SimpleModal isOpen={regStatus} onClose={() => setregStatus(false)}>
           <Registration />
-        </SimpleModal> */}
-      </>
+        </SimpleModal>
+        <Footer />
+      </div>
     );
   }
 }

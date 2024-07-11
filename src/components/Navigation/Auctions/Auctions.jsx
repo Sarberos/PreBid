@@ -4,7 +4,7 @@ import Paginator from './../../Main/CarList/RightColumn/ThirdRow/Paginator/Pagin
 import s from './Auctions.module.css'
 import { DateRangePicker} from 'rsuite';
 import {useEffect, useState} from 'react';
-import QuantitySort from './../../Main/CarList/RightColumn/FirstRow/QuantitySort/QuantitySort'
+import QuantitySort from './../../Main/CarList/FirstRow/QuantitySort/QuantitySort'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuctionCurrentPage,setAuctionCurrentLimit } from '../../../redux/mainSlice';
 import { useCountries } from '../../hooks/auctions/useCountries';

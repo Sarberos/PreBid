@@ -1,4 +1,27 @@
 .wrapper{
-  width: 1720px;
+  max-width: 1720px;
+  width: 100%;
   margin: 0 auto;
 }
+
+
+@media screen and (max-width:1790px){
+  .wrapper{
+    max-width: 1592px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+}
+@media screen and (max-width: 666px) {
+  .wrapper {
+      padding: 0 32px;
+  }
+}
+ @media screen and (max-width: 375px) {
+  .wrapper {
+      padding: 0 16px;
+  }
+}
+
+

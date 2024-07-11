@@ -1,14 +1,15 @@
   .car_profile_tile{
-    width:322px;
+    width:100%;
     height:555px;
     background: #F8F8F8;
     overflow: hidden;
+    border-radius: 15px;
   }
   .car_profile_tile:last-child{
     margin:0;
   }
   .main_tile_img_wrap{
-    width:322px;
+    width:100%;
     height:170px;
     display: flex;
     overflow: hidden;
@@ -177,4 +178,12 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
+  }
+
+
+  @media screen and (max-width:751px){
+    .car_profile_tile{
+      max-width: 100%;
+      margin: 0 auto !important;
+    }
   }

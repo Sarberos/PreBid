@@ -35,12 +35,12 @@ function Seo() {
                     аукционах
                     трех
                     различных видов:
-                <div className={s.seo_txt_list}>
+                <ul className={s.seo_txt_list}>
                     <li className={s.seo_txt}>Aукцион фиксированной цены: Вы соглашаетесь с ценой, предлагаемой
                         продавцом</li>
                     <li className={s.seo_txt}>Закрытый аукцион: Вы предлагаете свою цену, но не видите предложений
                         других участников торгов</li>
-                </div>
+                </ul>
                 </p>
             </div>
         </div>

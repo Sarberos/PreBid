@@ -1,14 +1,12 @@
+import { FindAmount } from './FindAmount/FindAmount';
 import s from './RightColumn.module.css'
-import FirstRow from './FirstRow/FirstRow'
 import SecRow from './SecRow/SecRow'
 import ThirdRow from './ThirdRow/ThirdRow'
-import { useState } from 'react';
 
-function RightColumn() {
-  const [visStyle, changeVisStyle]=useState(false);
+function RightColumn({visStyle}) {
     return (
       <div className={s.right_column_wrap}>
-        <FirstRow visStyle={visStyle} changeVisStyle={changeVisStyle} />
+        <FindAmount />
         <SecRow  visStyle={visStyle}/>
         <ThirdRow />
       </div>

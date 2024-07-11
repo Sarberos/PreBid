@@ -4,3 +4,15 @@
     flex-wrap: wrap;
   }
   
+  @media screen and (max-width: 1790px){
+    .right_column_wrap{
+        max-width: 1156px;
+        width: 100%;
+    } 
+}
+  @media screen and (max-width:1284px){
+    .right_column_wrap{
+      max-width: 100%;
+      width: 100%;
+    }
+  }

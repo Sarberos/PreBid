@@ -1,5 +1,5 @@
 import s from './QuantitySort.module.css'
-import accordionArrow_svg from './../../../../../../assets/img/accordio_arrow.svg'
+import accordionArrow_svg from './../../../../../assets/img/accordio_arrow.svg'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
