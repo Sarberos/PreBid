@@ -17,7 +17,9 @@
   overflow: hidden;
 }
 .car_ava_img{
-  object-fit: cover;
+  width:200px;
+  height: 110px;
+  object-fit: cover ;
 }
 .added_to_bookmark{
   z-index: 10;

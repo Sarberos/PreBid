@@ -1,5 +1,4 @@
-
-const Preloader=()=>{
+const LeftColumnPreloader=()=>{
     return(
         <div>
             Загрузка
@@ -7,4 +6,4 @@ const Preloader=()=>{
     )
 }
 
-export default Preloader;
+export default LeftColumnPreloader;

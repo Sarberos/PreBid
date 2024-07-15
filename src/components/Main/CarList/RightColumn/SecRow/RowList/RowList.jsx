@@ -3,13 +3,11 @@ import CarProfile from './CarProfile/CarProfile';
 import s from './RowList.module.css'
 import {useSelector} from 'react-redux'
 
-function RowList() {
-    const transports=useSelector(state=>state.user.transports);
-    
+function RowList({carsList}) {
     return (
       <div className={s.right_columns_sec_row_list}>
         <ProfileColumnsNames />
-        {transports.content.map((carProfile) => {
+        {carsList?.content?.map((carProfile) => {
             return(
           <CarProfile
             img={carProfile.general?.photo?.img}

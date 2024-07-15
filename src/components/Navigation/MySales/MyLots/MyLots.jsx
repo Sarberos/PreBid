@@ -2,7 +2,7 @@ import { useMyLots } from '../../../hooks/my-sales/useMyLots'
 import {useEffect, useState} from 'react';
 import s from './MyLots.module.css'
 import Paginator from './../../../Main/CarList/RightColumn/ThirdRow/Paginator/Paginator'
-import Preloader from './../../../Tools/Preloader'
+import Preloader from '../../../Tools/Preloader/Preloader'
 
 
 

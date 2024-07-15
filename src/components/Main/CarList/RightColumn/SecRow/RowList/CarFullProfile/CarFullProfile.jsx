@@ -11,7 +11,7 @@ import Header from '../../../../../../Header/Header';
 import Footer from '../../../../../../Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsAuth, setUserInf, userInfThunk } from '../../../../../../../redux/mainSlice';
-import Preloader from '../../../../../../Tools/Preloader';
+import Preloader from '../../../../../../Tools/Preloader/Preloader';
 import { CarFullProfileSwiper } from './CarFullProfileSwiper/CarFullProfileSwiper';
 
 function CarFullProfile() {
@@ -40,7 +40,7 @@ function CarFullProfile() {
   } else {
     return (
       <>
-        <Header />
+        {/* <Header /> */}
         <div className={s.wrapper}>
           <div className={s.car_profile_wrap}>
             <div className={s.go_home}>
@@ -250,7 +250,7 @@ function CarFullProfile() {
             </div>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }

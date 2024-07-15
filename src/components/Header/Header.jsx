@@ -66,7 +66,7 @@ function Header({ openLogin}) {
     return (
       <header className={s.header}>
         <div className={s.wrapper}>
-          <div className={s.header__wrapper_first__row}>
+          {/* <div className={s.header__wrapper_first__row}>
             <SelectPicker
               data={data}
               searchable={false}
@@ -74,7 +74,7 @@ function Header({ openLogin}) {
               placeholder={lang}
               onChange={(inf)=>changelanguage(inf)}
             />
-          </div>
+          </div> */}
           <div className={s.header__wrapper_sec_row}>
             <div
               style={{

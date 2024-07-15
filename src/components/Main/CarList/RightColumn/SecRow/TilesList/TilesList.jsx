@@ -2,12 +2,10 @@ import s from './TilesList.module.css'
 import TileCarProfile from './TileCarProfile/TileCarProfile'
 import {useSelector} from 'react-redux'
 
-function TilesList() {
-  const transports=useSelector(state=>state.user.transports);
-
+function TilesList({carsList}) {
     return (
       <div className={s.right_columns_sec_row_tiles}>
-        {transports.content.map(carProfile=>(
+        {carsList?.content?.map(carProfile=>(
           <TileCarProfile
             name={carProfile.general?.name}
             img={carProfile.general?.photo?.img}

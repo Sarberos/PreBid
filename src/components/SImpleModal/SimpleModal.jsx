@@ -7,7 +7,7 @@ export const SimpleModal=({isOpen, onClose,children})=>{
     }
     return(
         <>
-        <Transition in={isOpen} timeout={350} unmountOnExit={true}>
+        <Transition in={isOpen} timeout={300} unmountOnExit={true}>
         {(state)=>(
         <div className={`modal  modal__${state}`}>
             <div className={'modal_wrapper'} onClick={onWrapperClick}>

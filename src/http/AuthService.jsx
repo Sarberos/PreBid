@@ -14,15 +14,19 @@ class AuthService {
   static async logout() {
     return await api.post("/user/logout");
   }
+
+
   static async userInf() {
     return await api.get("/user/information")
   }
+
   static async filterInf() {
     return await api.get("/transport/filters")
   }
   static async carList(carsLimit,listPage) {
     return await api.get(`/transport?page=${listPage}&limit=${carsLimit}&order=id&by=asc`)
   }
+  
   static async favorite(prebid_transport_id, add) {
     return await api.post("/transport/favourite", {prebid_transport_id, add});
   }
@@ -53,5 +57,17 @@ class AuthService {
   static async bidSearch(lotsLimit,listPage,search) {
     return await api.post(`/transport/bid/search?limit=${lotsLimit}&page=${listPage}`,{search});
   }
+ 
 }
+class UserServices{
+  
+}
+class CarServices{
+  
+ 
+}
+
+
 export default AuthService;
+export const UserService = new UserServices() ;
+export const CarService = new CarServices ;

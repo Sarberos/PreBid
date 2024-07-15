@@ -1,43 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "./LoginModal.module.css";
-import { useId } from "react";
+import { useEffect, useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
 import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf } from "../../../redux/mainSlice";
+import Preloader from "../../Tools/Preloader/Preloader";
  
-const LoginModal = ({ onClose, openRegistration}) => {
+const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
+  const [isAuth, setAuthStatus]=useState();
+
+  useEffect(()=>{
+    dispatch(setIsAuth(isAuth))
+  },[isAuth])
+
+  const navigate =useNavigate()
   const id =useId();
-  const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
-  const state=useSelector((state)=>{state})
   const dispatch=useDispatch();
 
-  const onOpenRgistrPage=()=>{openRegistration();
+  const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
+
+  const onOpenRgistrPage=()=>{
+    openRegistration();
     onClose();
   }
 
-  const onSubmiting=(data)=>{
+  const onSubmiting=(formData)=>{
     const loginPromise = new Promise((resolve, reject)=>{
-      resolve(dispatch(loginThunk(data)))
+      resolve(dispatch(loginThunk(formData)))
     })
+    
     loginPromise.then((response) => {
       dispatch(setIsAuth(response.payload.data.status));
-      response.payload.data.status === "success" ? onClose() : "";
+      response.payload.data.status === "success" ?setAuthStatus(true) : "" ;
+      response.payload.data.status === "success" ? setLoginStatus(false) : setLoginStatus(true) ;
+      navigate("/")
 
-      const infPromise = new Promise((resolve, reject) => {
-        resolve(dispatch(userInfThunk()));
-      });
-      infPromise.then((response) => {
-        dispatch(setUserInf(response.payload.data));
-      });
-    
-      const filtersPromise= new Promise((resolve,reject)=>{
-        resolve(dispatch(userFiltersThunk()))
-      })
-      filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))})   
     });
    
     
      
+  }
+  if (false) {
+    return <Preloader />
   }
   return (
     <div className={s.login_wrapper}>

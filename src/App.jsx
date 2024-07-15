@@ -1,5 +1,5 @@
 
-import { useState,useEffect,useLayoutEffect } from 'react'
+import React, { useState,useEffect,useLayoutEffect } from 'react'
 import { useSelector,useDispatch } from "react-redux";
 import s from './App.module.css'
 import Header from './components/Header/Header'
@@ -8,43 +8,46 @@ import Footer from './components/Footer/Footer'
 import { SimpleModal } from './components/SImpleModal/SimpleModal'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal'
 import Registration from './components/modal_windows/Registration/Registration'
-import Preloader from './components/Tools/Preloader';
+import Preloader from './components/Tools/Preloader/Preloader';
 import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
+import { useFilterInf } from './components/hooks/car_list/filter_inf';
+import { useUserInf } from './components/hooks/user-Inf/useUserInf';
 
 
 
-function App() {
+function App({children}) {
   const [loginStatus, setLoginStatus] = useState(false);
   const [regStatus, setregStatus] = useState(false);
 
-  const isLoading = useSelector((state) => {return state.user.isLoading;});
-  const isAuth = useSelector((state) => {return state.user.isAuth;});
+  let  isLoading = false;
+  const isAuth = useSelector((state) =>  state.user.isAuth);
   const user = useSelector((state) => state.user.userInf.user);
   const dispatch = useDispatch();
 
-const handlingPromise=(actionCreator)=>{
+  const handlingPromise=(actionCreator)=>{
       return new Promise( (resolve,reject)=>{
         resolve(dispatch(actionCreator))
       })
   }
-  useEffect(() => {
-    if(user===0){
-      if(localStorage.getItem('access_token')){
-      const userInfPromise = handlingPromise(userInfThunk());
-        userInfPromise.then((response) => {
-          dispatch(setUserInf(response?.payload?.data));
-          dispatch(setIsAuth(response?.payload?.data?.status))
-        });
-      const filtersPromise=handlingPromise(userFiltersThunk())
-      filtersPromise.then(response=>{dispatch(setFiltersInf((response.payload.data.content)))});
-      const carListPromise=handlingPromise(carInfThunk())
-      carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
-    }
-    }else {
-      console.log('user inf been exist in appp')
-    }
-    
-  }, [dispatch]);
+
+  if(localStorage.getItem('access_token')){
+    const {data: userInfo, isLoading:userInfoLoading}=useUserInf()
+    isLoading=userInfoLoading;
+    dispatch(setUserInf(userInfo ? userInfo:''));
+    dispatch(setIsAuth(userInfo?.status))
+  }
+  
+  const modifiedChildren = React.Children.map(children, child => {  
+    if (React.isValidElement(child)) {  
+      return React.cloneElement(child, {  
+        openRegistration:() => setregStatus(true),
+        openLogin:() => setLoginStatus(true),
+      });  
+    } 
+    return child;  
+  });  
+
+
   if (isLoading) {
     return <Preloader />;
   } else {
@@ -52,26 +55,22 @@ const handlingPromise=(actionCreator)=>{
       
       <div className={s.wrapperForAll}>
         <Header openLogin={() => setLoginStatus(true)} />
-        <Main
-          openRegistration={() => setregStatus(true)}
-          openLogin={() => setLoginStatus(true)}
-        />
-       
+          {modifiedChildren}
 
-        <SimpleModal
-          isOpen={loginStatus}
-          onClose={() => setLoginStatus(false)}
-        >
-          <LoginModal
-            isRegOpen={regStatus}
+          <SimpleModal
+            isOpen={loginStatus}
             onClose={() => setLoginStatus(false)}
-            openRegistration={() => setregStatus(true)}
-          />
-        </SimpleModal>
+          >
+            <LoginModal
+              isRegOpen={regStatus}
+              openRegistration={() => setregStatus(true)}
+              setLoginStatus={(value)=>setLoginStatus(value)}
+            />
+          </SimpleModal>
+          <SimpleModal isOpen={regStatus} onClose={() => setregStatus(false)}>
+            <Registration />
+          </SimpleModal>
 
-        <SimpleModal isOpen={regStatus} onClose={() => setregStatus(false)}>
-          <Registration />
-        </SimpleModal>
         <Footer />
       </div>
     );

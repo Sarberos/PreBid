@@ -19,7 +19,7 @@ if (isPending) {
 } else {
     return (
       <div className={s.main_wrapper}>
-        <Header />
+        {/* <Header /> */}
         <div className={s.main_wrap}>
           <div className={s.main_inner_wrap}>
             <h2 className={s.main_title}>Мои ставки</h2>
@@ -60,7 +60,7 @@ if (isPending) {
           </div>
         </div>
         <div className={s.footer}>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     );

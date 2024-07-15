@@ -6,7 +6,7 @@ import s from "./Profile.module.css";
 import logout_ico from "./../../assets/img/logout_ico.svg";
 import { useEffect, useState } from "react";
 import { logoutThunk, setIsAuth, setUserInf, userInfThunk } from "../../redux/mainSlice";
-import Preloader from "../Tools/Preloader";
+import Preloader from "../Tools/Preloader/Preloader";
 
 export const Profile = ({children}) => {
   const dispatch =useDispatch();
@@ -39,7 +39,7 @@ export const Profile = ({children}) => {
   } else {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className={s.profile_setting_wrapper}>
         <div className={s.wrapper}>
           <h2 className={s.profile_title}>Настройка аккаунта {user.email}</h2>
@@ -64,7 +64,7 @@ export const Profile = ({children}) => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

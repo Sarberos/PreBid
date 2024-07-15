@@ -10,7 +10,7 @@ export const MySales=({children})=>{
 
     return (
       <div className={s.main_wrapper}>
-        <Header />
+        {/* <Header /> */}
         <div className={s.main_wrap}>
           <div className={s.main_inner_wrap}>
             <h2 className={s.main_title}>Мои продажи</h2>
@@ -63,7 +63,7 @@ export const MySales=({children})=>{
           </div>
         </div>
         <div className={s.footer}>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     );

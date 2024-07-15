@@ -32,6 +32,7 @@ import { PeekUpLot } from './components/Navigation/MyOrders/PeekUpLot/PeekUpLot.
 
 import './index.css'
 import './utilits/i18n/i18n.jsx'
+import Main from './components/Main/Main.jsx'
 
 window.store=store;
 
@@ -39,20 +40,20 @@ const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <App/>,
+      element: <App><Main/></App>,
       errorElement:<NotFoundPage />,
     },
     {
       path: '/CarFullProfile/:profileId',
-      element: <CarFullProfile/>,
+      element:<App><CarFullProfile/></App> ,
     },
     {
       path: '/profile',
-      element:<Profile><MyProfile/></Profile>,
+      element:<App><Profile><MyProfile/></Profile></App> ,
     },
     {
       path: '/deliveryAdress',
-      element: <Profile><DeliveryAdress/></Profile>,
+      element:<App><Profile><DeliveryAdress/></Profile></App> ,
     },
     {
       path: '/notifications',
@@ -60,55 +61,55 @@ const router = createBrowserRouter(
     },
     {
       path: '/support',
-      element: <Profile><Support/></Profile>,
+      element:<App><Profile><Support/></Profile></App> ,
     },
     {
       path: '/tarifPlan',
-      element: <Profile><TariffPlan/></Profile>,
+      element:<App><Profile><TariffPlan/></Profile></App> ,
     },
     {
       path: '/auctions',
-      element: <Auctions />,
+      element: <App><Auctions /></App>,
     },
     {
       path: '/my-sales',
-      element: <MySales><CreateLot /></MySales>,
+      element: <App><MySales><CreateLot /></MySales></App>,
     },
     {
       path: '/my-lots',
-      element:<MySales><MyLots /></MySales> ,
+      element:<App><MySales><MyLots /></MySales></App> ,
     },
     {
       path: '/coordination-lots',
-      element: <MySales><CoordinationLots /></MySales>
+      element:<App><MySales><CoordinationLots /></MySales></App> ,
     },
     {
       path: '/waiting-lots',
-      element: <MySales><WaitingLots/></MySales>
+      element:<App> <MySales><WaitingLots/></MySales></App>,
     },
     {
       path: '/sold-lots',
-      element: <MySales><SoldLots/></MySales>,
+      element: <App><MySales><SoldLots/></MySales></App>,
     },
     {
       path: '/my-orders/',
-      element: <MyOrders><PayWaiting /></MyOrders>
+      element: <App><MyOrders><PayWaiting /></MyOrders></App>,
     },
     {
       path: '/my-orders/peekUp',
-      element: <MyOrders ><PeekUpLot /></MyOrders>,
+      element:<App><MyOrders ><PeekUpLot /></MyOrders></App> ,
     },
     {
       path: '/my-orders/purchases',
-      element: <MyOrders ><Purchases /></MyOrders>,
+      element: <App><MyOrders ><Purchases /></MyOrders></App>,
     },
     {
       path: '/my-rates',
-      element: <MyRates />,
+      element: <App><MyRates /></App>,
     },
     {
       path: '/my-favourite',
-      element: <MyFavourite />,
+      element: <App><MyFavourite /></App>,
     },
   ]
 )

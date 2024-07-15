@@ -4,7 +4,7 @@
 .find_amount_block{
     width: 100%;
     display: flex;
-    gap:10px;
+    gap: 40px;
     flex-direction: row;
     align-items: center;
     margin-bottom: 41px;
@@ -29,7 +29,7 @@
     color: #0F0F14;
 }
 .filters_btn{
-    display: flex;
+    display: none;
     padding: 10px 16px;
     border-radius: 4px;
     align-items: center;
@@ -42,10 +42,15 @@
     font-weight: 700;
 }
 
+@media screen and (max-width: 1440px){
+    .filters_btn{
+        display: flex;
+    }
+}
 @media screen and (max-width: 350px){
     .find_amount_block{
         flex-direction: column;
         align-items: flex-start;
-        gap: 40px;
+        
     }
 }

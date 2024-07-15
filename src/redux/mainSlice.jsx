@@ -74,10 +74,7 @@ const userSlice =createSlice({
             role: 0,
             user: 0,
         },
-        filters:[],
-        myFilters:[],
         transports:{
-            content:[],
             pagination:{
                 page:1,
             },

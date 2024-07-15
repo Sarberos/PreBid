@@ -11,7 +11,6 @@ function Main({openRegistration,openLogin}) {
 const state =useSelector(state=>{ return state})
 const dispatch=useDispatch();
 
-
     return (
         <main className={s.main}>
         { !state.user.isAuth ? <Intro openRegistration={openRegistration} openLogin={openLogin} /> : ''}

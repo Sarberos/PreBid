@@ -32,7 +32,7 @@ useEffect(()=>{
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <main className={s.main}>
                 <div className={s.wrapper}>
                     <CarList />

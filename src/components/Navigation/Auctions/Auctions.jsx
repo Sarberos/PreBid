@@ -63,7 +63,7 @@ export const Auctions=()=>{
     return (
       <>
         <div className={s.wrapper}>
-          <Header />
+          {/* <Header /> */}
           <div className={s.main_wrap}>
             <div className={s.main_inner_wrap}>
               <h2 className={s.title}>Аукционы</h2>
@@ -194,7 +194,7 @@ export const Auctions=()=>{
                </div>
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </>
     );
