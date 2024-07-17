@@ -41,7 +41,7 @@ const router = createBrowserRouter(
     {
       path: '/',
       element: <App><Main/></App>,
-      errorElement:<NotFoundPage />,
+      // errorElement:<NotFoundPage />,
     },
     {
       path: '/CarFullProfile/:profileId',

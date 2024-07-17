@@ -5,19 +5,17 @@ import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
 import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf } from "../../../redux/mainSlice";
 import Preloader from "../../Tools/Preloader/Preloader";
+import { useUserInf } from "../../hooks/user-Inf/useUserInf";
+import { handlingPromise } from "../../../helpers/handlingPromise";
  
 const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
-  const [isAuth, setAuthStatus]=useState();
+  const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
 
-  useEffect(()=>{
-    dispatch(setIsAuth(isAuth))
-  },[isAuth])
 
   const navigate =useNavigate()
   const id =useId();
   const dispatch=useDispatch();
-
-  const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
+  
 
   const onOpenRgistrPage=()=>{
     openRegistration();
@@ -28,20 +26,26 @@ const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
     const loginPromise = new Promise((resolve, reject)=>{
       resolve(dispatch(loginThunk(formData)))
     })
-    
     loginPromise.then((response) => {
-      dispatch(setIsAuth(response.payload.data.status));
-      response.payload.data.status === "success" ?setAuthStatus(true) : "" ;
-      response.payload.data.status === "success" ? setLoginStatus(false) : setLoginStatus(true) ;
-      navigate("/")
+
+      if (response.payload.data.status === "success") {  
+        dispatch(setIsAuth(true))
+        // handlingPromise(dispatch(userInfThunk())).then(
+        //   resp=>{dispatch(setUserInf(resp?.payload?.data))}
+        // )
+        setLoginStatus(false);  
+        navigate("/");  
+
+      } else {  
+        setLoginStatus(true);  
+        dispatch(setIsAuth(false))
+      }  
+      
 
     });
    
     
      
-  }
-  if (false) {
-    return <Preloader />
   }
   return (
     <div className={s.login_wrapper}>

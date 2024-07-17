@@ -1,4 +1,9 @@
-  .right_column_wrap {
+  .preloader_position{
+    width: 100%;
+    top: 50%;
+    right: 50%;
+  }
+.right_column_wrap {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

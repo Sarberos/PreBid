@@ -13,8 +13,10 @@ function LeftColumn() {
     const filters =filtersData?.content?.filters;
 
     if (filtersIsLoading) {
-        <Preloader/>
-    }else{
+      return   <div className={s.left_column_wrap}>
+       <Preloader/>
+       </div>
+    }
     return(
     <div className={s.left_column_wrap}>
         <div className={s.filter_title_block}>
@@ -22,12 +24,11 @@ function LeftColumn() {
             <button className={s.reset_all_btn}>Сбросить все</button>
         </div>
         <div className={s.car_choose_property_list}>
-            {Object.keys(filters).map((fieldName) => (
+            {filters && Object.keys(filters).map((fieldName) => (
             <FilterElemRed key={fieldName}  fieldValue={filters[fieldName]} >{fieldName}</FilterElemRed> ))}
         </div>
         <button className={s.property_show_results_btn}>Показать результаты</button>
     </div>      
     )}
-  }
   
   export default LeftColumn;

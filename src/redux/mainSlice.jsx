@@ -98,7 +98,7 @@ const userSlice =createSlice({
             state.myFilters=action.payload.myFilter;
         },
         setIsAuth: (state,action)=>{
-            state.isAuth=action.payload==="success"? true : action.payload==='fail' ? false :'';
+            state.isAuth=action.payload
         },
         setIsLoading: (state,action)=>{
             state.isLoading=action.payload;

@@ -25,7 +25,6 @@ function Header({ openLogin}) {
         dispatch(setCurrentLang(lang))
         i18next.changeLanguage(lang)
     }, [lang]);
-
     const data=[
     {
         label:'ru',
@@ -62,6 +61,7 @@ function Header({ openLogin}) {
     const resetAuth=()=>{
         dispatch(logoutThunk());
         navigate('/')
+        
     }
     return (
       <header className={s.header}>

@@ -18,24 +18,29 @@ import { useUserInf } from './components/hooks/user-Inf/useUserInf';
 function App({children}) {
   const [loginStatus, setLoginStatus] = useState(false);
   const [regStatus, setregStatus] = useState(false);
+  const [isLoading, setIsLoading]= useState(false)
 
-  let  isLoading = false;
-  const isAuth = useSelector((state) =>  state.user.isAuth);
-  const user = useSelector((state) => state.user.userInf.user);
-  const dispatch = useDispatch();
+  const {data:userInf,isLoading:userInfLoading}= useUserInf();
 
-  const handlingPromise=(actionCreator)=>{
-      return new Promise( (resolve,reject)=>{
-        resolve(dispatch(actionCreator))
-      })
-  }
+  const userStore =useSelector(state=> state.user)
+  const dispatch =useDispatch()
 
-  if(localStorage.getItem('access_token')){
-    const {data: userInfo, isLoading:userInfoLoading}=useUserInf()
-    isLoading=userInfoLoading;
-    dispatch(setUserInf(userInfo ? userInfo:''));
-    dispatch(setIsAuth(userInfo?.status))
-  }
+  useEffect(()=>{
+    setIsLoading(userStore["isLoading"])
+  },[userStore["isLoading"]])
+  useEffect(()=>{
+    if (!!localStorage.getItem('access_token')) {
+      dispatch(setIsAuth(true))
+    }else if (!localStorage.getItem('access_token')) {
+      dispatch(setIsAuth(false))
+    }
+  },[!!localStorage.getItem('access_token')])
+                
+  useEffect(()=>{
+      if(userInf){
+      dispatch(setUserInf(userInf))}
+  },[userInf])
+    
   
   const modifiedChildren = React.Children.map(children, child => {  
     if (React.isValidElement(child)) {  
@@ -47,15 +52,17 @@ function App({children}) {
     return child;  
   });  
 
-
-  if (isLoading) {
-    return <Preloader />;
-  } else {
+    if (isLoading || userInfLoading) {
+      return <Preloader />;
+    }
     return (
       
       <div className={s.wrapperForAll}>
         <Header openLogin={() => setLoginStatus(true)} />
-          {modifiedChildren}
+          <div className={s.modified_children}>
+             {modifiedChildren}
+          </div>
+         
 
           <SimpleModal
             isOpen={loginStatus}
@@ -73,8 +80,6 @@ function App({children}) {
 
         <Footer />
       </div>
-    );
-  }
-}
-
+    )
+    }
 export default App

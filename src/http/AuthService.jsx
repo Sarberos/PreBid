@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import api from "./apiSetting";
+import axios from "axios";
 
 
 class AuthService {
@@ -12,8 +13,15 @@ class AuthService {
     });
   }
   static async logout() {
-    return await api.post("/user/logout");
+    return await api.post("/user/logout")
   }
+  // static async logout() {
+  //   return await axios.post("https://autoru.neonface.by/api/v2/user/logout",{},{
+  //     headers:{
+  //     'Authorization':`Bearer ${localStorage.getItem(
+  //       "access_token")}`,
+  //   }})
+  // }
 
 
   static async userInf() {

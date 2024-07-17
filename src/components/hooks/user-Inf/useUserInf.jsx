@@ -12,6 +12,5 @@ export const useUserInf =()=>{
         isError&& console.log("mistake in userInf request"+error) 
     },[isError,error])
 
-    return {data,isLoading}
+    return {data,isLoading,error}
 }
-``
