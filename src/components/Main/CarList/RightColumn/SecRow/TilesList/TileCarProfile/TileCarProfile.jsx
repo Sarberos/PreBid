@@ -6,23 +6,22 @@ import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addToFavStatus, carInfThunk, carInfThunkWithOutAnim, setFavouriteStatus, setTransportsInf } from '../../../../../../../redux/mainSlice'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import Fetching from '../../../../../../../http/api_request'
 
 function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,data,now_price,show_button_buy_now}) {
   const dispatch=useDispatch()
   const [carImgNum,setCarImgNum]=useState(1)
-  
+ 
+  const queryClient = useQueryClient()
 
-  const handlingPromise=(actionCreator)=>{
-    return new Promise( (resolve,reject)=>{
-      resolve(dispatch(actionCreator))
-    })
-  }
   const onSetBookMarkStatus=(id,favourite)=>{
-    dispatch(addToFavStatus({id,add:!favourite}))
-    const carListPromise=handlingPromise(carInfThunkWithOutAnim())
-    carListPromise.then(response=>{dispatch(setTransportsInf(response.payload.data))})
+      dispatch(addToFavStatus({id,add:!favourite})).then(
+      (resp)=>{
+          queryClient.invalidateQueries({queryKey:['carList']})
+          queryClient.invalidateQueries({queryKey:['favouriteCarsList']})
+        
+      } )
   }
   
   

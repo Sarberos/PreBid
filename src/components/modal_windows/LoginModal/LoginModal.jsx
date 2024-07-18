@@ -7,6 +7,7 @@ import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFilter
 import Preloader from "../../Tools/Preloader/Preloader";
 import { useUserInf } from "../../hooks/user-Inf/useUserInf";
 import { handlingPromise } from "../../../helpers/handlingPromise";
+import { useQueryClient } from "@tanstack/react-query";
  
 const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
   const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
@@ -22,6 +23,7 @@ const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
     onClose();
   }
 
+  const queryClient =useQueryClient()
   const onSubmiting=(formData)=>{
     const loginPromise = new Promise((resolve, reject)=>{
       resolve(dispatch(loginThunk(formData)))
@@ -30,9 +32,7 @@ const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
 
       if (response.payload.data.status === "success") {  
         dispatch(setIsAuth(true))
-        // handlingPromise(dispatch(userInfThunk())).then(
-        //   resp=>{dispatch(setUserInf(resp?.payload?.data))}
-        // )
+        queryClient.invalidateQueries({queryKey:['userInf']})
         setLoginStatus(false);  
         navigate("/");  
 

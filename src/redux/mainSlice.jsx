@@ -67,6 +67,7 @@ const userSlice =createSlice({
     name: 'user',
     initialState :{
         isLoading: false,
+        carsLoading:false,
         isAuth: false,
         userInf:{
             access_rights: 0,
@@ -79,6 +80,12 @@ const userSlice =createSlice({
                 page:1,
             },
             carsLimit:10,
+            
+        },
+        favourCars:{
+            carsLimit: 10,
+            currentPage:1,
+            carsAmount: null
         },
         auctions:{
             currentPage:1,
@@ -103,6 +110,9 @@ const userSlice =createSlice({
         setIsLoading: (state,action)=>{
             state.isLoading=action.payload;
         },
+        setCarsLoading: (state,action)=>{
+            state.carsLoading=action.payload;
+        },
         setTransportsInf:(state,action)=>{
             state.transports.content=action.payload.content
             state.transports.pagination=action.payload.pagination           
@@ -112,6 +122,12 @@ const userSlice =createSlice({
         },
         setCarsListPage(state,action){
             state.transports.pagination.page=action.payload;
+        },
+        setFavCarsListPage(state,action){
+            state.favourCars.currentPage=action.payload;
+        },
+        setFavCarsLimit(state,action){
+            state.favourCars.carsLimit=action.payload;
         },
         setAuctionCurrentPage(state,action){
             state.auctions.currentPage=action.payload
@@ -159,6 +175,7 @@ const userSlice =createSlice({
 
 export const {
   setIsLoading,
+  setCarsLoading,
   setUserInf,
   setIsAuth,
   setFiltersInf,
@@ -167,7 +184,9 @@ export const {
   setCarsListPage,
   setFavouriteStatus,
   setAuctionCurrentPage,
-  setAuctionCurrentLimit
+  setAuctionCurrentLimit,
+  setFavCarsLimit,
+  setFavCarsListPage,
 } = userSlice.actions;
 
 export default userSlice.reducer;

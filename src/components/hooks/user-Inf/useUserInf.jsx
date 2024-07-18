@@ -3,7 +3,7 @@ import Fetching from '../../../http/api_request';
 import { useEffect } from 'react';
 
 export const useUserInf =()=>{
-    const {data,isLoading,isError,error}=useQuery({
+    const {data,isLoading,isFetching,isError,error}=useQuery({
         queryKey:['userInf'],
         queryFn: ()=>Fetching.userInf(),
         select:(resp) => resp.data
@@ -12,5 +12,5 @@ export const useUserInf =()=>{
         isError&& console.log("mistake in userInf request"+error) 
     },[isError,error])
 
-    return {data,isLoading,error}
+    return {data,isLoading,isFetching,error}
 }

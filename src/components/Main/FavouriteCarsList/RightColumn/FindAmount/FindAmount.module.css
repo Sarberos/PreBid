@@ -1,0 +1,56 @@
+.find_amount_wrap{
+    width: 100%;
+}
+.find_amount_block{
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 41px;
+}
+.find_amount_wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items:center;
+    gap: 5px;
+}
+.find_amount_title{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #6B7A99;
+}
+.find_amount_value{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #0F0F14;
+}
+.filters_btn{
+    display: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    align-items: center;
+    gap: 8px;
+    background-color: #0050cf;
+}
+.filters_btn span{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 1440px){
+    .filters_btn{
+        display: flex;
+    }
+}
+@media screen and (max-width: 350px){
+    .find_amount_block{
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+}

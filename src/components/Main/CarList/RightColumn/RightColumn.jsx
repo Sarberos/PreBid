@@ -5,20 +5,21 @@ import ThirdRow from './ThirdRow/ThirdRow'
 import {useCarsList} from './../../../hooks/car_list/car_list'
 import Preloader from '../../../Tools/Preloader/Preloader';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect ,useState} from 'react';
+import { useFavouriteCars } from '../../../hooks/car_list/useFavoriteCars';
 
-function RightColumn({visStyle}) {
-    const {data: carsList, isLoading:carsLoading }=useCarsList()
-    if (carsLoading) {
+function RightColumn({visStyle,listType,getCarsError,carsLoading,carsList, refetch }) {
+
+    if (carsLoading ) {
      return (
      <div className={s.preloader_position}>
      <Preloader/></div>)
     }
     return (
       <div className={s.right_column_wrap}>
-        <FindAmount />
-        <SecRow carsList={carsList} visStyle={visStyle}/>
-        <ThirdRow />
+        <FindAmount carsList={carsList} />
+        <SecRow  carsList={carsList} visStyle={visStyle} getCarsError={getCarsError} />
+        <ThirdRow listType={listType} pagination={carsList?.pagination} />
       </div>
     );
   }

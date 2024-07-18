@@ -38,8 +38,8 @@ class AuthService {
   static async favorite(prebid_transport_id, add) {
     return await api.post("/transport/favourite", {prebid_transport_id, add});
   }
-  static async favoriteCarList(carsLimit,listPage){
-    return await api.get(`/transport/favourite?page=1&limit=2&order=id&by=asc`)
+  static async favoriteCarList(carsLimit=10,listPage=1){
+    return await api.get(`/transport/favourite?page=${listPage}&limit=${carsLimit}&order=id&by=asc`)
   }
   static async getCountries(){
     return await api.get(`/countries`)

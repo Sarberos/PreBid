@@ -1,0 +1,59 @@
+.property_trigger {
+  width: 300px;
+  height: 53px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #A2A9B8;
+  margin: 0 0 6px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.property_trigger_title {
+  font-family: 'Circe';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #0F0F14;
+}
+
+.property_trigger:hover .property_trigger_title {
+  color: #004DD5
+}
+
+.reset_wrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.reset_txt {
+  color: #0050cf;
+  background: transparent;
+  font-weight: 400;
+  font-family: 'Circe';
+  font-size: 16px;
+  border: 0;
+
+}
+
+.reset_btn {
+  background-color: #0050cf;
+  width: 10px;
+  height: 2px;
+  cursor: pointer;
+  border: 0;
+}
+.property_trigger_extendion{
+  display: none;
+}
+.property_trigger_extendion.active{
+  position: absolute;
+  z-index: 10;
+  width:300px;
+  height: 106px;
+  display: flex;
+  background: #ffff;
+  cursor: pointer;
+}

@@ -12,6 +12,7 @@ import Preloader from './components/Tools/Preloader/Preloader';
 import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
 import { useFilterInf } from './components/hooks/car_list/filter_inf';
 import { useUserInf } from './components/hooks/user-Inf/useUserInf';
+import { log } from 'react-modal/lib/helpers/ariaAppHider';
 
 
 
@@ -20,7 +21,7 @@ function App({children}) {
   const [regStatus, setregStatus] = useState(false);
   const [isLoading, setIsLoading]= useState(false)
 
-  const {data:userInf,isLoading:userInfLoading}= useUserInf();
+  const {data:userInf,isLoading:userInfLoading,isFetching:userInfFetching}= useUserInf();
 
   const userStore =useSelector(state=> state.user)
   const dispatch =useDispatch()
@@ -35,12 +36,13 @@ function App({children}) {
       dispatch(setIsAuth(false))
     }
   },[!!localStorage.getItem('access_token')])
-                
+  
   useEffect(()=>{
       if(userInf){
       dispatch(setUserInf(userInf))}
   },[userInf])
-    
+
+
   
   const modifiedChildren = React.Children.map(children, child => {  
     if (React.isValidElement(child)) {  
@@ -52,7 +54,7 @@ function App({children}) {
     return child;  
   });  
 
-    if (isLoading || userInfLoading) {
+    if (isLoading || userInfLoading ||userInfFetching) {
       return <Preloader />;
     }
     return (

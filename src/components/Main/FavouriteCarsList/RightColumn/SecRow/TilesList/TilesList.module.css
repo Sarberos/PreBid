@@ -1,0 +1,23 @@
+  .right_columns_sec_row_tiles{
+    width: 100%;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+  }
+ 
+
+  @media screen and (max-width:1790px){
+    .right_columns_sec_row_tiles{
+      grid-template-columns: repeat(3,1fr);
+    }
+  }
+  @media screen and (max-width:957px){
+    .right_columns_sec_row_tiles{
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+  @media screen and (max-width:751px){
+    .right_columns_sec_row_tiles{
+      grid-template-columns: 1fr;
+    }
+  }
