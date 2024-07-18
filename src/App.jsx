@@ -54,7 +54,7 @@ function App({children}) {
     return child;  
   });  
 
-    if (isLoading || userInfLoading ||userInfFetching) {
+    if (isLoading || userInfLoading ) {
       return <Preloader />;
     }
     return (

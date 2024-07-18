@@ -15,15 +15,6 @@ class AuthService {
   static async logout() {
     return await api.post("/user/logout")
   }
-  // static async logout() {
-  //   return await axios.post("https://autoru.neonface.by/api/v2/user/logout",{},{
-  //     headers:{
-  //     'Authorization':`Bearer ${localStorage.getItem(
-  //       "access_token")}`,
-  //   }})
-  // }
-
-
   static async userInf() {
     return await api.get("/user/information")
   }
@@ -65,17 +56,11 @@ class AuthService {
   static async bidSearch(lotsLimit,listPage,search) {
     return await api.post(`/transport/bid/search?limit=${lotsLimit}&page=${listPage}`,{search});
   }
- 
+  static async carFullProfile(carId) {
+    return await api.get(`/transport/with-user/${carId}`);
+  }
 }
-class UserServices{
-  
-}
-class CarServices{
-  
- 
-}
+
 
 
 export default AuthService;
-export const UserService = new UserServices() ;
-export const CarService = new CarServices ;

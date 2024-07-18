@@ -74,7 +74,7 @@ export const Auctions=()=>{
                         <li
                         onClick={()=>setCountryId(1)}
                         className={
-                            countryId===1 ? `${s.one_country} ${s.active}` : s.one_country
+                            countryId===0 ? `${s.one_country} ${s.active}` : s.one_country
                         }
                         >
                         Все

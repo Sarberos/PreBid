@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { addToFavStatus, carInfThunk, carInfThunkWithOutAnim, setFavouriteStatus, setTransportsInf } from '../../../../../../../redux/mainSlice'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import Fetching from '../../../../../../../http/api_request'
+import { routesValues } from '../../../../../../../consts/pagesConsts'
 
 function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,data,now_price,show_button_buy_now}) {
   const dispatch=useDispatch()
@@ -18,8 +19,8 @@ function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,d
   const onSetBookMarkStatus=(id,favourite)=>{
       dispatch(addToFavStatus({id,add:!favourite})).then(
       (resp)=>{
-          queryClient.invalidateQueries({queryKey:['carList']})
-          queryClient.invalidateQueries({queryKey:['favouriteCarsList']})
+          queryClient.invalidateQueries({queryKey:['carList'], refetchType: 'all'})
+          queryClient.invalidateQueries({queryKey:['favouriteCarsList'], refetchType: 'all'},)
         
       } )
   }
@@ -28,7 +29,7 @@ function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,d
     return (
       <div className={s.car_profile_tile}>
         <div className={s.main_tile_img_wrap}>
-          <Link className={s.main_tile_img_wrap} to="/CarFullProfile/1">
+          <Link className={s.main_tile_img_wrap} to={`${routesValues.CARFULLPROFILE}/${id}`}>
             <img
               src={img?[
                 carImgNum === 1
@@ -48,43 +49,17 @@ function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,d
               favourite ? s.tile_added_to_bookmark : s.tile_delete_bookmark
             }
           ></span>
-          {/* <span className={s.car_ava_whirligig}>
-            <div
-              onClick={() => setCarImgNum(1)}
-              className={
-                carImgNum === 1
-                  ? `${s.car_ava_whirligig_elem} ${s.active}`
-                  : s.car_ava_whirligig_elem
-              }
-            ></div>
-            <div
-              onClick={() => setCarImgNum(2)}
-              className={
-                carImgNum === 2
-                  ? `${s.car_ava_whirligig_elem} ${s.active}`
-                  : s.car_ava_whirligig_elem
-              }
-            ></div>
-            <div
-              onClick={() => setCarImgNum(3)}
-              className={
-                carImgNum === 3
-                  ? `${s.car_ava_whirligig_elem} ${s.active}`
-                  : s.car_ava_whirligig_elem
-              }
-            ></div>
-          </span> */}
         </div>
         <div className={s.main_tile_info_wrap}>
           <h2 className={s.tile_title}>
-          <Link className={s.car_full_profile_link} to="/CarFullProfile/1">{name}</Link>
+          <Link className={s.car_full_profile_link}  to={`${routesValues.CARFULLPROFILE}/${id}`}>{name}</Link>
           </h2>
           <div className={s.tile_info_wrap}>
             <div className={s.tile_charact_row}>
               <div className={s.tile_charact_name}>Номер лота</div>
               <div className={s.tile_charact__value}>
                 <Link
-                  to="/CarFullProfile/1"
+                   to={`${routesValues.CARFULLPROFILE}/${id}`}
                   className={s.tile_charact__value_link}
                 >
                   {id}

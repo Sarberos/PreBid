@@ -1,0 +1,28 @@
+.common_inf{
+    width: 100%;
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+}
+.common_inf_list{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 12px;
+}
+.inf_property_row{
+    width: 100%;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #6b7a99;
+    padding: 12px 0;
+}
+.inf_property_title{
+    color: #6b7a99;
+}
+.common_logo_img{
+    width: 120px;
+    height:35px;
+    padding: 0 0 12px 12px;
+}

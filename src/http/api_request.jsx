@@ -113,5 +113,13 @@ class Fetching {
       console.log(e);
     }
   }
+  static async carFullProfile(carId){
+    try {
+      return await AuthService.carFullProfile(carId)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 }
 export default Fetching;

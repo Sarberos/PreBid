@@ -1,0 +1,60 @@
+.car_charact_с{
+    width:385px;
+    margin-right: 32px;
+    color: #000;
+}
+.main_charact{
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+    margin:0 0 24px 0 ;
+}
+.charact_title{
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: #f0f5ff;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 12px;
+}
+.property_list{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 12px;
+}
+.property_row{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: 1px solid #6b7a99;
+    padding: 12px 0;
+}
+.property_row:last-child{
+    border: 0;
+    padding-bottom: 0;
+}
+.property_title{
+    width: 40%;
+    color: #6b7a99;
+}
+.property_value{
+    width: 40%;
+    margin-right: 5px;
+}
+.property_img{
+    display: flex;
+    align-items: center;
+    margin-top: -2px;
+}
+.copy_img{
+    height: 16px;
+    object-fit: contain;
+    cursor: pointer;
+}
+.additional_charact{
+    border: 1px solid #d3d8e5;
+    border-radius: 4px;
+}

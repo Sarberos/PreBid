@@ -7,7 +7,6 @@ import Intro from '../../Main/Intro/Intro'
 import CarList from '../../Main/CarList/CarList'
 import { useQuery } from '@tanstack/react-query'
 import Fetching from '../../../http/api_request'
-import FavCarList from '../../Main/FavouriteCarsList/FavCarList'
 
 
 export const MyFavourite=()=>{
