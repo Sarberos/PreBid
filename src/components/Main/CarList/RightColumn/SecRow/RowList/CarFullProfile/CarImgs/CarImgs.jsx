@@ -1,33 +1,31 @@
-import bugatti_img from './../../../../../../../../assets/img/main_bugatti.jpg'
-import bugatti_side_img from './../../../../../../../../assets/img/side_bugatti.jpg'
-import bugatti_back_img from './../../../../../../../../assets/img/back_bugatti.jpg'
-import { CarFullProfileSwiper } from './CarFullProfileSwiper/CarFullProfileSwiper'
 import s from './CarImgs.module.css'
+import { CarFullProfileSwiper } from './CarFullProfileSwiper/CarFullProfileSwiper'
+import { useState} from 'react'
+import JSZip from 'jszip';  
+import { createZip } from '../../../../../../../../helpers/createZip';
 
-export const CarImgs=()=>{
+export const CarImgs=({carCharacteristic})=>{
+  const [currentImg, setCurrentImg]= useState(0)
+
+    const handleCreateZip= async ()=>{
+      await createZip(carCharacteristic.images,carCharacteristic?.general?.name)
+    }
+  
     return (
         <div className={s.car_img_wrappeer}>
-
-                <CarFullProfileSwiper />
+                <CarFullProfileSwiper key={currentImg}  currentImg={currentImg} carImgs={carCharacteristic.images}/>
                 <div  className={s.suggestes_img}>
-                <div onClick={()=>setImg(1)}  className={s.small_img_wrap}>
-                  <img src={bugatti_img} alt="" className={s.small_img} />
+                  {carCharacteristic.images.map(elem=>(
+                    <div  onClick={()=>setCurrentImg(elem.id-1)} className={s.small_img_wrap}>
+                    <img src={elem.img} alt="" className={s.small_img} />
+                  </div> ))}
                 </div>
-                <div onClick={()=>setImg(2)}  className={s.small_img_wrap}>
-                  <img src={bugatti_side_img} alt="" className={s.small_img} />
-                </div>
-                <div  onClick={()=>setImg(3)}className={s.small_img_wrap}>
-                  <img src={bugatti_back_img} alt="" className={s.small_img} />
-                </div>
-                <div  onClick={()=>setImg(4)}className={s.small_img_wrap}>
-                  <img src={bugatti_side_img} alt="" className={s.small_img} />
-                </div>
-                </div>
+
                 <div className={s.tools_btns}>
                   <button className={`${s.tool_btn} ${s.all_img}`}>
                     Все фото в одном окне
                   </button>
-                  <button className={s.tool_btn}>Скачать фото</button>
+                  <button  onClick={handleCreateZip}  className={s.tool_btn}>Скачать фото</button>
                 </div>
               </div>
 

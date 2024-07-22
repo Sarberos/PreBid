@@ -40,7 +40,7 @@ function CarList({listType='catalog'}) {
     }
         return (
       <section className={s.car_list}>
-        <FirstRow listType={listType} visStyle={visStyle} changeVisStyle={changeVisStyle}  />
+        <FirstRow carsList={carsList} listType={listType} visStyle={visStyle} changeVisStyle={changeVisStyle}  />
         <div className={s.two_columns_wrapper}>
           <LeftColumn />
           <RightColumn carsList={carsList} carsLoading={carsLoading} refetch={refetch} getCarsError={getCarsError} listType={listType} visStyle={visStyle} />

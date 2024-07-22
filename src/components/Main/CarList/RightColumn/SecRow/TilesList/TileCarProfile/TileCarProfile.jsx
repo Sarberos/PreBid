@@ -31,14 +31,7 @@ function TileCarProfile({name,img,id,favourite,year,marka,model,volume,odometr,d
         <div className={s.main_tile_img_wrap}>
           <Link className={s.main_tile_img_wrap} to={`${routesValues.CARFULLPROFILE}/${id}`}>
             <img
-              src={img?[
-                carImgNum === 1
-                  ? img
-                  : carImgNum === 2
-                  ? lamba_png
-                  : carImgNum === 3
-                  ? redcar_png
-                  : ""]:blackMers_png
+              src={img?img :blackMers_png
               }
               className={s.main_tile_img}
             />{" "}

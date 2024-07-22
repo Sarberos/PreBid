@@ -7,15 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { carInfThunk, setCarsLimit, setCarsListPage, setFavCarsLimit, setTransportsInf } from '../../../../redux/mainSlice';
 import { useQueryClient } from '@tanstack/react-query';
 
-function FirstRow({visStyle,changeVisStyle,listType}) {
+function FirstRow({carsList=null,visStyle,changeVisStyle,listType}) {
   const dispatch=useDispatch()
   const transports=useSelector(state=>state.user.transports)
 
-  const handlingPromise=(actionCreator,limitValueAction,onChangeSortTitle)=>{
-    return new Promise( (resolve,reject)=>{
-      resolve(dispatch(actionCreator))
-    })
-  }
   const changeSortTitle=(e) => {
     dispatch(setCarsListPage(1))
     let currentValue=e.target.innerText
@@ -23,16 +18,30 @@ function FirstRow({visStyle,changeVisStyle,listType}) {
 
   }
 
+  const total_results=carsList?.pagination?.total_results;
+  if(total_results<=10){
     return (
       <div className={s.right_column_wrapper}>
         
-        <div className={s.right_columns_first_row}>
+        <div style={{'justify-content': 'right'}} className={s.right_columns_first_row}>
+          
+          <div  className={s.sort_main_list_param}>
+            <VisualeVariation  visStyle={visStyle} changeVisStyle={changeVisStyle} />
+          </div>
+        </div>
+      </div>
+    )
+  }
+    return (
+      <div className={s.right_column_wrapper}>
+        
+        <div  className={s.right_columns_first_row}>
           <div className={s.add_filter_wrap}>
             <button className={s.add_filter_btn}>
               Добавить свой фильтр
             </button>
           </div>
-          <div className={s.sort_main_list_param}>
+          <div  className={s.sort_main_list_param}>
             <QuantitySort 
             activeLimitValue={transports.carsLimit}
             onChangeSortTitle={(e)=>changeSortTitle(e)}

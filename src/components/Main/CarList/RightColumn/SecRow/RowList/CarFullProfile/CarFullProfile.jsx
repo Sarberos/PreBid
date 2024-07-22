@@ -8,13 +8,38 @@ import { useCarFullProfile } from '../../../../../../hooks/car_list/useCarFullPr
 import { MainCharacteristics } from './MainCharacteristics/MainCharacteristics';
 import { CarImgs } from './CarImgs/CarImgs';
 import { BidInfo } from './BidInfo/BidInfo';
+import { addToFavStatus } from '../../../../../../../redux/mainSlice';
+import { useQueryClient } from '@tanstack/react-query';
 
 function CarFullProfile() {
-  const [inBookmark, setBookmark]= useState(false)
   const id=useId()
   const requestProps =useParams()
-  const {data: carInfo, isLoading: caInfoLoading}=useCarFullProfile(requestProps.profileId)
+  const {data: carInfo, isLoading: caInfoLoading,refetch:refetchCarInfo}=useCarFullProfile(requestProps.profileId)
   const carCharacteristic=carInfo?.content;
+  const [isFavourite, setIsFavourite]=useState(null)
+  const [carId, setcarId]=useState(null)
+
+  useEffect(()=>{
+    setIsFavourite(carCharacteristic?.general?.favourite)
+  },[carCharacteristic?.general?.favourite])
+
+  useEffect(()=>{
+    setcarId(carCharacteristic?.general?.favourite)
+  },[carCharacteristic?.general?.favourite])
+
+  const dispatch = useDispatch();
+
+  const queryClient = useQueryClient()
+  const onSetBookMarkStatus=(id=true,favourite)=>{
+    dispatch(addToFavStatus({id,add:!favourite})).then(
+    (resp)=>{
+        queryClient.invalidateQueries({queryKey:['carList'], refetchType: 'all'})
+        queryClient.invalidateQueries({queryKey:['favouriteCarsList'], refetchType: 'all'},)
+        setIsFavourite(!isFavourite)
+        refetchCarInfo()
+      
+    } )
+}
 
 
 
@@ -34,21 +59,21 @@ function CarFullProfile() {
               </Link>
             </div>
             <div className={s.profile_head}>
-              <h2 className={s.title}>{carCharacteristic.general.name}</h2>
+              <h2 className={s.title}>{carCharacteristic?.general?.name}</h2>
               <div className={s.head_tools}>
                 <div className={s.head_tool}>
                   <button
-                    onClick={() => setBookmark(!inBookmark)}
+                    onClick={()=>onSetBookMarkStatus(carId, isFavourite)}
                     id={`${id}-bookmark`}
                     className={
-                      inBookmark ? s.added__to_bookmark_btn : s.deleted_bookmark
+                      isFavourite ? s.added__to_bookmark_btn : s.deleted_bookmark
                     }
                   ></button>
                   <label
                     htmlFor={`${id}-bookmark`}
                     className={s.add_bookmark_txt}
                   >
-                    {inBookmark ? "Добавить в избранное" : "В избранном"}
+                    {!isFavourite ? "Добавить в избранное" : "В избранном"}
                   </label>
                 </div>
                 <div className={s.head_tool}>
@@ -60,7 +85,7 @@ function CarFullProfile() {
               </div>
             </div>
             <div className={s.car_info_wrap}>
-              <CarImgs />
+              <CarImgs carCharacteristic={carCharacteristic}/>
               <MainCharacteristics carCharacteristic={carCharacteristic}/>
               <BidInfo carCharacteristic={carCharacteristic}/>
             </div>
