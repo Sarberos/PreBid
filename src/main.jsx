@@ -33,6 +33,9 @@ import { PeekUpLot } from './components/Navigation/MyOrders/PeekUpLot/PeekUpLot.
 import './index.css'
 import './utilits/i18n/i18n.jsx'
 import Main from './components/Main/Main.jsx'
+import { SimpleModal } from './components/SImpleModal/SimpleModal.jsx'
+import LoginModal from './components/modal_windows/LoginModal/LoginModal.jsx'
+import { RoutesProtected } from './components/RoutesProtected/RoutesProtected.jsx'
 
 window.store=store;
 
@@ -40,12 +43,12 @@ const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <App><Main/></App>,
+      element:<RoutesProtected allowedRoles={['all']}><App ><Main/></App></RoutesProtected>,
       // errorElement:<NotFoundPage />,
     },
     {
       path: '/CarFullProfile/:profileId',
-      element:<App><CarFullProfile/></App> ,
+      element:<RoutesProtected allowedRoles={['all']} ><App><CarFullProfile/></App></RoutesProtected> ,
     },
     {
       path: '/profile',
@@ -69,7 +72,7 @@ const router = createBrowserRouter(
     },
     {
       path: '/auctions',
-      element: <App><Auctions /></App>,
+      element: <RoutesProtected allowedRoles={['all']} ><App><Auctions /></App></RoutesProtected>,
     },
     {
       path: '/my-sales',

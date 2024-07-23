@@ -42,6 +42,14 @@ class Fetching {
       console.log(e);
     }
   }
+  static async allCarList(carsLimit,listPage){
+    try{
+      return  await AuthService.allCarList(carsLimit,listPage);
+      
+    }catch(e){
+      console.log(e);
+    }
+  }
   static async favourite(prebid_transport_id,add){
     try {
       return AuthService.favorite(prebid_transport_id,add)

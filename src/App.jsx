@@ -16,27 +16,32 @@ import { log } from 'react-modal/lib/helpers/ariaAppHider';
 
 
 
-function App({children}) {
+function App({children}) { 
+  
+  const dispatch =useDispatch()
+  const userStore =useSelector(state=> state.user)
   const [loginStatus, setLoginStatus] = useState(false);
   const [regStatus, setregStatus] = useState(false);
   const [isLoading, setIsLoading]= useState(false)
 
   const {data:userInf,isLoading:userInfLoading,isFetching:userInfFetching}= useUserInf();
 
-  const userStore =useSelector(state=> state.user)
-  const dispatch =useDispatch()
+ 
+
+  useEffect(()=>{
+    if(loginStatus===true){
+      document.body.style.overflow='hidden'
+    }else {
+      document.body.style.overflow='scroll'
+    }
+
+  },[loginStatus])
+ 
 
   useEffect(()=>{
     setIsLoading(userStore["isLoading"])
   },[userStore["isLoading"]])
-  useEffect(()=>{
-    if (!!localStorage.getItem('access_token')) {
-      dispatch(setIsAuth(true))
-    }else if (!localStorage.getItem('access_token')) {
-      dispatch(setIsAuth(false))
-    }
-  },[!!localStorage.getItem('access_token')])
-  
+
   useEffect(()=>{
       if(userInf){
       dispatch(setUserInf(userInf))}

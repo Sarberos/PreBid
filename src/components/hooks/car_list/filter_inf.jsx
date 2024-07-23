@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Fetching from '../../../http/api_request';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export const useFilterInf =()=>{
     const {data,isLoading,isError,error}=useQuery({

@@ -6,9 +6,11 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { carInfThunk, setCarsLimit, setCarsListPage, setFavCarsLimit, setTransportsInf } from '../../../../redux/mainSlice';
 import { useQueryClient } from '@tanstack/react-query';
+import { AddFilterbtn } from './AddFilterbtn/AddFilterbtn';
 
 function FirstRow({carsList=null,visStyle,changeVisStyle,listType}) {
   const dispatch=useDispatch()
+  const state=useSelector(state=>state.user)
   const transports=useSelector(state=>state.user.transports)
 
   const changeSortTitle=(e) => {
@@ -18,33 +20,16 @@ function FirstRow({carsList=null,visStyle,changeVisStyle,listType}) {
 
   }
 
-  const total_results=carsList?.pagination?.total_results;
-  if(total_results<=10){
     return (
       <div className={s.right_column_wrapper}>
         
-        <div style={{'justify-content': 'right'}} className={s.right_columns_first_row}>
-          
-          <div  className={s.sort_main_list_param}>
-            <VisualeVariation  visStyle={visStyle} changeVisStyle={changeVisStyle} />
-          </div>
-        </div>
-      </div>
-    )
-  }
-    return (
-      <div className={s.right_column_wrapper}>
-        
-        <div  className={s.right_columns_first_row}>
-          <div className={s.add_filter_wrap}>
-            <button className={s.add_filter_btn}>
-              Добавить свой фильтр
-            </button>
-          </div>
+        <div style={!state.isAuth ? {justifyContent: 'end'} :{}} className={s.right_columns_first_row}>
+          {state.isAuth ? <AddFilterbtn /> :''}
           <div  className={s.sort_main_list_param}>
             <QuantitySort 
-            activeLimitValue={transports.carsLimit}
+            activeLimitValue={state.transports.carsLimit}
             onChangeSortTitle={(e)=>changeSortTitle(e)}
+            totalResults={carsList?.pagination?.total_results}
             />
             <VisualeVariation  visStyle={visStyle} changeVisStyle={changeVisStyle} />
           </div>

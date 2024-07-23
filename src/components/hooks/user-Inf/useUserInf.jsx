@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import Fetching from '../../../http/api_request';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export const useUserInf =()=>{
-    const {data,isLoading,isFetching,isError,error}=useQuery({
+    const state = useSelector(state=> state.user)
+  
+    return useQuery({
         queryKey:['userInf'],
-        queryFn: ()=>Fetching.userInf(),
+        queryFn: Fetching.userInf() ,
         select:(resp) => resp.data
-    })
-    useEffect(()=>{
-        isError&& console.log("mistake in userInf request"+error) 
-    },[isError,error])
+    });
 
-    return {data,isLoading,isFetching,error}
+
+   
 }

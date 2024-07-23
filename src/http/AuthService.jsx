@@ -25,6 +25,9 @@ class AuthService {
   static async carList(carsLimit,listPage) {
     return await api.get(`/transport?page=${listPage}&limit=${carsLimit}&order=id&by=asc`)
   }
+  static async allCarList(carsLimit,listPage) {
+    return await api.get(`/transport/all?page=${listPage}&limit=${carsLimit}&order=id&by=asc`)
+  }
   
   static async favorite(prebid_transport_id, add) {
     return await api.post("/transport/favourite", {prebid_transport_id, add});

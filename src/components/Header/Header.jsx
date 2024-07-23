@@ -12,6 +12,7 @@ import { SelectPicker} from 'rsuite';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { setCurrentLang } from '../../redux/settingsSlice';
+import { useQueryClient } from '@tanstack/react-query';
 
 
 
@@ -58,7 +59,11 @@ function Header({ openLogin}) {
     const navigate=useNavigate()
 
     const [profileTools,setToolsStatus]= useState(false);
+
+    const queryClient =useQueryClient()
+    
     const resetAuth=()=>{
+       queryClient.clear();
         dispatch(logoutThunk());
         navigate('/')
         
@@ -86,7 +91,7 @@ function Header({ openLogin}) {
               <a href="/" className={s.header__logo_link}>
                 <img src={logo} alt="logo" className={s.header__logo_img} />
               </a>
-              <Navigation />
+              <Navigation openLogin={openLogin} />
             </div>
             <div className={s.login_wrap}>
               <form

@@ -6,29 +6,41 @@ import { DateRangePicker} from 'rsuite';
 import {useEffect, useState} from 'react';
 import QuantitySort from './../../Main/CarList/FirstRow/QuantitySort/QuantitySort'
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuctionCurrentPage,setAuctionCurrentLimit } from '../../../redux/mainSlice';
+import { setAuctionCurrentPage,setAuctionCurrentLimit, setLoginModalStatus } from '../../../redux/mainSlice';
 import { useCountries } from '../../hooks/auctions/useCountries';
 import { useSearch } from '../../hooks/auctions/useSearch';
 import { toDate } from './stringToDate';
+import Preloader from '../../Tools/Preloader/Preloader';
+import { AuctionList } from './AuctionList/AuctionList';
+import { useNavigate } from 'react-router-dom';
+import { SimpleModal } from '../../SImpleModal/SimpleModal';
+import LoginModal from '../../modal_windows/LoginModal/LoginModal';
 
 
 
 
-export const Auctions=()=>{
+export const Auctions=({openLogin})=>{
+  
+  const navigate =useNavigate()
     const dispatch=useDispatch();
-    const auctions=useSelector(state=>state.user.auctions)
+    const state=useSelector(state=>state.user)
     const[value,setValue]= useState(null);
     const [dateValue,setDateValue]=useState({date1:null,date2:null})
-    const[currentPage,setcurrentPage]= useState(auctions.currentPage);
-    const[auctionsLimit,setAuctionsLimit]= useState(auctions.auctionsLimit);
+    const[currentPage,setcurrentPage]= useState(state.auctions.currentPage);
+    const[auctionsLimit,setAuctionsLimit]= useState(state.auctions.auctionsLimit);
     const[countryId, setCountryId]=useState(0);
+    const [loginStatus, setLoginStatus] = useState(false);
     const {data,isLoading}=useCountries();
     const {
       data: searchData,
       isLoading: searchLoading,
       refetch: refetchSearchInfo,
     } = useSearch(auctionsLimit, currentPage,countryId,dateValue.date1,dateValue.date2);
-    
+
+    const total_results=searchData?.pagination.total_results;
+
+    let pagesQuantity=Math.ceil(total_results/auctionsLimit)
+
     const changeSortTitle=(e) => {
         dispatch(setAuctionCurrentPage(1))
         setcurrentPage(1)
@@ -36,10 +48,6 @@ export const Auctions=()=>{
         dispatch(setAuctionCurrentLimit(currentValue));
         setAuctionsLimit(currentValue);
       }
-
-    const total_results=searchData?.pagination.total_results;
-    let pagesQuantity=Math.ceil(total_results/auctionsLimit)
-    
     const onChangeActivePage=(e)=>{
         const eventPage=parseInt(e.target.innerText);
         setcurrentPage(eventPage);
@@ -60,10 +68,16 @@ export const Auctions=()=>{
     setDateValue({date1:date[0],date2:date[1]});
     console.log(date[0],date[1])
   };
+useEffect(()=>{
+  if (!state.isAuth) {
+    navigate('/')
+    openLogin()
+  }
+},[])
+  
     return (
       <>
         <div className={s.wrapper}>
-          {/* <Header /> */}
           <div className={s.main_wrap}>
             <div className={s.main_inner_wrap}>
               <h2 className={s.title}>Аукционы</h2>
@@ -72,7 +86,7 @@ export const Auctions=()=>{
                     <div className={s.filter_wrap}>
                     <ul className={s.countries_wrap}>
                         <li
-                        onClick={()=>setCountryId(1)}
+                        onClick={()=>setCountryId(null)}
                         className={
                             countryId===0 ? `${s.one_country} ${s.active}` : s.one_country
                         }
@@ -111,76 +125,15 @@ export const Auctions=()=>{
                         </div>
                         <div className={s.select_quantity_wrap}>
                         <QuantitySort
-                            activeLimitValue={auctions.auctionsLimit}
+                            activeLimitValue={state.auctions.auctionsLimit}
                             onChangeSortTitle={(e)=>changeSortTitle(e)}
                         />
                         </div>
                     </div>
                     </div>
 
-                    <div className={s.auctions_list_wrap}>
-                    <div className={s.find_results_wrap}>
-                        <p className={s.find_txt}>
-                        {total_results === 1 ? "Найден" : "Найдено"}
-                        </p>
-                        <span className={s.find_results}>
-                        {total_results === 1
-                            ? `${total_results} результат`
-                            : (total_results >= 2) & (total_results < 5)
-                            ? `${total_results} результатa`
-                            : total_results >= 5
-                            ? `${total_results} результатов`
-                            : ""}
-                        </span>
-                    </div>
-                    <ul className={s.auctions_list_innerWrap}>
-                        {!searchLoading ? searchData?.content?.map(auction=>(
-                            <li className={s.auctionns_byData_wrap}>
-
-                            <article className={s.day_auction}>
-                                <h3 className={s.day_auction_date}>{auction.date}</h3>
-                                {auction?.contents?.map(auctionItem=>(
-                                    <div className={s.day_auction_content}>
-                                    <ul className={s.content_list}>
-                                        <li className={s.content_item}>
-                                            <div className={s.day_auction_country}>
-                                                {auctionItem?.countries?.map(auctionItemCountry=>(
-                                                    <p className={s.day_auction_country_name}>
-                                                        {auctionItemCountry.name_ru}
-                                                    </p>
-                                                ))}
-                                                
-                                            </div>
-                                            <div className={s.day_auction_id}>
-                                                <p className={s.day_auction_name}>{auctionItem.name}</p>
-                                                <span className={s.auction_id_result}>
-                                                    ID аукциона 
-                                                    <p className={s.auction_id_number}>
-                                                        {auctionItem.id}
-                                                    </p>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li className={s.content_item}>
-                                            <span className={s.cars_sum_txt}>Количество транспортных средств</span>
-                                            <span className={s.cars_sum_number}>{auctionItem.transports_count}</span>
-                                        </li>
-                                        <li className={s.content_item}>
-                                            <span className={s.passing_status}>{auctionItem.status.name}</span>
-                                        </li>
-                                        <li className={s.content_item}>
-                                            <button className={s.more_btn}>Смотреть подробнее</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                ))}
-                            </article>
-                            
-                            </li>
-                        )):'Загрузка'}
-                            
-                    </ul>
-                    </div>
+                    <AuctionList searchData={searchData} searchLoading={searchLoading}  total_results={total_results}/>
+                    
                     <div className={s.pagination}>
                         <Paginator
                          pagesQuantity={pagesQuantity} 
@@ -194,7 +147,6 @@ export const Auctions=()=>{
                </div>
             </div>
           </div>
-          {/* <Footer /> */}
         </div>
       </>
     );

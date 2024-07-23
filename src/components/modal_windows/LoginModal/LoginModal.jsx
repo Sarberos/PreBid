@@ -38,7 +38,6 @@ const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
 
       } else {  
         setLoginStatus(true);  
-        dispatch(setIsAuth(false))
       }  
       
 

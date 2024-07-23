@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCarsLoading } from '../../../redux/mainSlice';
 
 export const useCarsList =()=>{
-    const carInfo=useSelector(state=>state.user.transports);
+    const state= useSelector(state=>state.user)
 
     const {data,isLoading,isFetching,isError,error,refetch}=useQuery({
-        queryKey:['carList',carInfo.carsLimit,carInfo.pagination.page],
-        queryFn: ()=>Fetching.carList(carInfo.carsLimit,carInfo.pagination.page),
+        queryKey:['carList',state.transports.carsLimit,state.transports.pagination.page],
+        queryFn:()=> state.isAuth ?Fetching.carList(state.transports.carsLimit,state.transports.pagination.page):Fetching.allCarList(state.transports.carsLimit,state.transports.pagination.page),
         select:(resp) => resp.data
     })
     useEffect(()=>{

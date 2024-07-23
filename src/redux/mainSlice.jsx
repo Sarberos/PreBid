@@ -61,7 +61,7 @@ export const getFavouriteList=createAsyncThunk(
 )
 
 
-
+// const isAuthFromLocalStorage = localStorage.getItem("isAuth")
 
 const userSlice =createSlice({
     name: 'user',
@@ -69,6 +69,7 @@ const userSlice =createSlice({
         isLoading: false,
         carsLoading:false,
         isAuth: false,
+        userRole: 'unAuth',
         userInf:{
             access_rights: 0,
             client: 0,
@@ -79,18 +80,16 @@ const userSlice =createSlice({
             pagination:{
                 page:1,
             },
-            carsLimit:10,
-            
+            carsLimit:10,  
         },
         favourCars:{
             carsLimit: 10,
             currentPage:1,
-            carsAmount: null
         },
         auctions:{
             currentPage:1,
-            auctionsLimit:5,
-        }
+            auctionsLimit:10,
+        },
     },
     reducers:{
         setUserInf:(state,action)=>{
@@ -135,6 +134,15 @@ const userSlice =createSlice({
         setAuctionCurrentLimit(state,action){
             state.auctions.auctionsLimit=action.payload
         },
+        // setLoginModalStatus(state, action){
+        //     state.isLoginOpen= action.payload
+        // },
+        // setRegModalStatus(state, action){
+        //     state.isRegistrationOpen= action.payload
+        // },
+        setUserRole(state, action){
+            state.userRole= action.payload
+        }
     },
     extraReducers: (builder) =>{
         builder.addCase(loginThunk.pending,(state)=>{
@@ -187,6 +195,9 @@ export const {
   setAuctionCurrentLimit,
   setFavCarsLimit,
   setFavCarsListPage,
+  setLoginModalStatus,
+  setRegModalStatus,
+  setUserRole,
 } = userSlice.actions;
 
 export default userSlice.reducer;

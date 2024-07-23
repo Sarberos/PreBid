@@ -3,7 +3,7 @@ import accordionArrow_svg from './../../../../../assets/img/accordio_arrow.svg'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-function QuantitySort({activeLimitValue,onChangeSortTitle}) {
+function QuantitySort({totalResults,activeLimitValue,onChangeSortTitle}) {
   const dispatch=useDispatch()
   const [secondSort, changeSortStatus]=useState(false);
 
@@ -11,6 +11,11 @@ function QuantitySort({activeLimitValue,onChangeSortTitle}) {
   const localChahgeTitle=(e)=>{
     onChangeSortTitle(e);
     changeSortStatus(!secondSort);
+  }
+  if(totalResults<=10){
+    return(
+      <div></div>
+    )
   }
     return (
       <div tabindex="0" onBlur={() => {changeSortStatus(false)}} className={s.second_sort_param}>
@@ -24,13 +29,13 @@ function QuantitySort({activeLimitValue,onChangeSortTitle}) {
           </div>
           <div className={secondSort?`${s.change_disp_param_pop_up} ${s.active}`:s.change_disp_param_pop_up}>
             <div onClick={(e)=>localChahgeTitle(e)} className={ activeLimitValue == 10 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` } >
-              1
+              10
             </div>
             <div onClick={(e)=>localChahgeTitle(e)} className={ activeLimitValue == 20 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` } >
-              2
+              20
             </div>
             <div onClick={(e)=>localChahgeTitle(e)} className={ activeLimitValue == 30 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` }>
-              3
+              30
             </div>
             <div onClick={(e)=>localChahgeTitle(e)} className={ activeLimitValue == 40 ?`${s.basic_disp_param} ${s.choose_disp_param} ${s.active}`:`${s.basic_disp_param} ${s.choose_disp_param}` }>
               40

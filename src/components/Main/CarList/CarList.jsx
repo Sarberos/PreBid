@@ -16,8 +16,8 @@ function CarList({listType='catalog'}) {
     : listType === "favouritesCars"
     ? useFavouriteCars()
     : "";
-
-    if(getCarsError)
+    
+    if(carsList===null)
     {
       return (<section className={s.car_list}>
         <FirstRow listType={listType} visStyle={visStyle} changeVisStyle={changeVisStyle}  />
