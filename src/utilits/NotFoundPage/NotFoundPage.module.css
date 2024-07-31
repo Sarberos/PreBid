@@ -1,4 +1,10 @@
-.title{
+.wrapper{
+    width: 100%;
+}
+.wrapper p{    
+    padding: 100px;
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
     font-size: 40px;
 }

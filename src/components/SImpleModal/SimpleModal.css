@@ -23,7 +23,7 @@
 
 .modal_content{
     position: relative;
-    width:100%;
+    /* width:100%; */
     max-width:600px;
     min-height: 300px;
     background-color: #fff;
@@ -38,9 +38,8 @@
     background: url(./../../assets/img/whiteCross.svg.svg) no-repeat center ;
     background-size:30px 30px ;
     border: 0;
-    right: 0;
-    top:0;
-    margin: 35px 35px 0 0 ;
+    right: 10px;
+    top:10px;
 }
 
 .modal__entering,

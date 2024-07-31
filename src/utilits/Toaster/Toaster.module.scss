@@ -1,0 +1,25 @@
+.success_style {  
+    display: flex;  
+    min-width: 150px;
+    // max-width: 350px;
+    max-height: 38px;  
+    padding-left: 30px;  
+    align-items: center;
+    justify-content: start;
+    color: #000;  
+    border-radius: 8px;  
+    background-color: white;
+    background-image: url('./../../assets/img/success_v_arrow.svg');
+    background-repeat: no-repeat;
+    background-position: 2px center;
+    background-size: 30px 30px;
+    padding-left: 40px;    
+    box-shadow: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) ;
+}
+.error{
+    background-image: url('./../../assets/img/red_x_svg.svg');
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px 20px;
+}

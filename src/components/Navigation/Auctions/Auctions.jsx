@@ -6,7 +6,7 @@ import { DateRangePicker} from 'rsuite';
 import {useEffect, useState} from 'react';
 import QuantitySort from './../../Main/CarList/FirstRow/QuantitySort/QuantitySort'
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuctionCurrentPage,setAuctionCurrentLimit, setLoginModalStatus } from '../../../redux/mainSlice';
+import { setAuctionCurrentPage,setAuctionCurrentLimit, setLoginModalStatus, setLoginIsOpen } from '../../../redux/mainSlice';
 import { useCountries } from '../../hooks/auctions/useCountries';
 import { useSearch } from '../../hooks/auctions/useSearch';
 import { toDate } from './stringToDate';
@@ -19,9 +19,8 @@ import LoginModal from '../../modal_windows/LoginModal/LoginModal';
 
 
 
-export const Auctions=({openLogin})=>{
-  
-  const navigate =useNavigate()
+export const Auctions=()=>{
+    const navigate =useNavigate()
     const dispatch=useDispatch();
     const state=useSelector(state=>state.user)
     const[value,setValue]= useState(null);
@@ -29,7 +28,6 @@ export const Auctions=({openLogin})=>{
     const[currentPage,setcurrentPage]= useState(state.auctions.currentPage);
     const[auctionsLimit,setAuctionsLimit]= useState(state.auctions.auctionsLimit);
     const[countryId, setCountryId]=useState(0);
-    const [loginStatus, setLoginStatus] = useState(false);
     const {data,isLoading}=useCountries();
     const {
       data: searchData,
@@ -37,10 +35,10 @@ export const Auctions=({openLogin})=>{
       refetch: refetchSearchInfo,
     } = useSearch(auctionsLimit, currentPage,countryId,dateValue.date1,dateValue.date2);
 
+
+
     const total_results=searchData?.pagination.total_results;
-
     let pagesQuantity=Math.ceil(total_results/auctionsLimit)
-
     const changeSortTitle=(e) => {
         dispatch(setAuctionCurrentPage(1))
         setcurrentPage(1)
@@ -68,13 +66,8 @@ export const Auctions=({openLogin})=>{
     setDateValue({date1:date[0],date2:date[1]});
     console.log(date[0],date[1])
   };
-useEffect(()=>{
-  if (!state.isAuth) {
-    navigate('/')
-    openLogin()
-  }
-},[])
-  
+
+
     return (
       <>
         <div className={s.wrapper}>

@@ -5,6 +5,7 @@ import less_arrow from './../../../../../../../assets/img/smallless_arrow.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import Preloader from '../../../../../../Tools/Preloader/Preloader';
 import { useCarFullProfile } from '../../../../../../hooks/car_list/useCarFullProfile';
+import { useCarUnAuthProfile } from '../../../../../../hooks/car_list/useCarUnAuthProfile';
 import { MainCharacteristics } from './MainCharacteristics/MainCharacteristics';
 import { CarImgs } from './CarImgs/CarImgs';
 import { BidInfo } from './BidInfo/BidInfo';
@@ -12,9 +13,11 @@ import { addToFavStatus } from '../../../../../../../redux/mainSlice';
 import { useQueryClient } from '@tanstack/react-query';
 
 function CarFullProfile() {
+  const state= useSelector(state=> state.user)
+
   const id=useId()
   const requestProps =useParams()
-  const {data: carInfo, isLoading: caInfoLoading,refetch:refetchCarInfo}=useCarFullProfile(requestProps.profileId)
+  const {data: carInfo, isLoading: caInfoLoading,refetch:refetchCarInfo}=state.userRole!=='unAuth' ? useCarFullProfile(requestProps.profileId):useCarUnAuthProfile(requestProps.profileId)
   const carCharacteristic=carInfo?.content;
   const [isFavourite, setIsFavourite]=useState(null)
   const [carId, setcarId]=useState(null)
@@ -31,6 +34,7 @@ function CarFullProfile() {
 
   const queryClient = useQueryClient()
   const onSetBookMarkStatus=(id=true,favourite)=>{
+    if(state.userRole!=="unAuth")
     dispatch(addToFavStatus({id,add:!favourite})).then(
     (resp)=>{
         queryClient.invalidateQueries({queryKey:['carList'], refetchType: 'all'})

@@ -70,10 +70,11 @@ const userSlice =createSlice({
         carsLoading:false,
         isAuth: false,
         userRole: 'unAuth',
+        loginOpen:false,
+        addFilterOpen:false,
         userInf:{
             access_rights: 0,
             client: 0,
-            role: 0,
             user: 0,
         },
         transports:{
@@ -93,12 +94,19 @@ const userSlice =createSlice({
     },
     reducers:{
         setUserInf:(state,action)=>{
-            state.userInf={};
+            state.userInf={
+                access_rights: 0,
+                client: 0,
+                user: 0,
+            };
+            if(action.payload){
+            state.userRole=action.payload.role.code;
             state.userInf.access_rights=action.payload.access_rights;
             state.userInf.client=action.payload.client;
             state.userInf.role=action.payload.role;
-            state.userInf.user=action.payload.user;
+            state.userInf.user=action.payload.user;}
         },
+       
         setFiltersInf: (state,action)=>{
             state.filters=action.payload.filters;
             state.myFilters=action.payload.myFilter;
@@ -134,9 +142,12 @@ const userSlice =createSlice({
         setAuctionCurrentLimit(state,action){
             state.auctions.auctionsLimit=action.payload
         },
-        // setLoginModalStatus(state, action){
-        //     state.isLoginOpen= action.payload
-        // },
+        setLoginIsOpen(state, action){
+            state.loginOpen= action.payload
+        },
+        setAddFilterIsOpen(state, action){
+            state.addFilterOpen= action.payload
+        },
         // setRegModalStatus(state, action){
         //     state.isRegistrationOpen= action.payload
         // },
@@ -149,9 +160,9 @@ const userSlice =createSlice({
             state.isLoading=true;
         });
         builder.addCase(loginThunk.fulfilled,(state)=>{
-            state.isLoading=false;
+            // state.isLoading=false; //завершается после получения information response
         })
-        builder.addCase(userInfThunk.pending,(state)=>{
+        builder.addCase(userInfThunk.pending,(state)=>{B
             state.isLoading=true;
         });
         builder.addCase(userInfThunk.fulfilled,(state)=>{
@@ -198,6 +209,8 @@ export const {
   setLoginModalStatus,
   setRegModalStatus,
   setUserRole,
+  setLoginIsOpen,
+  setAddFilterIsOpen,
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -62,6 +62,26 @@ class AuthService {
   static async carFullProfile(carId) {
     return await api.get(`/transport/with-user/${carId}`);
   }
+  static async carUnAuthProfile(carId) {
+    return await api.get(`/transport/${carId}`);
+  }
+  static async searchByVin(vin) {
+    return await api.post(`/transport/vin`,{vin,});
+  }
+  static async searchImg_ByVin(vin) {
+    return await api.post(`/transport/get-image-by-vin`,{vin,});
+  }
+  static async createTransportLot(lotParams) {
+    return await api.post(`/transport`,{...lotParams});  // старый запрос 
+  }
+  static async updateTransportLot(lotNumber,lotParams) {
+    return await api.put(`/transport/${lotNumber}`,{...lotParams});
+  }
+  static async getTransportLot(lotNumber) {
+    return await api.put(`transport/with-user/${lotNumber}`);
+  }
+ 
+  
 }
 
 

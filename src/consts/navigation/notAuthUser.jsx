@@ -10,10 +10,10 @@ export const notAuthNavigation=[
     },
     {
         name:'Тарифы',
-        link:'/',
+        link:'/tariffs',
     },
     {
         name:'Как это работает ',
-        link:'/',
+        link:'/how_it_work',
     },
 ]

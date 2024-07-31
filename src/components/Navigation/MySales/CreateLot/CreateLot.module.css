@@ -1,3 +1,4 @@
+
 .right_column{
     margin-bottom: 55px;
 }
@@ -43,6 +44,8 @@
     padding-top: 9px;
 }
 .rs_select_picker{
+    max-width: 320px;
+    width : 100%;
     display: flex;
     flex-direction: row;
     align-items:  center;
@@ -84,6 +87,7 @@
     color: #0f0f14;
 }
 .price_grid_inputNumber{
+    min-height: 41px;
     border: 1px solid #D3D8E6;
     border-radius: 4px;
     border:0;
@@ -112,18 +116,20 @@
     margin-bottom: 32px;
 }
 .additionals_inputs_list{
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 50px;
 }
-.additionals_inputs_item{
+.additionals_inputs_list li:not(.additionals_inputs_item){
     display: flex;
     flex-direction: column;
     gap: 8px;
     flex: 0 1 300px;
     max-width: 300px;
 }
-.additionals_inputs_item:last-child{
+.additionals_inputs_item{
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -135,14 +141,11 @@
     gap: 25px;
     flex: 1 1 auto;
 }
-.rs_select_picker{
-    display: inline-block;
-    max-width: 100%;
-    vertical-align: middle;
-}
+
 .clip_file label{
     display: flex;
     align-items: center;
+    cursor: pointer;
     gap: 8px;
 }
 .clip_file label span{

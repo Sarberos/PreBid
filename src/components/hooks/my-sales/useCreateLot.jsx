@@ -5,10 +5,10 @@ import {useEffect} from 'react'
 export const useCreateLot=()=>{
     const queryClient=useQueryClient(); 
 
-    const {mutate,isPending}=useMutation({
+   return useMutation({
         mutationKey:['create lot'],
         mutationFn: (createLotConfig)=>Fetching.transport(createLotConfig),
         onSuccess: ()=>queryClient.invalidateQueries({queryKey:['my lots']}),
     })
-    return {mutate,isPending}
+  
 }

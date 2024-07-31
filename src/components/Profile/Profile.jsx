@@ -1,48 +1,42 @@
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import Header from "../Header/Header";
 import Footer from './../Footer/Footer'
 import s from "./Profile.module.css";
 import logout_ico from "./../../assets/img/logout_ico.svg";
 import { useEffect, useState } from "react";
-import { logoutThunk, setIsAuth, setUserInf, userInfThunk } from "../../redux/mainSlice";
-import Preloader from "../Tools/Preloader/Preloader";
+import { logoutThunk, setIsAuth, setUserInf, setUserRole, userInfThunk } from "../../redux/mainSlice";
+import Preloader from "../Tools/Preloader/Preloader"
+import {useUserInf} from './../hooks/user-Inf/useUserInf'
+import { useQueryClient } from '@tanstack/react-query';
 
-export const Profile = ({children}) => {
+
+export const Profile = ({children,userInf}) => {
   const dispatch =useDispatch();
-  const isLoading = useSelector((state) =>state.user.isLoading);
-  const user = useSelector((state) => state.user.userInf.user);
-  
-  useEffect(()=>{
-    if(user===0){
-      const userInfPromise= new Promise((resolve,reject)=>{
-        resolve(dispatch(userInfThunk()))
-      })
-      userInfPromise.then(response=>{
-        dispatch(setUserInf(response.payload.data));
-        dispatch(setIsAuth(response.payload.data.status))
-      }) 
-    }else{
-      console.log('userInf been exist')
-    }
-  },[dispatch])
+  const navigate = useNavigate()
+  // const [localLoading, setLocalLoading]=useState(true)
+  useEffect(()=>{},[])
 
-  const resetAuth=()=>{
-    dispatch(logoutThunk());
-}
-  const arr = [];
-  for (let i = 1; i <= 15; i++) {
-    arr.push(i);
+
+  const queryClient =useQueryClient()
+  const resetAuth= async()=>{
+    dispatch(setUserInf())
+    await dispatch(logoutThunk());
+    dispatch(setUserRole('unAuth'))
+    queryClient.clear();
+    navigate('/')
+      
   }
-  if (isLoading) {
-    return <Preloader />;
-  } else {
+
+  // if (localLoading) {
+  //   return <Preloader />
+  // }
   return (
     <>
-      {/* <Header /> */}
+      
       <div className={s.profile_setting_wrapper}>
         <div className={s.wrapper}>
-          <h2 className={s.profile_title}>Настройка аккаунта {user.email}</h2>
+          <h2 className={s.profile_title}>Настройка аккаунта {userInf?.user?.email}</h2>
           <div className={s.main_info_wrap}>
             <div className={s.menu_wrap}>
               <ul className={s.menu_list}>
@@ -64,10 +58,8 @@ export const Profile = ({children}) => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 }
-};
 
 export default Profile;

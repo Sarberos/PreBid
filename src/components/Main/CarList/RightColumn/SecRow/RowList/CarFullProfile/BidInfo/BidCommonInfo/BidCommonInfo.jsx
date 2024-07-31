@@ -6,23 +6,23 @@ export const BidCommonInfo =({carCharacteristic})=>{
     const carProfileBidInfo=[
         {
             title: 'Статус',
-            value: carCharacteristic.delivery.status_delivery
+            value: carCharacteristic?.delivery?.status_delivery
         },
         {
             title: 'Порт назначени',
-            value: carCharacteristic.delivery.port.name
+            value: carCharacteristic?.delivery?.port?.name
         },
         {
             title: 'Место назначения',
-            value: carCharacteristic.delivery.place.title
+            value: carCharacteristic?.delivery?.place?.title
         },
         {
             title: 'Дата доставки',
-            value: carCharacteristic.delivery.date_delivery
+            value: carCharacteristic?.delivery?.date_delivery
         },
         {
             title: 'Дата торгов',
-            value: carCharacteristic.prebid_auction.date_start
+            value: carCharacteristic?.prebid_auction?.date_start
         }
     ]
 

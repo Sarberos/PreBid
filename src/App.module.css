@@ -1,3 +1,9 @@
-.modified_children{
-    min-height: 100vh;
+.wrapperForAll{
+    min-height: 97vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer{
+    flex: 1 1 auto;
 }

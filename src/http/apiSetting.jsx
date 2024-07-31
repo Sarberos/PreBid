@@ -11,5 +11,10 @@ api.interceptors.request.use((config) => {
     "access_token")}`;
   return config;
 });
+api.interceptors.response.use(response=>response,error=>{
+  return Promise.reject({
+    ...error.response.data
+  })
+});
 
 export default api;

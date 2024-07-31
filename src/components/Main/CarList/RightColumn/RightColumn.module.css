@@ -4,6 +4,7 @@
     right: 50%;
   }
 .right_column_wrap {
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

@@ -8,7 +8,7 @@ export function useCountries() {
 
   const { data, isLoading, isSuccess, isError, error } = useQuery({
     queryKey: ["auction countries"],
-    queryFn: Fetching.getCountries,
+    queryFn: state.userRole!=="unAuth" ? Fetching.getCountries : '',
     select: (resp) => resp.data,
   });
   useEffect(() => {

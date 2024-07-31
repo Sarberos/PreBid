@@ -1,0 +1,11 @@
+.input_group_wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px
+}
+.vin_search_btn{
+    min-width: 20px;
+    min-height: 100%;
+}

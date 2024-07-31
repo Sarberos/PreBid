@@ -9,9 +9,10 @@ import { useUserInf } from '../hooks/user-Inf/useUserInf';
 
 
 function Main({openRegistration,openLogin}) {
+    const isAuth = useSelector(state=>state.user.isAuth)
     return (
         <main className={s.main}>
-        { !localStorage.getItem('access_token')? <Intro openRegistration={openRegistration} openLogin={openLogin} /> : ''}
+        { !isAuth? <Intro openRegistration={openRegistration} openLogin={openLogin} /> : ''}
         <div className={s.wrapper}>
             <CarList />
             <Seo />

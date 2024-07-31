@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { logoutThunk, setIsAuth, setUserInf, userFiltersThunk, userInfThunk } from '../../redux/mainSlice';
+import { logoutThunk, setIsAuth, setIsLoading, setLoginIsOpen, setUserInf, setUserRole, userFiltersThunk, userInfThunk } from '../../redux/mainSlice';
 import { Navigation } from '../Navigation/Navigation';
 import { HeaderBurger } from './HeaderBurger/HeaderBurger';
 import { SelectPicker} from 'rsuite';
@@ -13,13 +13,15 @@ import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { setCurrentLang } from '../../redux/settingsSlice';
 import { useQueryClient } from '@tanstack/react-query';
+import { ROUTES } from '../../consts/RoutesName/routesNmae';
 
 
 
 
 function Header({ openLogin}) {
-    const reduxSettings=useSelector(state=>state.settings)
     const dispatch=useDispatch()
+    const reduxSettings=useSelector(state=>state.settings)
+    const state=useSelector(state=> state.user )
     const [lang,setLanguage]=useState(reduxSettings.currentlang)
 
     useEffect(() => {
@@ -62,10 +64,15 @@ function Header({ openLogin}) {
 
     const queryClient =useQueryClient()
     
-    const resetAuth=()=>{
+    const login=()=>{
+      dispatch(setLoginIsOpen(true))
+    }
+    const resetAuth= async()=>{
+      dispatch(setUserInf())
+      await dispatch(logoutThunk());
+      dispatch(setUserRole('unAuth'))
        queryClient.clear();
-        dispatch(logoutThunk());
-        navigate('/')
+      navigate('/')
         
     }
     return (
@@ -111,9 +118,7 @@ function Header({ openLogin}) {
                 ></button>
               </form>
               <button
-                onClick={() => {
-                  openLogin();
-                }}
+                onClick={login}
                 type="submit"
                 className={
                   isAuth ? `${s.sign_login_btn} ${s.hide}` : s.sign_login_btn
@@ -156,10 +161,22 @@ function Header({ openLogin}) {
                       Настройки аккаунта
                     </div>
                   </Link>
+                  {state.userRole==='admin' && 
+                  <Link  to="/users" className={s.mini_profile_tool_link}>
+                    <div className={s.mini_profile_tool}>
+                      Пользователи
+                    </div>
+                  </Link>}
+                  {state.userRole==='admin' && 
+                  <Link  to={ROUTES.SERVICES} className={s.mini_profile_tool_link}>
+                    <div className={s.mini_profile_tool}>
+                      Сервисная часть
+                    </div>
+                  </Link>}
                   <button
-                    onClick={() => {
-                      resetAuth();
-                    }}
+                    onClick={() => 
+                      resetAuth()
+                    }
                     className={s.mini_profile_tool}
                   >
                     Выйти

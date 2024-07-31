@@ -23,8 +23,8 @@ function FirstRow({carsList=null,visStyle,changeVisStyle,listType}) {
     return (
       <div className={s.right_column_wrapper}>
         
-        <div style={!state.isAuth ? {justifyContent: 'end'} :{}} className={s.right_columns_first_row}>
-          {state.isAuth ? <AddFilterbtn /> :''}
+        <div  className={s.right_columns_first_row}>
+          <AddFilterbtn /> 
           <div  className={s.sort_main_list_param}>
             <QuantitySort 
             activeLimitValue={state.transports.carsLimit}

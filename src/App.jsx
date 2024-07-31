@@ -9,10 +9,12 @@ import { SimpleModal } from './components/SImpleModal/SimpleModal'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal'
 import Registration from './components/modal_windows/Registration/Registration'
 import Preloader from './components/Tools/Preloader/Preloader';
-import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, userFiltersThunk, userInfThunk } from './redux/mainSlice';
+import { carInfThunk, setFiltersInf, setIsAuth, setTransportsInf, setUserInf, setUserRole, userFiltersThunk, userInfThunk } from './redux/mainSlice';
 import { useFilterInf } from './components/hooks/car_list/filter_inf';
 import { useUserInf } from './components/hooks/user-Inf/useUserInf';
 import { log } from 'react-modal/lib/helpers/ariaAppHider';
+import { AddFilterModal } from './components/modal_windows/addFilterModal/AddFilterModal';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -20,27 +22,20 @@ function App({children}) {
   
   const dispatch =useDispatch()
   const userStore =useSelector(state=> state.user)
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(userStore.loginOpen);
   const [regStatus, setregStatus] = useState(false);
-  const [isLoading, setIsLoading]= useState(false)
+  const [addFilterStatus, setAddFilterStatus]=useState(false)
 
-  const {data:userInf,isLoading:userInfLoading,isFetching:userInfFetching}= useUserInf();
-
- 
+  const {data:userInf,isLoading:userInfLoading,isFetching:userInfFetching, refetch: userInfRefetching}= useUserInf();
 
   useEffect(()=>{
-    if(loginStatus===true){
-      document.body.style.overflow='hidden'
-    }else {
-      document.body.style.overflow='scroll'
-    }
-
-  },[loginStatus])
- 
-
-  useEffect(()=>{
-    setIsLoading(userStore["isLoading"])
-  },[userStore["isLoading"]])
+    if(userStore.loginOpen!==loginStatus){
+    setLoginStatus(userStore.loginOpen)
+  }
+    if(userStore.addFilterOpen!==addFilterStatus){
+      setAddFilterStatus(userStore.addFilterOpen)
+  }
+  },[dispatch,userStore.loginOpen,userStore.addFilterOpen])
 
   useEffect(()=>{
       if(userInf){
@@ -48,18 +43,27 @@ function App({children}) {
   },[userInf])
 
 
-  
+   useEffect(()=>{
+    if(loginStatus || regStatus || addFilterStatus){
+      document.body.style.overflow='hidden'
+    }else {
+      document.body.style.overflow='scroll'
+    }
+
+  },[loginStatus,regStatus]) 
   const modifiedChildren = React.Children.map(children, child => {  
     if (React.isValidElement(child)) {  
       return React.cloneElement(child, {  
         openRegistration:() => setregStatus(true),
         openLogin:() => setLoginStatus(true),
+        userInfRefetching: ()=>userInfRefetching(),
+        userInf: ()=>userInf,
       });  
     } 
     return child;  
   });  
 
-    if (isLoading || userInfLoading ) {
+    if (userStore.isLoading || userInfLoading ) {
       return <Preloader />;
     }
     return (
@@ -69,8 +73,6 @@ function App({children}) {
           <div className={s.modified_children}>
              {modifiedChildren}
           </div>
-         
-
           <SimpleModal
             isOpen={loginStatus}
             onClose={() => setLoginStatus(false)}
@@ -81,11 +83,17 @@ function App({children}) {
               setLoginStatus={(value)=>setLoginStatus(value)}
             />
           </SimpleModal>
-          <SimpleModal isOpen={regStatus} onClose={() => setregStatus(false)}>
+          <SimpleModal 
+          isOpen={regStatus} onClose={() => setregStatus(false)}>
             <Registration />
           </SimpleModal>
+          <SimpleModal 
+          isOpen={addFilterStatus} onClose={() => setAddFilterStatus(false)}>
+            <AddFilterModal />
+          </SimpleModal>
 
-        <Footer />
+        <Footer className={s.footer} />
+        <Toaster position='top-center' reverseOrder={false}/>
       </div>
     )
     }

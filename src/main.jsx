@@ -36,6 +36,16 @@ import Main from './components/Main/Main.jsx'
 import { SimpleModal } from './components/SImpleModal/SimpleModal.jsx'
 import LoginModal from './components/modal_windows/LoginModal/LoginModal.jsx'
 import { RoutesProtected } from './components/RoutesProtected/RoutesProtected.jsx'
+import { ROUTES } from './consts/RoutesName/routesNmae.js'
+import { Lots } from './components/Navigation/Lots/Lots.jsx'
+import { Bidding } from './components/Navigation/Bidding/Bidding.jsx'
+import { Financec } from './components/Navigation/Financec/Financec.jsx'
+import { Deliveris } from './components/Navigation/Deliveris/Deliveris.jsx'
+import { Statistic } from './components/Navigation/Statistic/Statistic.jsx'
+import { ServicesPage } from './components/ServicesPage/ServicesPage.jsx'
+import { UsersPage } from './components/UsersPage/UsersPage.jsx'
+import { HowItWork } from './components/Navigation/HowItWork/HowItWork.jsx'
+import { Tariffs } from './components/Navigation/Tariffs/Tariffs.jsx'
 
 window.store=store;
 
@@ -43,76 +53,113 @@ const router = createBrowserRouter(
   [
     {
       path: '/',
-      element:<RoutesProtected allowedRoles={['all']}><App ><Main/></App></RoutesProtected>,
+      element:<RoutesProtected allowedRoles={['all']}><App><Main/></App></RoutesProtected>,
       // errorElement:<NotFoundPage />,
     },
     {
       path: '/CarFullProfile/:profileId',
-      element:<RoutesProtected allowedRoles={['all']} ><App><CarFullProfile/></App></RoutesProtected> ,
+      element:<App><RoutesProtected allowedRoles={['all']} ><CarFullProfile/></RoutesProtected></App> ,
     },
     {
       path: '/profile',
-      element:<App><Profile><MyProfile/></Profile></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller', 'admin']}><Profile><MyProfile/></Profile></RoutesProtected></App> ,
     },
     {
       path: '/deliveryAdress',
-      element:<App><Profile><DeliveryAdress/></Profile></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller', 'admin']}><Profile><DeliveryAdress/></Profile></RoutesProtected></App> ,
     },
     {
       path: '/notifications',
-      element: <Profile><NotificationSettings/></Profile>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller', 'admin']}><Profile><NotificationSettings/></Profile></RoutesProtected></App>,
     },
     {
       path: '/support',
-      element:<App><Profile><Support/></Profile></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller', 'admin']}><Profile><Support/></Profile></RoutesProtected></App> ,
     },
     {
       path: '/tarifPlan',
-      element:<App><Profile><TariffPlan/></Profile></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller', 'admin']}><Profile><TariffPlan/></Profile></RoutesProtected></App> ,
     },
+    
     {
       path: '/auctions',
-      element: <RoutesProtected allowedRoles={['all']} ><App><Auctions /></App></RoutesProtected>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller', 'admin']}><Auctions /></RoutesProtected></App>,
     },
     {
       path: '/my-sales',
-      element: <App><MySales><CreateLot /></MySales></App>,
+      element: <App><RoutesProtected allowedRoles={['lead_generation','seller']}><MySales><CreateLot /></MySales></RoutesProtected></App>,
     },
     {
       path: '/my-lots',
-      element:<App><MySales><MyLots /></MySales></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}><MySales><MyLots /></MySales></RoutesProtected></App> ,
     },
     {
       path: '/coordination-lots',
-      element:<App><MySales><CoordinationLots /></MySales></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}><MySales><CoordinationLots /></MySales></RoutesProtected></App> ,
     },
     {
       path: '/waiting-lots',
-      element:<App> <MySales><WaitingLots/></MySales></App>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}> <MySales><WaitingLots/></MySales></RoutesProtected></App>,
     },
     {
       path: '/sold-lots',
-      element: <App><MySales><SoldLots/></MySales></App>,
+      element:<App> <RoutesProtected allowedRoles={['lead_generation','seller']}><MySales><SoldLots/></MySales></RoutesProtected></App>,
     },
     {
       path: '/my-orders/',
-      element: <App><MyOrders><PayWaiting /></MyOrders></App>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}> <MyOrders><PayWaiting /></MyOrders></RoutesProtected></App>,
     },
     {
       path: '/my-orders/peekUp',
-      element:<App><MyOrders ><PeekUpLot /></MyOrders></App> ,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}><MyOrders ><PeekUpLot /></MyOrders></RoutesProtected></App> ,
     },
     {
       path: '/my-orders/purchases',
-      element: <App><MyOrders ><Purchases /></MyOrders></App>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}> <MyOrders ><Purchases /></MyOrders></RoutesProtected></App>,
     },
     {
       path: '/my-rates',
-      element: <App><MyRates /></App>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}> <MyRates /></RoutesProtected></App>,
     },
     {
       path: '/my-favourite',
-      element: <App><MyFavourite /></App>,
+      element:<App><RoutesProtected allowedRoles={['lead_generation','seller']}> <MyFavourite /></RoutesProtected></App>,
+    },
+    {
+      path: ROUTES.LOTS,
+      element:<App><RoutesProtected allowedRoles={['admin']}> <Lots /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.BIDDING,
+      element: <App><RoutesProtected allowedRoles={['admin']}><Bidding /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.FINANCEC,
+      element:   <App><RoutesProtected allowedRoles={['admin']}><Financec /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.DELIVERIS,
+      element:   <App><RoutesProtected allowedRoles={['admin']}><Deliveris /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.STATISTIC,
+      element:   <App><RoutesProtected allowedRoles={['admin']}><Statistic /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.SERVICES,
+      element:   <App><RoutesProtected allowedRoles={['admin']}><ServicesPage /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.USERS,
+      element:   <App><RoutesProtected allowedRoles={['admin']}><UsersPage /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.HOWITWORK,
+      element:   <App><RoutesProtected allowedRoles={['all']}><HowItWork /></RoutesProtected></App>
+    },
+    {
+      path: ROUTES.TARIFFS,
+      element:   <App><RoutesProtected allowedRoles={['all']}><Tariffs /></RoutesProtected></App>
     },
   ]
 )

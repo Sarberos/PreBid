@@ -1,0 +1,1 @@
+// это такой же функциональный toaster как и react-hot-toast написанный на vanilla js 

@@ -12,7 +12,7 @@ function QuantitySort({totalResults,activeLimitValue,onChangeSortTitle}) {
     onChangeSortTitle(e);
     changeSortStatus(!secondSort);
   }
-  if(totalResults<=10){
+  if(totalResults<=10 || !totalResults){
     return(
       <div></div>
     )

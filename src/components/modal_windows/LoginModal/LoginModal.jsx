@@ -3,26 +3,19 @@ import s from "./LoginModal.module.css";
 import { useEffect, useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector,useDispatch } from "react-redux";
-import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf } from "../../../redux/mainSlice";
-import Preloader from "../../Tools/Preloader/Preloader";
-import { useUserInf } from "../../hooks/user-Inf/useUserInf";
-import { handlingPromise } from "../../../helpers/handlingPromise";
+import { loginThunk,setIsAuth,setUserInf,userInfThunk,userFiltersThunk,setFiltersInf, setUserRole, setIsLoading, setLoginIsOpen } from "../../../redux/mainSlice";
 import { useQueryClient } from "@tanstack/react-query";
  
-const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
-  const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
-
-
+const LoginModal = ({ onClose, openRegistration,setLoginStatus,}) => {
   const navigate =useNavigate()
   const id =useId();
   const dispatch=useDispatch();
-  
+  const{register,handleSubmit,formState: { isSubmitting, errors },}=useForm()
 
   const onOpenRgistrPage=()=>{
     openRegistration();
     onClose();
   }
-
   const queryClient =useQueryClient()
   const onSubmiting=(formData)=>{
     const loginPromise = new Promise((resolve, reject)=>{
@@ -33,12 +26,9 @@ const LoginModal = ({ onClose, openRegistration,setLoginStatus}) => {
       if (response.payload.data.status === "success") {  
         dispatch(setIsAuth(true))
         queryClient.invalidateQueries({queryKey:['userInf']})
-        setLoginStatus(false);  
+        dispatch(setLoginIsOpen(false))
         navigate("/");  
-
-      } else {  
-        setLoginStatus(true);  
-      }  
+      }
       
 
     });

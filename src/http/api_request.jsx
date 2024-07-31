@@ -128,6 +128,45 @@ class Fetching {
       console.log(e);
     }
   }
+  static async carUnAuthProfile(carId){
+    try {
+      return await AuthService.carUnAuthProfile(carId)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async searchByVin(vin){
+    try {
+      return await AuthService.searchByVin(vin)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async searchImg_ByVin(vin){
+      return await AuthService.searchImg_ByVin(vin) // добавление Promise.reject на уровне interceptor - ов .
+  }
+  static async createTransportLot(lotParams){
+    try {
+      return await AuthService.createTransportLot(lotParams)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async updateTransportLot(lotNumber,lotParams){
+    try {
+      return await AuthService.updateTransportLot(lotNumber,lotParams)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async getTransportLot(lotNumber){
+    try {
+      return await AuthService.getTransportLot(lotNumber)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 
 }
 export default Fetching;
