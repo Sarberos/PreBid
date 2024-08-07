@@ -45,6 +45,11 @@
     position: relative;
     width: 224px;
     height: 135px;
+    border-radius: 4px;
+    
+}
+.main_img{
+    box-shadow: 0 0 10px rgba(56, 255, 16, 0.91)
 }
 .uploading_img_item img{
     width: 100%;

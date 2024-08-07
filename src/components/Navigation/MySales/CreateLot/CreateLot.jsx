@@ -56,39 +56,40 @@ const toModelSelectList = (localData, data, dataKey, nameKey, idKey = "id") => {
 };
 
 export const CreateLot = () => {
+  const [imgUrlArr, setImgArr] = useState([]);
   const [keysFile, setKeysFile] = useState();
   const [reportFile, setReportFile] = useState();
   const [lotConfig, setLotConfig] = useState({
-    arrival_end: 1, //
+    prebid_transport_status_id: 2, // 1(сохранить) 2(отправить на модерацию) 
+    arrival_end:'1',
     auction_id: 1, //
     body_type: "",
     color_id: 0,
     damages: "",
+    date_delivery:"2024-07-31",  /// нужно задать динамическое изменение 
     doc_fee_id: 0,
     engine: '',
     keys: 0,
     location_id: 385, //
     lot: "", //
-    min_price: 1000, //
-    name: "тест 19.06", //
+    min_price: 1, //
+    name: "шевроле", //
     now_price: "",
     odometer: "",
     place_destination_id: 0, //
     port_id: 0, //
-    prebid_transport_status_id: 0, //
     start_price: "",
+    status_delivery:0,
     step_price: 0, //
     transport_brand_id: 0,
     transport_drive_id: 0,
     transport_fuel_id: 0,
-    transport_hl_id: 0, //
+    transport_hl_id: 1, //
     transport_model_id: 0,
     transport_tr_id: 0, //
     vin: '',
     year: "",
   });
-
-  console.log(lotConfig, "LOTCONFIG");
 const keysAmount = [
     {
       label: "1 ключ",
@@ -103,9 +104,11 @@ const keysAmount = [
       value: 0,
     },
   ];
-  const { mutate: createPostReq, isPending } = useCreateLot();
+  const { mutate: createPostReq, isPending,data:createPostData,isSuccess } = useCreateLot(imgUrlArr);
   const { data: listData, isLoading: isListInfo } = useListOptions();
   const { mutate :vinRequest, isPending: vinPending, data:vinRequestData } = useSearchByVin();
+
+
 
   
   useEffect(()=>{
@@ -405,7 +408,7 @@ if (vinPending  && !vinRequestData) {
             </div>
           </div>
         </div>
-        <DeliveryGroup />
+        <DeliveryGroup  setLotConfig={setLotConfig}/>
         <div className={s.additional_grid}>
           <div className={s.price_title_wrap}>
             <p
@@ -506,13 +509,17 @@ if (vinPending  && !vinRequestData) {
           </div>
         </div>
         <UploadImgs
+          imgUrlArr={imgUrlArr}
+          setImgArr={setImgArr}
           lotConfig={lotConfig}
         />
         <div className={s.button_pair}>
           <button className={s.to_admin_btn}>{"Сохранить"}</button>
           <button
-            onClick={() => {
-              createPostReq(lotConfig);
+            onClick={ () => {
+               createPostReq(lotConfig)
+        
+             
             }}
             disabled={isPending}
             className={s.to_admin_btn}

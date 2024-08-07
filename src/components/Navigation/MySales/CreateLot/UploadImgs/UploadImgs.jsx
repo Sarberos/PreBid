@@ -2,29 +2,31 @@ import { useEffect, useState } from "react";
 import s from "./UploadImgs.module.css";
 import ellipsis from "../../../../../assets/img/ellipsis.svg";
 import { useSearchAEKImg } from "../../../../hooks/my_sels/useSearchAEKImg";
-import { useToaster, ButtonToolbar, SelectPicker, Button } from 'rsuite';
-import {  useToast } from "../../../../../utilits/Toaster/Toaster";
-import { useToastWithLoader } from "../../../../../utilits/Toaster/LoaderToaster";
-import {toast} from "react-hot-toast"
+import {toast} from "react-hot-toast";
+import Fetching from "../../../../../http/api_request";
 
-export const UploadImgs = ({ lotConfig }) => {
+export const UploadImgs = ({ lotConfig,imgUrlArr,setImgArr }) => {
   const [imgToolsStat, setImgToolsStat] = useState({});
-  const [, setSelectAllBtn]=useState(false)
-  const [imgUrlArr, setImgArr] = useState([]);
   const [aekImgs, setAEKImgs]=useState([])
+  const [selecetedImgs, setSelectedImgs]=useState([])
+  const [mainImg, setMainImg]=useState('')
   const [aekDownload, setAekDownload]=useState(false)
   const { mutate: searchImg, isPending: searchImgPending, data: searchImgData, } = useSearchAEKImg();
-  const [toastSettings,setToastStatus]= useState({isToastOpen: false, toastStatus:false,toastTxt:"", tostGravity:'top', })
-  useToast(toastSettings.isToastOpen, toastSettings.toastStatus,toastSettings.toastTxt,  toastSettings.tostGravity);
-  useToastWithLoader(toastSettings.isToastOpen, toastSettings.toastStatus,toastSettings.toastTxt,  toastSettings.tostGravity )
+
 useEffect(()=>{
+  for(let img of aekImgs){
+    if(img.checked === true){
+      setSelectedImgs(prevState=>([...prevState,img?.img?.full?.path]))
+    }
+  }
+},[aekImgs])
+useEffect( ()=>{
     if(searchImgData){
       const imgs=searchImgData?.data?.content
       for(let img of imgs){
         setAEKImgs(prevState=>([...prevState,{img,checked:false}]))
         setImgToolsStat(prevState=>({...prevState,[img.id]:false}))
       }
-      console.log(...aekImgs)
     }
   },[searchImgData])
 useEffect(() => {
@@ -55,32 +57,54 @@ const imgReader = (e) => {
           setImgArr((prevImgArr) => {
             let middleUrls;
             if (prevImgArr) {
-              middleUrls = [...new Set([...prevImgArr, ...urls])];
+              middleUrls = [...new Set([...urls,...prevImgArr ])];
             } else {
               middleUrls = urls;
             }
-            return middleUrls.slice(0, 20);
+            // return middleUrls.slice(0, 20);
+            return middleUrls;
           });
         }
       };
     }
   };
+const makeMain=(url)=>{
+  setMainImg(url)
+}
   const remooveImg = (itemUrl) => {
     setImgArr((prevImgArr) => prevImgArr.filter((elem) => elem !== itemUrl));
   };
-  const getAEKImg = () => {
+  const getAEKImg =  () => {
     if (lotConfig.vin) {
       if(lotConfig.vin.length===17){
-      return searchImg(lotConfig.vin);
+        return searchImg(lotConfig.vin);
       }
-      toast.success('Successfully toasted!')
-      // setToastStatus({isToastOpen:true,toastStatus: false,toastTxt:"Введите корректное значение VIN номера",tostGravity:'bottom',})
-      // setTimeout(()=>{ setToastStatus((prevState)=>({...prevState,isToastOpen:false}))},750)
+      toast.error('Введите корректное значение VIN номера',{position:'bottom-center'})
     }else{
-      // setToastStatus({isToastOpen:true,toastStatus: false,toastTxt:"Заполните поле VIN номера",tostGravity:'bottom',})
-      // setTimeout(()=>{ setToastStatus((prevState)=>({...prevState,isToastOpen:false}))},750)
+      toast.error('Заполните поле VIN номера',{position:'bottom-center'})
     }
   };
+  const submitAEKImgs=()=>{
+    setImgArr((prevImgArr) => {
+      
+      let middleUrls;
+      let urls=[]
+      for(let img of selecetedImgs  ){
+        urls.push(img )
+        
+      }
+      console.log(urls)
+      if (prevImgArr) {
+        middleUrls = [...new Set([...prevImgArr, ...urls])];
+      } else {
+        middleUrls = urls;
+      }
+      // return middleUrls.slice(0, 20);
+      return middleUrls;
+    });
+    setSelectedImgs([])
+    setAEKImgs(prevState=>prevState.filter((item) => !selecetedImgs.includes(item.img.full.path)))
+    }
 
   return (
     <div className={s.upload_img_grid}>
@@ -115,8 +139,8 @@ const imgReader = (e) => {
           </li>
 
           {imgUrlArr?.map((item, index) => (
-            <div key={index} className={s.uploading_img_item}>
-              <img src={item}></img>
+            <div key={index} className={mainImg===item ?`${s.uploading_img_item} ${s.main_img}` : `${s.uploading_img_item}`}>
+              <img src={item} />
               <div className={s.tools_img_burger_wrapper}>
                 <div
                   className={s.tools_img_burger}
@@ -146,7 +170,7 @@ const imgReader = (e) => {
                         : `${s.img_burger_menu} `
                     }
                   >
-                    <li className={s.burger_menu_item}>
+                    <li onMouseDown={()=> makeMain(item)} className={s.burger_menu_item}>
                       <p>Сделать главным</p>
                     </li>
                     <li
@@ -164,10 +188,13 @@ const imgReader = (e) => {
           ))}
         </div>
       </div>
-      <div style={aekDownload ? {display: 'flex'}:{display:'none'}} className={s.upload_aek_img_wrap}>
+      <div style={aekDownload && aekImgs.length!==0 ? {display: 'flex'}:{display:'none'}} className={s.upload_aek_img_wrap}>
         <div className={s.aek_title}>
           <h3>Выберите фото загруженые из АЕК</h3>
         </div>
+        <button onClick={submitAEKImgs} className={s.submit_txt}>
+          Подтвердить
+        </button>
         <div className={s.select_all_btn}>
           <button
             onClick={()=>{
@@ -190,7 +217,7 @@ const imgReader = (e) => {
              <div className={`${s.tools_img_burger_wrapper}`}>
                 <input type="checkBox" checked={elem.checked } className={s.select_input} 
                   onChange={(e)=>{
-                    setAEKImgs(prevState => {                      
+                    setAEKImgs(prevState => {     
                       const updatedImgs = [...prevState];   
                       updatedImgs[elemIndex].checked = e.target.checked;   
                       return updatedImgs;   

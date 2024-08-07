@@ -108,11 +108,8 @@ class Fetching {
     }
   }
   static async transport(createLot){
-    try {
+    
       return await AuthService.transport(createLot)
-    } catch (e) {
-      console.log(e);
-    }
   }
   static async bidSearch(lotsLimit,listPage,search){
     try {
@@ -143,7 +140,7 @@ class Fetching {
     }
   }
   static async searchImg_ByVin(vin){
-      return await AuthService.searchImg_ByVin(vin) // добавление Promise.reject на уровне interceptor - ов .
+      return await AuthService.searchImg_ByVin(vin)  // добавление Promise.reject на уровне interceptor - ов .
   }
   static async createTransportLot(lotParams){
     try {
@@ -166,6 +163,14 @@ class Fetching {
       console.log(e);
     }
   }
+  static async setTransportImgs(formData){
+    try {
+      return await AuthService.setTransportImgs(formData)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 
 
 }

@@ -84,10 +84,10 @@ const LoginModal = ({ onClose, openRegistration,setLoginStatus,}) => {
               aria-describedby={`${id}-error-password-message`}
               {...register("password", {
                 required: "The field is required",
-                minLength: {
-                  value: 8,
-                  message: "min length is 10 ",
-                },
+                // minLength: {
+                //   value: 1,
+                //   message: "min length is 1 ",
+                // },
               })}
             />
             {errors.password && (

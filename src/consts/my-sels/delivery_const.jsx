@@ -16,7 +16,8 @@ export const DELIVERYPLACE=[
     {
         label:'Клайпеда',
         value:'1', 
-    }
+    },
+  
 ]
 export const PORTDESTINATION=[
     {

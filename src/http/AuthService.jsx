@@ -75,10 +75,13 @@ class AuthService {
     return await api.post(`/transport`,{...lotParams});  // старый запрос 
   }
   static async updateTransportLot(lotNumber,lotParams) {
-    return await api.put(`/transport/${lotNumber}`,{...lotParams});
+    return await api.put(`/transport/${lotNumber}`,{...lotParams}); //проверить
   }
   static async getTransportLot(lotNumber) {
-    return await api.put(`transport/with-user/${lotNumber}`);
+    return await api.put(`transport/with-user/${lotNumber}`); // проверить 
+  }
+  static async setTransportImgs(formData) {
+    return await api.post(`/transport/image`,formData);  
   }
  
   
